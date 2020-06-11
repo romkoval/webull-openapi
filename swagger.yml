@@ -1,0 +1,4122 @@
+openapi: 3.0.0
+info:
+  description: Webull API Documentation
+  version: 3.0.1
+  title: Webull API
+  contact:
+    email: austin.millan@gmail.com
+servers:
+  - url: https://quoteapi.webull.com/api
+    description: Quotes API
+  - url: https://userapi.webull.com/api
+    description: User API
+  - url: https://quoteapi.webullbroker.com/api
+    description: Quotes API
+  - url: https://quotes-gw.webullbroker.com/api
+    description: Quotes API
+  - url: https://securitiesapi.webullbroker.com/api
+    description: Securities API
+  - url: https://userapi.webullbroker.com/api
+    description: User API
+  - url: https://act.webullbroker.com/webull-paper-center/api
+    description: Paper API
+  - url: https://tradeapi.webulltrade.com/api/trade
+    description: Trade API
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+tags:
+  - name: accounts
+    description: Accounts
+  - name: authentication
+    description: Authentication
+  - name: order
+    description: Order
+  - name: quote
+    description: Quote
+  - name: user
+    description: User
+  - name: stocks
+    description: Stocks
+  - name: paper
+    description: Paper
+  - name: options
+    description: Options
+paths:
+  "/account/getSecAccountList/v4":
+    get:
+      deprecated: false
+      description: Query for your account ID. Account ID is needed for many private APIs.
+      operationId: GetAccount
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetSecurityAccountsResponse'
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://tradeapi.webulltrade.com/api/trade'
+      summary: getAccount
+      tags:
+        - accounts
+  # '/asset/{id}/getWebullTransferList':
+  #   post:
+  #     deprecated: false
+  #     description: (TODO) Get transfer history
+  #     operationId: getTransferHistory
+  #     parameters:
+  #       - in: header
+  #         name: did
+  #         description: "Device ID"
+  #         required: true
+  #         schema:
+  #           type: string
+  #           default: "your_device"
+  #       - in: header
+  #         name: access_token
+  #         description: "Access token"
+  #         required: true
+  #         schema:
+  #           type: string
+  #       - in: path
+  #         name: id
+  #         required: true
+  #         schema:
+  #           type: string
+  #       - description: pageSize
+  #         in: query
+  #         name: pageSize
+  #         required: true
+  #         schema:
+  #           default: 256
+  #           type: string
+  #       - description: lastRecordId
+  #         in: query
+  #         name: lastRecordId
+  #         schema:
+  #           type: string
+  #       - description: time
+  #         in: header
+  #         name: time
+  #         schema:
+  #           default: true
+  #           type: boolean
+  #       - description: tradeToken
+  #         in: header
+  #         name: tradeToken
+  #         schema:
+  #           default: true
+  #           type: boolean
+  #     responses:
+  #       '200':
+  #         content:
+  #           application/json:
+  #             schema:
+  #               items:
+  #                 $ref: '#/components/schemas/Transfer'
+  #         description: OK
+  #       '401':
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/ErrorBody'
+  #         description: Unauthorized
+  #       '403':
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/ErrorBody'
+  #         description: Forbidden
+  #       '404':
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/ErrorBody'
+  #         description: Not Found
+  #     servers:
+  #       - url: 'https://tradeapi.webullbroker.com/api/trade'
+  #     summary: getTransferHistory
+  #     tags:
+  #       - user
+  '/information/news/v5/tickerNews/{stock}':
+    get:
+      deprecated: false
+      operationId: getStockNews
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+        - description: Stocks internal ticker ID
+          in: path
+          name: stock
+          required: true
+          schema:
+            type: number
+            default: 913243251
+        - description: 0 is the latest article
+          in: query
+          name: currentNewsId
+          schema:
+            type: number
+            default: 0
+        - description: Number of articles
+          in: query
+          name: pageSize
+          schema:
+            type: number
+            default: 256
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetNewsResponse'
+          description: OK
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Created
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://securitiesapi.webullbroker.com/api'
+      summary: getStockNews
+      tags:
+        - stocks
+  "/login":
+    post:
+      deprecated: false
+      description: Trading related authorize trade, must be done before trade action
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostLoginParametersRequest'
+      operationId: getTradeToken
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/PostLoginResponse'
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://tradeapi.webulltrade.com/api/trade'
+      summary: getTradeToken
+      tags:
+        - authentication
+  "/myaccounts/true":
+    get:
+      deprecated: false
+      description: Get paper trading account ID
+      operationId: getPaperTradingAccountID
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Anything'
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://act.webullbroker.com/webull-paper-center/api'
+      summary: getPaperTradingAccountID
+      tags:
+        - paper
+  '/order/{account_id}/cancelStockOrder/':
+    post:
+      deprecated: false
+      description: Cancel order
+      operationId: cancelOrder
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+        - description: Trade token
+          in: header
+          name: t_token
+          required: true
+          schema:
+            type: string
+        - description: Time
+          in: header
+          name: t_time
+          required: true
+          schema:
+            type: string
+        - description: Account ID
+          in: path
+          name: account_id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Anything'
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://tradeapi.webulltrade.com/api/trade'
+      summary: cancelOrder
+      tags:
+        - order
+  '/order/{account_id}/modifyStockOrder/{order_id}':
+    post:
+      deprecated: false
+      operationId: modifyOrder
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostStockOrderRequest'
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+        - description: Trade token
+          in: header
+          name: t_token
+          required: true
+          schema:
+            type: string
+        - description: Time
+          in: header
+          name: t_time
+          required: true
+          schema:
+            type: string
+        - description: account_id
+          in: path
+          name: account_id
+          required: true
+          schema:
+            type: string
+        - description: order_id
+          in: path
+          name: order_id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Anything'
+          description: OK
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Created
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://tradeapi.webulltrade.com/api/trade'
+      summary: modifyOrder
+      tags:
+        - order
+  '/order/{account_id}/placeStockOrder':
+    post:
+      deprecated: false
+      operationId: placeOrder
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+        - description: Trade token
+          in: header
+          name: t_token
+          required: true
+          schema:
+            type: string
+        - description: Time
+          in: header
+          name: t_time
+          required: true
+          schema:
+            type: string
+        - description: account_id
+          in: path
+          name: account_id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostStockOrderRequest'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Anything'
+          description: OK
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Created
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://tradeapi.webulltrade.com/api/trade'
+      summary: placeOrder
+      tags:
+        - order
+  '/paper/1/acc/{paper_account_id}/order':
+    get:
+      deprecated: false
+      description: Query for your paper trading orders
+      operationId: getPaperOrders
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: paper_account_id
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: startTime
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: dateType
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: pageSize
+          schema:
+            type: number
+            default: 256
+        - in: query
+          name: id
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: status
+          schema:
+            $ref: '#/components/schemas/OrderStatus'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Anything'
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://act.webullbroker.com/webull-paper-center/api'
+      summary: getPaperOrders
+      tags:
+        - paper
+  '/paper/1/acc/{paper_account_id}/orderop/cancel/{order_id}':
+    post:
+      deprecated: false
+      description: Cancel paper trade
+      operationId: cancelPaperTradeOrder
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: paper_account_id
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: order_id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Anything'
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://act.webullbroker.com/webull-paper-center/api'
+      summary: cancelPaperTradeOrder
+      tags:
+        - paper
+  '/paper/1/acc/{paper_account_id}/orderop/modify/{order_id}':
+    post:
+      deprecated: false
+      description: Modify paper trade
+      operationId: modifyPaperTradeOrder
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: paper_account_id
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: order_id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Anything'
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://act.webullbroker.com/webull-paper-center/api'
+      summary: modifyPaperTradeOrder
+      tags:
+        - paper
+  '/paper/1/acc/{paper_account_id}/orderop/place/{stock}':
+    post:
+      deprecated: false
+      description: Place paper trade
+      operationId: placePaperTradeOrder
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: paper_account_id
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: stock
+          required: true
+          description: Internal stock ticker ID
+          schema:
+            type: number
+            default: 913243251
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Anything'
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://act.webullbroker.com/webull-paper-center/api'
+      summary: placePaperTradeOrder
+      tags:
+        - paper
+  "/passport/login/logout":
+    get:
+      deprecated: false
+      description: Logout of your current session
+      operationId: logout
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Anything'
+          description: OK
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Created
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://userapi.webullbroker.com/api'
+      summary: logout
+      tags:
+        - authentication
+  "/passport/login/v3/account":
+    post:
+      deprecated: false
+      operationId: login
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostLoginParametersRequest'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostLoginResponse'
+          description: OK
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Created
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://userapi.webullbroker.com/api'
+      summary: login
+      tags:
+        - authentication
+  "/passport/refreshToken":
+    post:
+      deprecated: false
+      description: Refresh user login token
+      operationId: refreshToken
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+        - description: Numeric ID of the user to get
+          in: query
+          name: refreshToken
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/PostLoginResponse'
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://userapi.webull.com/api'
+      summary: refreshToken
+      tags:
+        - authentication
+  "/passport/verificationCode/sendCode":
+    post:
+      deprecated: false
+      operationId: getMultiFactorAuth
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - description: account
+          in: query
+          name: account
+          required: true
+          schema:
+            type: string
+        - description: "phone = 1, email = 2"
+          in: query
+          name: accountType
+          required: true
+          schema:
+            $ref: '#/components/schemas/AccountType'
+            default: 2
+        - description: deviceId
+          in: query
+          name: deviceId
+          required: true
+          schema:
+            type: string
+        - description: codeType
+          in: query
+          name: codeType
+          required: true
+          schema:
+            type: string
+            default: 5
+        - description: regionCode
+          in: query
+          name: regionCode
+          required: true
+          schema:
+            type: string
+            default: 1
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+          description: OK
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Created
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://userapi.webullbroker.com/api'
+      summary: getMultiFactorAuth
+      tags:
+        - authentication
+  "/quote/option/query/list":
+    get:
+      deprecated: false
+      operationId: getOptionQuotes
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+        - description: tickerId
+          in: query
+          name: tickerId
+          required: true
+          schema:
+            type: number
+        - description: derivativeIds
+          in: query
+          name: derivativeIds
+          schema:
+            type: number
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetOptionQuotesRequest"
+          description: OK
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Created
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://quotes-gw.webullbroker.com/api'
+      summary: getOptionQuotes
+      tags:
+        - options
+  '/quote/option/{stock}/list':
+    get:
+      deprecated: false
+      operationId: getStockOptions
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: stock
+          description: Internal stock ticker ID
+          required: true
+          schema:
+            type: number
+            default: 913243251
+        - in: query
+          name: count
+          required: true
+          schema:
+            default: -1
+            type: number
+        - in: query
+          name: includeWeekly
+          schema:
+            default: 1
+            type: number
+        - in: query
+          name: direction
+          schema:
+            default: all
+            type: string
+            enum:
+              - all
+              - calls
+              - puts
+        - in: query
+          name: expireDate
+          schema:
+            default: "12/16/2022"
+            type: string
+        - in: query
+          name: queryAll
+          schema:
+            default: 0
+            type: number
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetStockOptionsResponse"
+          description: OK
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Created
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://quoteapi.webullbroker.com/api'
+      summary: getStockOptions
+      tags:
+        - options
+  '/quote/tickerChartDatas/v5/{stock}':
+    get:
+      deprecated: false
+      description: Stock symbol to get chart data
+      operationId: getTickerChart
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+        - description: Internal stock symbol ID
+          in: path
+          name: stock
+          required: true
+          schema:
+            type: number
+            default: 913243251
+        - description: Number of bars to return
+          in: query
+          name: count
+          required: true
+          schema:
+            type: number
+            default: -1
+        - description: Whether to include pre-market and afterhours bars. '1' is used for pre-market and after-hours bars.
+          in: query
+          name: extendTrading
+          required: true
+          schema:
+            type: number
+            default: 1
+        - description: X
+          in: query
+          name: type
+          required: true
+          schema:
+            type: string
+            default: m1
+            enum:
+              - m1
+              - m5
+              - m15
+              - m30
+              - h1
+              - h2
+              - h4
+              - d1
+              - w1
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetTickerChartResponse"
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://quoteapi.webull.com/api'
+      summary: getTickerChart
+      tags:
+        - stocks
+  '/quote/tickerRealTimes/v5/{stock}':
+    get:
+      deprecated: false
+      description: "Get stock quote (TODO)"
+      operationId: getStockQuote
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: stock
+          description: Internal stock ticker ID
+          required: true
+          schema:
+            type: number
+            default: 913243251
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetStockQuoteResponse"
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://quoteapi.webull.com/api'
+      summary: getStockQuote
+      tags:
+        - quote
+  "/search/tickers5":
+    get:
+      deprecated: false
+      description: Lookup stock ID
+      operationId: getStockId
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+        - description: Stock ticker
+          in: query
+          name: keys
+          required: true
+          schema:
+            type: string
+            default: 913243251
+        - description: queryNumber
+          in: query
+          name: queryNumber
+          required: true
+          schema:
+            default: 1
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LookupTickerResponse"
+          description: OK
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Created
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://infoapi.webull.com/api'
+      summary: getStockID
+      tags:
+        - stocks
+  '/securities/financial/index/{stock}':
+    get:
+      deprecated: false
+      description: getFundamentals
+      operationId: getFundamentals
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+        - description: Internal stock ticker ID
+          in: path
+          name: stock
+          required: true
+          schema:
+            type: number
+            default: 913243251
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/GetFundamentalsResponse"
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://securitiesapi.webullbroker.com/api'
+      summary: getFundamentals
+      tags:
+        - stocks
+  '/securities/market/v5/card/stockActivityPc.{direction}/list':
+    get:
+      deprecated: false
+      description: Active gainers / losers
+      operationId: getActiveGainersLosers
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+        - description: Direction
+          in: path
+          name: direction
+          required: true
+          schema:
+            enum:
+              - advanced
+              - decline
+              - active
+            type: string
+        - description: regionId
+          in: query
+          name: regionId
+          required: true
+          schema:
+            default: 6
+            type: string
+        - description: userRegionId
+          in: query
+          name: userRegionId
+          required: true
+          schema:
+            default: 6
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetActiveGainersLosersResponse"
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://securitiesapi.webullbroker.com/api'
+      summary: getActiveGainersLosers
+      tags:
+        - stocks
+  '/securities/ticker/v5/analysis/{stock}':
+    get:
+      deprecated: false
+      description: Analyze stock based on it's ticker
+      operationId: getStockAnalysis
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+        - description: Internal stock ticker ID
+          in: path
+          name: stock
+          required: true
+          schema:
+            type: number
+            default: 913243251
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetStockAnalysisResponse"
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://securitiesapi.webullbroker.com/api'
+      summary: getStockAnalysis
+      tags:
+        - stocks
+  "/ticker/broker/permissionV2":
+    get:
+      deprecated: false
+      description: isTradeable
+      operationId: isTradeable
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+        - description: Ticker ID is a Stock to query for
+          in: query
+          name: tickerId
+          required: true
+          schema:
+            type: number
+            default: 913243251
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/GetIsTradeableResponse'
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://tradeapi.webulltrade.com/api/trade'
+      summary: isTradeable
+      tags:
+        - order
+  "/user":
+    get:
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+      deprecated: false
+      description: Get user details of your account (e.g. name, email/phone, region, ...).
+      operationId: getUser
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetUserDetailsResponse"
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://quoteapi.webull.com/api'
+      summary: getUser
+      tags:
+        - user
+  "/user/warning/v2/manage/overlap":
+    post:
+      description: Modify alerts
+      operationId: modifyAlert
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AlertRequest'
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Anything'
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://userapi.webullbroker.com/api'
+      summary: modifyAlert
+      tags:
+        - alerts
+
+  "/user/warning/v2/query/tickers":
+    get:
+      deprecated: false
+      description: getAlerts
+      operationId: getAlerts
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/GetAlertsResponse"
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://userapi.webullbroker.com/api'
+      summary: getAlerts
+      tags:
+        - alerts
+  '/v2/account/{account_id}/dividends':
+    get:
+      deprecated: false
+      description: Get dividends
+      operationId: getDividends
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+        - description: Dividends
+          in: query
+          name: direct
+          schema:
+            default: in
+            type: string
+        - description: Account ID
+          in: path
+          name: account_id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/GetDividendsResponse"
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://tradeapi.webulltrade.com/api/trade'
+      summary: getDividends
+      tags:
+        - dividends
+  # '/v2/corder/stock/check/{account_id}':
+  #   get:
+  #     deprecated: false
+  #     description: Check OTOCO order
+  #     operationId: checkOtocoOrder
+  #     parameters:
+  #       - in: header
+  #         name: did
+  #         description: "Device ID"
+  #         required: true
+  #         schema:
+  #           type: string
+  #           default: "your_device"
+  #       - in: header
+  #         name: access_token
+  #         description: "Access token"
+  #         required: true
+  #         schema:
+  #           type: string
+  #       - description: Account ID
+  #         in: path
+  #         name: account_id
+  #         required: true
+  #         schema:
+  #           type: string
+  #     responses:
+  #       '200':
+  #         content:
+  #           application/json:
+  #             schema:
+  #               items:
+  #                 $ref: '#/components/schemas/Anything'
+  #         description: OK
+  #       '401':
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/ErrorBody'
+  #         description: Unauthorized
+  #       '403':
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/ErrorBody'
+  #         description: Forbidden
+  #       '404':
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/ErrorBody'
+  #         description: Not Found
+  #     servers:
+  #       - url: 'https://tradeapi.webulltrade.com/api/trade'
+  #     summary: checkOtocoOrder
+  #     tags:
+  #       - order
+  # '/v2/corder/stock/modify/{account_id}':
+  #   post:
+  #     deprecated: false
+  #     description: Cancel order
+  #     operationId: cancelOtocoOrder
+  #     requestBody:
+  #       required: true
+  #       content:
+  #         application/json:
+  #           schema:
+  #             type: object
+  #             properties:
+  #               serialId:
+  #                 type: string
+  #               cancelOrders:
+  #                 items:
+  #                   type: string
+  #     parameters:
+  #       - in: header
+  #         name: did
+  #         description: "Device ID"
+  #         required: true
+  #         schema:
+  #           type: string
+  #           default: "your_device"
+  #       - in: header
+  #         name: access_token
+  #         description: "Access token"
+  #         required: true
+  #         schema:
+  #           type: string
+  #       - description: Trade token
+  #         in: header
+  #         name: t_token
+  #         required: true
+  #         schema:
+  #           type: string
+  #       - description: Time
+  #         in: header
+  #         name: t_time
+  #         required: true
+  #         schema:
+  #           type: string
+  #       - description: Account ID
+  #         in: path
+  #         name: account_id
+  #         required: true
+  #         schema:
+  #           type: string
+  #     responses:
+  #       '200':
+  #         content:
+  #           application/json:
+  #             schema:
+  #               items:
+  #                 $ref: '#/components/schemas/Anything'
+  #         description: OK
+  #       '401':
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/ErrorBody'
+  #         description: Unauthorized
+  #       '403':
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/ErrorBody'
+  #         description: Forbidden
+  #       '404':
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/ErrorBody'
+  #         description: Not Found
+  #     servers:
+  #       - url: 'https://tradeapi.webulltrade.com/api/trade'
+  #     summary: cancelOtocoOrder
+  #     tags:
+  #       - order
+  '/v2/corder/stock/place/{account_id}':
+    post:
+      deprecated: false
+      operationId: placeOtocoOrder
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostOtocoStockOrderRequest'
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+        - description: Time
+          in: header
+          name: t_time
+          required: true
+          schema:
+            type: string
+        - description: account_id
+          in: path
+          name: account_id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Anything'
+          description: OK
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Created
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://tradeapi.webulltrade.com/api/trade'
+      summary: placeOtocoOrder
+      tags:
+        - order
+  '/v2/home/{account_id}':
+    get:
+      deprecated: false
+      description: Query for account information. This includes positions, portfolio, etc.
+      operationId: getAccountInfo
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+        - description: Account ID of the user to get
+          in: path
+          name: account_id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetAcccountRequest"
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://tradeapi.webulltrade.com/api/trade'
+      summary: getAccountInfo
+      tags:
+        - accounts
+  "/v2/option/list":
+    get:
+      deprecated: false
+      description: Query for orders.
+      operationId: getOrders
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+        - description: Time
+          in: header
+          name: t_time
+          required: false
+          schema:
+            type: string
+        - description: Trade token
+          in: header
+          name: t_token
+          required: false
+          schema:
+            type: string
+        - description: Numeric ID of the user to get
+          in: query
+          name: secAccountId
+          required: true
+          schema:
+            type: string
+        - description: Start date for orders
+          in: query
+          name: startTime
+          required: false
+          schema:
+            type: string
+        - description: Order type
+          in: query
+          name: dateType
+          required: false
+          schema:
+            default: ORDER
+            type: string
+        - description: Page size
+          in: query
+          name: pageSize
+          required: false
+          schema:
+            default: 256
+            type: number
+        - description: Last create time
+          in: query
+          name: lastCreateTime
+          required: false
+          schema:
+            type: string
+        - description: Status of order
+          in: query
+          name: status
+          required: false
+          schema:
+            $ref: '#/components/schemas/OrderStatus'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/GetOrdersResponse"
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://tradeapi.webulltrade.com/api/trade'
+      summary: getOrders
+      tags:
+        - order
+  '/v2/option/placeOrder/{account_id}':
+    post:
+      deprecated: false
+      description: Place an option order
+      operationId: placeOptionOrder
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostOptionOrderRequest'
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+        - description: Trade token
+          in: header
+          name: t_token
+          required: true
+          schema:
+            type: string
+        - description: Time
+          in: header
+          name: t_time
+          required: true
+          schema:
+            type: string
+        - description: account_id
+          in: path
+          name: account_id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Anything'
+          description: OK
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Created
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://tradeapi.webulltrade.com/api/trade'
+      summary: placeOptionOrder
+      tags:
+        - options
+  '/v2/option/replaceOrder/{account_id}':
+    post:
+      deprecated: false
+      operationId: replaceOptionOrder
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReplaceOptionOrderRequest'
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+        - description: Trade token
+          in: header
+          name: t_token
+          required: true
+          schema:
+            type: string
+        - description: Time
+          in: header
+          name: t_time
+          required: true
+          schema:
+            type: string
+        - description: account_id
+          in: path
+          name: account_id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Anything'
+          description: OK
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Created
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://tradeapi.webulltrade.com/api/trade'
+      summary: replaceOptionOrder
+      tags:
+        - options
+  "/wlas/screener/ng/query":
+    get:
+      deprecated: false
+      description: screener (TODO)
+      operationId: screener
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+        - description: fetch
+          in: header
+          name: fetch
+          required: true
+          schema:
+            default: 200
+            type: number
+        - description: rules
+          in: header
+          name: rules
+          required: true
+          schema:
+            items:
+              $ref: '#/components/schemas/Rule'
+            type: array
+        - description: sort
+          in: header
+          name: sort
+          required: true
+          schema:
+            type: object
+        - description: attach
+          in: header
+          name: attach
+          required: true
+          schema:
+            properties:
+              hkex_privilege:
+                default: 'true'
+                example: 'true'
+                title: hkexPrivilege
+                type: string
+            type: object
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Anything'
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://userapi.webullbroker.com/api'
+      summary: screener
+      tags:
+        - stocks
+components:
+  schemas:
+    AccountInfo:
+      properties:
+        accountType:
+          type: number
+        currency:
+          type: string
+        netLiquidation:
+          type: number
+        pdt:
+          type: boolean
+        unrealizedProfitLoss:
+          type: number
+        unrealizedProfitLossBase:
+          type: number
+        warning:
+          type: boolean
+      title: AccountInfo
+      type: object
+    AccountType:
+      default: 2
+      description: 'number: 1, email: 2'
+      enum:
+        - 1
+        - 2
+      title: number
+      type: number
+    AddAlertRequest:
+      properties:
+        disExchangeCode:
+          type: string
+        disSymbol:
+          type: string
+        eventWarningInput:
+          properties:
+            del:
+              type: boolean
+            remove:
+              type: boolean
+            rules:
+              items:
+                $ref: '#/components/schemas/SmartRule'
+            tickerId:
+              type: number
+          type: object
+        exchangeCode:
+          type: string
+        regionId:
+          type: string
+        showCode:
+          type: string
+        tickerId:
+          type: number
+        tickerName:
+          type: string
+        tickerSymbol:
+          type: string
+        tickerType:
+          type: string
+        tinyName:
+          type: string
+        warningInput:
+          properties:
+            rules:
+              items:
+                $ref: '#/components/schemas/PriceRule'
+            tickerId:
+              type: number
+            warningFrequency:
+              default: 1
+              description: '1 is once a day, 2 is once a minute'
+              type: number
+            warningInterval:
+              default: 1
+              description: '1 is once, 0 is repeating'
+              type: number
+          type: object
+    Alert:
+      properties:
+        eventWarning:
+          properties:
+            remove:
+              type: boolean
+            rules:
+              items:
+                anyOf:
+                  - $ref: '#/components/schemas/SmartRule'
+                  - $ref: '#/components/schemas/PriceRule'
+          type: object
+        tickerWarning:
+          properties:
+            remove:
+              type: boolean
+          type: object
+        warningInput:
+          type: object
+      type: object
+    AlertRequest:
+      properties:
+        schema:
+          oneOf:
+            - $ref: '#/components/schemas/AddAlertRequest'
+            - $ref: '#/components/schemas/RemoveAlertRequest'
+    Anything:
+      type: object
+    Auth:
+      properties:
+        access_token:
+          title: accessToken
+          type: string
+        deviceId:
+          type: string
+        refresh_token:
+          title: refreshToken
+          type: string
+        token_expire_time:
+          title: tokenExpireTime
+          type: string
+        username:
+          type: string
+        uuid:
+          type: string
+      type: object
+    Direction:
+      enum:
+        - debit
+        - credit
+      type: string
+    ErrorBody:
+      properties:
+        code:
+          type: string
+        data:
+          type: object
+        msg:
+          type: string
+        success:
+          type: boolean
+        traceId:
+          type: string
+      type: object
+    Execution:
+      properties:
+        id:
+          type: string
+        price:
+          type: string
+        quantity:
+          type: string
+        settlement_date:
+          format: date
+          type: string
+        timestamp:
+          format: date-time
+          type: string
+      title: Execution
+      type: object
+    ExecutionType:
+      enum:
+        - market
+        - limit
+      type: string
+    GetAcccountRequest:
+      properties:
+        accountMembers:
+          items:
+            properties:
+              key:
+                type: string
+              value:
+                type: string
+            type: object
+          type: array
+        accountType:
+          type: string
+        banners:
+          items:
+            properties:
+              imgUrl:
+                type: string
+              link:
+                type: string
+              subTitle:
+                type: string
+              title:
+                type: string
+              type:
+                type: string
+            type: object
+          type: array
+        brokerAccountId:
+          type: string
+        brokerId:
+          type: number
+        currency:
+          type: string
+        currencyId:
+          type: number
+        deposits:
+          items:
+            type: object
+          type: array
+        netLiquidation:
+          type: string
+        openIpoOrders:
+          items:
+            type: object
+          type: array
+        openOrderSize:
+          type: number
+        openOrders:
+          items:
+            type: object
+          type: array
+        pdt:
+          type: boolean
+        positions:
+          items:
+            properties:
+              assetType:
+                type: string
+              brokerId:
+                type: number
+              cost:
+                type: string
+              costPrice:
+                type: string
+              currency:
+                type: string
+              exchangeRate:
+                type: string
+              id:
+                type: number
+              lastOpenTime:
+                type: string
+              lastPrice:
+                type: string
+              lock:
+                type: boolean
+              marketValue:
+                type: string
+              position:
+                type: string
+              positionProportion:
+                type: string
+              ticker:
+                properties:
+                  currencyCode:
+                    type: string
+                  currencyId:
+                    type: number
+                  disExchangeCode:
+                    type: string
+                  disSymbol:
+                    type: string
+                  exchangeCode:
+                    type: string
+                  exchangeId:
+                    type: number
+                  extType:
+                    items:
+                      type: object
+                    type: array
+                  listStatus:
+                    type: number
+                  name:
+                    type: string
+                  regionId:
+                    type: number
+                  regionIsoCode:
+                    type: string
+                  regionName:
+                    type: string
+                  secType:
+                    items:
+                      type: number
+                    type: array
+                  symbol:
+                    type: string
+                  tickerId:
+                    type: number
+                  tinyName:
+                    type: string
+                  type:
+                    type: number
+                type: object
+              unrealizedProfitLoss:
+                type: string
+              unrealizedProfitLossRate:
+                type: string
+              updatePositionTimeStamp:
+                type: number
+            type: object
+          type: array
+        professional:
+          type: boolean
+        secAccountId:
+          type: number
+        showUpgrade:
+          type: boolean
+        totalCost:
+          type: string
+        unrealizedProfitLoss:
+          type: string
+        unrealizedProfitLossBase:
+          type: number
+        unrealizedProfitLossRate:
+          type: string
+        warning:
+          type: boolean
+    GetActiveGainersLosersResponse:
+      properties:
+        items:
+          properties:
+            change:
+              type: string
+            changeRatio:
+              type: string
+            close:
+              type: string
+            currencyId:
+              type: number
+            derivativeSupport:
+              type: number
+            disExchangeCode:
+              type: string
+            disSymbol:
+              type: string
+            exchangeCode:
+              type: string
+            exchangeId:
+              type: number
+            listStatus:
+              type: number
+            marketValue:
+              type: string
+            name:
+              type: string
+            pChRatio:
+              type: string
+            pChange:
+              type: string
+            pPrice:
+              type: string
+            regionCode:
+              type: string
+            regionId:
+              type: number
+            secType:
+              items:
+                type: number
+              type: array
+            status:
+              type: string
+            symbol:
+              type: string
+            template:
+              type: string
+            tickerId:
+              type: number
+            turnoverRate:
+              type: string
+            type:
+              type: number
+            volume:
+              type: string
+          type: object
+    GetAlertsResponse:
+      properties:
+        code:
+          type: string
+        data:
+          items:
+            properties:
+              disExchangeCode:
+                type: string
+              disSymbol:
+                type: string
+              eventWarning:
+                properties:
+                  del:
+                    type: boolean
+                  exchangeId:
+                    type: number
+                  id:
+                    type: number
+                  remove:
+                    type: boolean
+                  rules:
+                    items:
+                      properties:
+                        active:
+                          type: string
+                        type:
+                          type: string
+                      type: object
+                    type: array
+                  tickerId:
+                    type: number
+                  tickerType:
+                    type: number
+                  userId:
+                    type: number
+                type: object
+              exchangeCode:
+                type: string
+              exchangeTrade:
+                type: boolean
+              regionId:
+                type: number
+              showCode:
+                type: string
+              tickerId:
+                type: number
+              tickerName:
+                type: string
+              tickerSymbol:
+                type: string
+              tickerType:
+                type: number
+              tickerWarning:
+                properties:
+                  bizTimestamp:
+                    type: number
+                  del:
+                    type: boolean
+                  disExchangeCode:
+                    type: string
+                  disSymbol:
+                    type: string
+                  exchangeCode:
+                    type: string
+                  exchangeTrade:
+                    type: boolean
+                  regionId:
+                    type: number
+                  rules:
+                    items:
+                      properties:
+                        active:
+                          type: string
+                        alertId:
+                          type: number
+                        field:
+                          type: string
+                        remark:
+                          type: string
+                        timestamp:
+                          type: number
+                        type:
+                          type: string
+                        value:
+                          type: number
+                      type: object
+                    type: array
+                  showCode:
+                    type: string
+                  tickerId:
+                    type: number
+                  tickerName:
+                    type: string
+                  tickerSymbol:
+                    type: string
+                  tickerType:
+                    type: number
+                  tinyName:
+                    type: string
+                  updateTime:
+                    type: string
+                  warningFrequency:
+                    type: number
+                  warningInterval:
+                    type: number
+                  warningMode:
+                    type: number
+                type: object
+              tinyName:
+                type: string
+            type: object
+          type: array
+        success:
+          type: boolean
+    GetDividendsResponse:
+      properties:
+        dividendTotal:
+          type: string
+        hasTax:
+          type: boolean
+    GetFundamentalsResponse:
+      properties:
+        analysis:
+          properties:
+            datas:
+              items:
+                properties:
+                  label:
+                    type: string
+                  maxValue:
+                    type: string
+                  name:
+                    type: string
+                  rank:
+                    type: number
+                  totalCount:
+                    type: number
+                  type:
+                    type: number
+                  value:
+                    type: string
+                type: object
+              type: array
+            industryName:
+              type: string
+            totalCount:
+              type: number
+          type: object
+        forecast:
+          items:
+            properties:
+              data:
+                properties:
+                  currencyName:
+                    type: string
+                  id:
+                    type: string
+                  points:
+                    items:
+                      properties:
+                        valueActual:
+                          type: number
+                        valueForecast:
+                          type: number
+                        xAxis:
+                          type: string
+                      type: object
+                    type: array
+                  title:
+                    type: string
+                type: object
+              reportType:
+                type: number
+              statementType:
+                type: number
+              title:
+                type: string
+            type: object
+          type: array
+        remind:
+          properties:
+            estimateEarningsDate:
+              type: string
+            openingTime:
+              type: string
+            projEps:
+              type: string
+          type: object
+        simpleStatement:
+          items:
+            properties:
+              currencyName:
+                type: string
+              labels:
+                items:
+                  properties:
+                    key:
+                      type: string
+                    name:
+                      type: string
+                  type: object
+                type: array
+              list:
+                items:
+                  properties:
+                    netIncomeAfterTax:
+                      type: string
+                    netIncomeRate:
+                      type: string
+                    reportEndDate:
+                      type: string
+                    revenue:
+                      type: string
+                  type: object
+                type: array
+              reportType:
+                type: number
+              single:
+                properties:
+                  currencyId:
+                    type: number
+                  dilutedEps:
+                    type: string
+                  grossProfit:
+                    type: string
+                  netIncomeAfterTax:
+                    type: string
+                  operatingIncome:
+                    type: string
+                  parentEarning:
+                    type: string
+                  reportEndDate:
+                    type: string
+                  revenue:
+                    type: string
+                type: object
+              statementType:
+                type: number
+              title:
+                type: string
+            type: object
+          type: array
+    GetNewsResponse:
+      properties:
+        items:
+          properties:
+            collectSource:
+              type: string
+            id:
+              type: number
+            newsTime:
+              type: string
+            newsUrl:
+              type: string
+            siteType:
+              type: number
+            sourceName:
+              type: string
+            summary:
+              type: string
+            title:
+              type: string
+          type: object
+    GetOptionQuotesRequest:
+      properties:
+        derivativeIds:
+          type: number
+        tickerId:
+          description: tickerId
+          type: number
+    GetOrdersResponse:
+      items:
+        properties:
+          comboTickerType:
+            type: string
+          orders:
+            items:
+              properties:
+                action:
+                  type: string
+                assetType:
+                  type: string
+                avgFilledPrice:
+                  type: string
+                brokerId:
+                  type: number
+                canCancel:
+                  type: boolean
+                canModify:
+                  type: boolean
+                createTime:
+                  type: string
+                createTime0:
+                  type: number
+                filledQuantity:
+                  type: string
+                filledTime:
+                  type: string
+                filledTime0:
+                  type: number
+                filledValue:
+                  type: string
+                optionContractMultiplier:
+                  type: string
+                optionExercisePrice:
+                  type: string
+                orderId:
+                  type: number
+                orderType:
+                  type: string
+                relation:
+                  type: string
+                remainQuantity:
+                  type: string
+                statusCode:
+                  type: string
+                statusStr:
+                  type: string
+                symbol:
+                  type: string
+                ticker:
+                  properties:
+                    currencyCode:
+                      type: string
+                    currencyId:
+                      type: number
+                    disExchangeCode:
+                      type: string
+                    disSymbol:
+                      type: string
+                    exchangeCode:
+                      type: string
+                    exchangeId:
+                      type: number
+                    exchangeTrade:
+                      type: boolean
+                    extType:
+                      items:
+                        type: object
+                      type: array
+                    listStatus:
+                      type: number
+                    name:
+                      type: string
+                    regionId:
+                      type: number
+                    regionIsoCode:
+                      type: string
+                    regionName:
+                      type: string
+                    secType:
+                      items:
+                        type: number
+                      type: array
+                    symbol:
+                      type: string
+                    tickerId:
+                      type: number
+                    tinyName:
+                      type: string
+                    type:
+                      type: number
+                  type: object
+                tickerId:
+                  type: number
+                tickerPriceDefineList:
+                  items:
+                    properties:
+                      containBegin:
+                        type: boolean
+                      containEnd:
+                        type: boolean
+                      priceUnit:
+                        type: string
+                      rangeBegin:
+                        type: string
+                      rangeEnd:
+                        type: string
+                      tickerId:
+                        type: number
+                    type: object
+                  type: array
+                timeInForce:
+                  type: string
+                totalQuantity:
+                  type: string
+                updateTime:
+                  type: string
+                updateTime0:
+                  type: number
+              type: object
+            type: array
+          outsideRegularTradingHour:
+            type: boolean
+      type: array
+    GetSecurityAccountsResponse:
+      properties:
+        data:
+          items:
+            properties:
+              accountTypes:
+                items:
+                  type: string
+                type: array
+              allowDeposit:
+                type: boolean
+              brokerAccountId:
+                type: string
+              brokerId:
+                format: int32
+                type: integer
+              brokerName:
+                type: string
+              comboTypes:
+                items:
+                  type: string
+                type: array
+              customerType:
+                type: string
+              deposit:
+                type: boolean
+              depositStatus:
+                type: string
+              giftStockStatus:
+                format: int32
+                type: integer
+              isDefault:
+                type: boolean
+              isDefaultChecked:
+                type: boolean
+              openAccountUrl:
+                type: string
+              optionOpenStatus:
+                type: string
+              registerRegionId:
+                format: int32
+                type: integer
+              registerTradeUrl:
+                type: string
+              secAccountId:
+                format: int32
+                type: integer
+              status:
+                type: string
+              supportClickIPO:
+                type: boolean
+              supportOpenOption:
+                type: boolean
+              supportOutsideRth:
+                type: boolean
+              tickerTypes:
+                items:
+                  properties:
+                    orderTypes:
+                      items:
+                        type: string
+                      type: array
+                    regionId:
+                      format: int32
+                      type: integer
+                    tickerType:
+                      format: int32
+                      type: integer
+                  type: object
+                type: array
+              timeInForces:
+                items:
+                  properties:
+                    alias:
+                      type: string
+                    name:
+                      type: string
+                  type: object
+                type: array
+              userTradePermissionVOs:
+                items:
+                  properties:
+                    hasPermission:
+                      type: boolean
+                    type:
+                      type: string
+                  type: object
+                type: array
+            type: object
+          type: array
+        success:
+          type: boolean
+    GetStockAnalysisResponse:
+      properties:
+        forecastEps:
+          properties:
+            currencyName:
+              type: string
+            id:
+              type: string
+            points:
+              items:
+                properties:
+                  valueActual:
+                    type: number
+                  valueForecast:
+                    type: number
+                  xAxis:
+                    type: string
+                type: object
+              type: array
+            title:
+              type: string
+          type: object
+        rating:
+          properties:
+            ratingAnalysis:
+              type: string
+            ratingAnalysisTotals:
+              type: number
+            ratingSpread:
+              properties:
+                buy:
+                  type: number
+                hold:
+                  type: number
+                sell:
+                  type: number
+                strongBuy:
+                  type: number
+                underPerform:
+                  type: number
+              type: object
+          type: object
+        targetPrice:
+          properties:
+            current:
+              type: string
+            high:
+              type: string
+            low:
+              type: string
+            mean:
+              type: string
+          type: object
+    GetStockOptionsResponse:
+      properties:
+        change:
+          type: string
+        changeRatio:
+          type: string
+        close:
+          type: string
+        disExchangeCode:
+          type: string
+        disSymbol:
+          type: string
+        expireDate:
+          type: string
+        expireDateList:
+          items:
+            properties:
+              date:
+                format: date
+                type: string
+              days:
+                type: number
+              unSymbol:
+                type: string
+              weekly:
+                type: number
+            type: object
+          type: array
+        name:
+          type: string
+        tickerId:
+          type: number
+        unSymbol:
+          type: string
+    GetStockQuoteResponse:
+      properties:
+        avgVol10D:
+          type: string
+        avgVol3M:
+          type: string
+        beta3Y:
+          type: string
+        bps:
+          type: string
+        change:
+          type: string
+        changeRatio:
+          type: string
+        close:
+          type: string
+        currencyCode:
+          type: string
+        derivativeSupport:
+          type: number
+        dividend:
+          type: string
+        eps:
+          type: string
+        epsTtm:
+          type: string
+        fiftyTwoWkHigh:
+          type: string
+        fiftyTwoWkLow:
+          type: string
+        high:
+          type: string
+        inceptionDate:
+          format: date
+          type: string
+        latestDividendDate:
+          format: date
+          type: string
+        limitDown:
+          type: string
+        limitUp:
+          type: string
+        lotSize:
+          type: string
+        low:
+          type: string
+        netAsset:
+          type: string
+        netExpenseRatio:
+          type: string
+        netValue:
+          type: string
+        ntvSize:
+          type: number
+        open:
+          type: string
+        pChRatio:
+          type: string
+        pChange:
+          type: string
+        pPrice:
+          type: string
+        pe:
+          type: string
+        peTtm:
+          type: string
+        preClose:
+          type: string
+        rating:
+          type: number
+        returnThisYear:
+          type: string
+        status:
+          type: string
+        tickerId:
+          type: number
+        timeZone:
+          type: string
+        totalAsset:
+          type: string
+        tradeTime:
+          type: string
+        tzName:
+          type: string
+        vibrateRatio:
+          type: string
+        volume:
+          type: string
+        yield:
+          type: string
+        yield1Y:
+          type: string
+    GetTickerChartRequest:
+      properties:
+        count:
+          description: Number of bars to return
+          type: string
+        extendTrading:
+          default: 1
+          description: Whether to include pre-market and afterhours bars. '1' is used for pre-market and after-hours bars.
+          type: number
+        type:
+          enum:
+            - m1
+            - m5
+            - m15
+            - m30
+            - h1
+            - h2
+            - h4
+            - d1
+            - w1
+          title: type
+          type: string
+    GetTickerChartResponse:
+      properties:
+        data:
+          items:
+            type: string
+          type: array
+        dates:
+          items:
+            properties:
+              end:
+                type: string
+              start:
+                type: string
+              type:
+                type: string
+            type: object
+          type: array
+        exchangeStatus:
+          type: boolean
+        hasMore:
+          type: number
+        preClose:
+          type: string
+        tickerId:
+          type: number
+        timeZone:
+          type: string
+    GetUserDetailsResponse:
+      properties:
+        avatarUrl:
+          type: string
+        email:
+          type: string
+        nickName:
+          type: string
+        pwdFlag:
+          type: number
+        regionId:
+          type: number
+        regionName:
+          type: string
+        sex:
+          type: number
+        thirdAccounts:
+          items:
+            type: object
+          type: array
+        tradeLockemail:
+          type: string
+        uuid:
+          type: string
+    Leg:
+      properties:
+        action:
+          $ref: '#/components/schemas/OrderSide'
+          description: Order side
+        amount:
+          type: string
+        expiration:
+          type: string
+        filled_quantity:
+          title: filledQuantity
+          type: string
+        filled_time:
+          title: filledTime0
+          type: string
+        price:
+          type: string
+        quantity:
+          title: quantity
+          type: string
+        side:
+          type: string
+        strategy:
+          type: string
+        strike:
+          type: string
+        symbol:
+          title: symbol
+          type: string
+        ticker:
+          title: ticker
+          type: string
+        type:
+          title: string
+          type: string
+      type: object
+    LookupTickerResponse:
+      properties:
+        categoryId:
+          type: number
+        categoryName:
+          type: string
+        hasMore:
+          type: boolean
+        list:
+          items:
+            properties:
+              currencyId:
+                type: number
+              derivativeSupport:
+                type: number
+              disExchangeCode:
+                type: string
+              disSymbol:
+                type: string
+              exchangeCode:
+                type: string
+              exchangeId:
+                type: number
+              listStatus:
+                type: number
+              name:
+                type: string
+              regionCode:
+                type: string
+              regionId:
+                type: number
+              secType:
+                items:
+                  type: number
+                type: array
+              symbol:
+                type: string
+              template:
+                type: string
+              tickerId:
+                type: number
+              type:
+                type: number
+            type: object
+          type: array
+    OptionOrder:
+      properties:
+        action:
+          type: string
+        quantity:
+          type: number
+        tickerId:
+          type: number
+        tickerType:
+          default: OPTION
+          type: string
+        totalQuantity:
+          type: number
+      title: OptionOrder
+      type: object
+    Order:
+      properties:
+        combo_ticker_type:
+          description: 'Example: ''option'''
+          title: comboTickerType
+          type: string
+        legs:
+          items:
+            $ref: '#/components/schemas/Leg'
+        status_code:
+          title: statusCode
+          type: string
+      title: Order
+      type: object
+    OrderAction:
+      enum:
+        - order
+        - status
+        - cancel
+        - history
+      type: string
+    OrderResponse:
+      $ref: '#/components/schemas/Order'
+    OrderSide:
+      enum:
+        - BUY
+        - SELL
+      type: string
+    OrderStatus:
+      enum:
+        - Queued
+        - Unconfirmed
+        - Confirmed
+        - Partially_filled
+        - Partially Filled
+        - Filled
+        - Rejected
+        - Cancelled
+        - Failed
+        - Working
+      type: string
+    PostLoginParametersRequest:
+      properties:
+        account:
+          description: username for your account
+          type: string
+        accountType:
+          default: 2
+          description: '2 is email, 1 is phone'
+          type: number
+        deviceId:
+          type: string
+        deviceName:
+          default: test
+          description: device name
+          type: string
+        extInfo:
+          properties:
+            verificationCode:
+              type: string
+          type: object
+        grade:
+          default: 1
+          type: number
+        pwd:
+          description: pwd = md5(passwordHash + password)
+          type: string
+        regionId:
+          default: 1
+          type: number
+    PostLoginResponse:
+      properties:
+        accessToken:
+          type: string
+        extInfo:
+          properties:
+            equipmentCheck:
+              type: string
+            userPwdFlag:
+              type: string
+          type: object
+        firstTimeOfThird:
+          type: boolean
+        refreshToken:
+          type: string
+        registerAddress:
+          format: int32
+          type: integer
+        settings:
+          properties:
+            chartOption:
+              format: int32
+              type: integer
+            createTime:
+              type: string
+            focusMarketId:
+              type: string
+            fontSize:
+              type: string
+            hotNews:
+              format: int32
+              type: integer
+            id:
+              format: unsafe
+              type: integer
+            increDecreColor:
+              format: int32
+              type: integer
+            kdata:
+              format: int32
+              type: integer
+            language:
+              type: string
+            languageUpdateTime:
+              type: string
+            listStyle:
+              format: int32
+              type: integer
+            operateTime:
+              type: string
+            orderDealRemind:
+              format: int32
+              type: integer
+            portfolioBulletin:
+              format: int32
+              type: integer
+            portfolioDisplayMode:
+              format: int32
+              type: integer
+            portfolioHoldingsDisplay:
+              format: int32
+              type: integer
+            portfolioIndexDisplay:
+              format: int32
+              type: integer
+            portfolioNameNewline:
+              format: int32
+              type: integer
+            refreshFrequency:
+              format: int32
+              type: integer
+            regionId:
+              format: int32
+              type: integer
+            shock:
+              format: int32
+              type: integer
+            theme:
+              format: int32
+              type: integer
+            tickerPriceRemind:
+              format: int32
+              type: integer
+            updateTime:
+              type: string
+            userId:
+              format: int32
+              type: integer
+          type: object
+        tokenExpireTime:
+          type: string
+        uuid:
+          type: string
+    PostOptionOrderRequest:
+      properties:
+        auxPrice:
+          type: number
+        lmtPrice:
+          type: number
+        orderType:
+          description: 'Order type, like: Limit, Stop, Stop Limit.'
+          enum:
+            - LMT
+            - STP
+            - STP LMT
+          type: string
+        orders:
+          items:
+            $ref: '#/components/schemas/OptionOrder'
+          type: array
+        serialId:
+          type: string
+        timeInForce:
+          $ref: '#/components/schemas/TimeInForce'
+      type: object
+    PostOtocoStockOrderRequest:
+      properties:
+        action:
+          $ref: '#/components/schemas/OrderSide'
+        lmtPrice:
+          description: limit price
+          type: string
+        orderType:
+          type: string
+        outsideRegularTradingHour:
+          type: boolean
+        quantity:
+          type: number
+        serialId:
+          type: string
+        tickerId:
+          type: number
+        timeInForce:
+          type: string
+    PostStockOrderRequest:
+      properties:
+        action:
+          description: action
+          type: string
+        comboType:
+          enum:
+            - NORMAL
+            - MASTER
+            - STOP_LOSS
+            - STOP_PROFIT
+            - LMT
+            - MKT
+          type: string
+        lmtPrice:
+          description: limit price
+          type: string
+        orderType:
+          type: string
+        outsideRegularTradingHour:
+          type: boolean
+        quantity:
+          type: number
+        serialId:
+          type: string
+        tickerId:
+          type: number
+        timeInForce:
+          type: string
+    PriceRule:
+      properties:
+        active:
+          type: string
+        alertRuleKey:
+          type: string
+        field:
+          type: string
+        remark:
+          type: string
+        type:
+          description: 'Example: ''earnPre'', ''fastUp'', ''fastDown'', ''week52Up'', ''week52Down'', ''day5Down'''
+          enum:
+            - earnPre
+            - fastUp
+            - fastDown
+            - week52Up
+            - week52Down
+            - day5Up
+            - day10Up
+            - day20Up
+            - day5Down
+            - day10Down
+            - day20Down
+          type: string
+        value:
+          type: string
+      type: object
+    RemoveAlertRequest:
+      properties:
+        schema:
+          $ref: '#/components/schemas/Alert'
+    ReplaceOptionOrderRequest:
+      properties:
+        auxPrice:
+          type: number
+        comboId:
+          type: string
+        lmtPrice:
+          type: number
+        orderType:
+          description: 'Example: ''LMT'', ''STP'', ''STP'' ''LIMIT'''
+          type: string
+        orders:
+          items:
+            $ref: '#/components/schemas/OptionOrder'
+          type: array
+        serialId:
+          type: string
+        timeInForce:
+          type: string
+      type: object
+    Rule:
+      oneOf:
+        - $ref: '#/components/schemas/SmartRule'
+        - $ref: '#/components/schemas/PriceRule'
+      type: object
+    SmartRule:
+      properties:
+        active:
+          type: string
+        alertRuleKey:
+          type: string
+        field:
+          type: string
+        remark:
+          type: string
+        type:
+          description: 'Example: ''earnPre'', ''fastUp'', ''fastDown'', ''week52Up'', ''week52Down'', ''day5Down'''
+          enum:
+            - earnPre
+            - fastUp
+            - fastDown
+            - week52Up
+            - week52Down
+            - day5Up
+            - day10Up
+            - day20Up
+            - day5Down
+            - day10Down
+            - day20Down
+          type: string
+        value:
+          type: string
+      type: object
+    TimeInForce:
+      enum:
+        - GTC
+        - DAY
+        - IOC
+      type: string
+    TradeToken:
+      properties:
+        username:
+          type: string
+      type: object
+    GetIsTradeableResponse:
+      properties:
+        success: 
+          type: boolean
+        data: 
+          type: array
+          items: 
+            type: object
+            properties: 
+              tickerId: 
+                type: number
+              symbol: 
+                type: string
+              name: 
+                type: string
+              tinyName: 
+                type: string
+              listStatus: 
+                type: number
+              exchangeCode: 
+                type: string
+              exchangeId: 
+                type: number
+              extType: 
+                type: array
+                items: 
+                  type: object
+              type: 
+                type: number
+              regionId: 
+                type: number
+              regionName: 
+                type: string
+              regionIsoCode: 
+                type: string
+              currencyId: 
+                type: number
+              currencyCode: 
+                type: string
+              secType: 
+                type: array
+                items: 
+                  type: number
+              exchangeTrade: 
+                type: boolean
+              disExchangeCode: 
+                type: string
+              disSymbol: 
+                type: string
+              tickerName: 
+                type: string
+              tickerType: 
+                type: number
+              showCode: 
+                type: string
+              brokerId: 
+                type: number
+              types: 
+                type: string
+    Transfer:
+      properties:
+        amount:
+          type: number
+        date:
+          type: string
+        direction:
+          description: 'Example: ''IN'', which is credit credit.'
+          type: string
+        legs:
+          items:
+            $ref: '#/components/schemas/Leg'
+        sub_status:
+          description: 'Example: COMPLETED'
+          title: subStatus
+          type: string
+        transfer_type:
+          default: transfer
+          title: type
+          type: string
+        update_time:
+          title: updateTime
+          type: string
+      type: object

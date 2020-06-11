@@ -4,6 +4,8 @@
 
 OpenAPI spec for [Webull](https://www.webull.com/).
 
+Please note this is a work-in-progress, and there are endpoints not fully covered in this spec yet.
+
 ## Support
 
 Please post any issues or amendments to the specification via GitHub.
