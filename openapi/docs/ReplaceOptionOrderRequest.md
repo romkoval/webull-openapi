@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **AuxPrice** | **float32** |  | [optional] 
 **ComboId** | **string** |  | [optional] 
 **LmtPrice** | **float32** |  | [optional] 
-**OrderType** | **string** | Example: &#39;LMT&#39;, &#39;STP&#39;, &#39;STP&#39; &#39;LIMIT&#39; | [optional] 
+**OrderType** | [**OrderType**](OrderType.md) |  | [optional] 
 **Orders** | [**[]OptionOrder**](OptionOrder.md) |  | [optional] 
 **SerialId** | **string** |  | [optional] 
 **TimeInForce** | **string** |  | [optional] 

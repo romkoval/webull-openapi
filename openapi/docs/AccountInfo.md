@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccountType** | **float32** |  | [optional] 
+**AccountType** | [**AccountType**](AccountType.md) |  | [optional] 
 **Currency** | **string** |  | [optional] 
 **NetLiquidation** | **float32** |  | [optional] 
 **Pdt** | **bool** |  | [optional] 

@@ -14,8 +14,7 @@ type ReplaceOptionOrderRequest struct {
 	AuxPrice float32 `json:"auxPrice,omitempty"`
 	ComboId string `json:"comboId,omitempty"`
 	LmtPrice float32 `json:"lmtPrice,omitempty"`
-	// Example: 'LMT', 'STP', 'STP' 'LIMIT'
-	OrderType string `json:"orderType,omitempty"`
+	OrderType OrderType `json:"orderType,omitempty"`
 	Orders []OptionOrder `json:"orders,omitempty"`
 	SerialId string `json:"serialId,omitempty"`
 	TimeInForce string `json:"timeInForce,omitempty"`

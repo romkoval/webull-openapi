@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Account** | **string** | username for your account | [optional] 
-**AccountType** | **float32** | 2 is email, 1 is phone | [optional] [default to 2]
+**AccountType** | [**AccountType**](AccountType.md) |  | [optional] 
 **DeviceId** | **string** |  | [optional] 
 **DeviceName** | **string** | device name | [optional] [default to test]
 **ExtInfo** | [**PostLoginParametersRequestExtInfo**](PostLoginParametersRequest_extInfo.md) |  | [optional] 

@@ -139,6 +139,7 @@ Class | Method | HTTP request | Description
  - [OrderAction](docs/OrderAction.md)
  - [OrderSide](docs/OrderSide.md)
  - [OrderStatus](docs/OrderStatus.md)
+ - [OrderType](docs/OrderType.md)
  - [PostLoginParametersRequest](docs/PostLoginParametersRequest.md)
  - [PostLoginParametersRequestExtInfo](docs/PostLoginParametersRequestExtInfo.md)
  - [PostLoginResponse](docs/PostLoginResponse.md)

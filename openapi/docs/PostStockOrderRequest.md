@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Action** | **string** | action | [optional] 
+**Action** | [**OrderSide**](OrderSide.md) |  | [optional] 
 **ComboType** | **string** |  | [optional] 
 **LmtPrice** | **string** | limit price | [optional] 
-**OrderType** | **string** |  | [optional] 
+**OrderType** | [**OrderType**](OrderType.md) |  | [optional] 
 **OutsideRegularTradingHour** | **bool** |  | [optional] 
 **Quantity** | **float32** |  | [optional] 
 **SerialId** | **string** |  | [optional] 

@@ -13,8 +13,7 @@ package openapi
 type PostOptionOrderRequest struct {
 	AuxPrice float32 `json:"auxPrice,omitempty"`
 	LmtPrice float32 `json:"lmtPrice,omitempty"`
-	// Order type, like: Limit, Stop, Stop Limit.
-	OrderType string `json:"orderType,omitempty"`
+	OrderType OrderType `json:"orderType,omitempty"`
 	Orders []OptionOrder `json:"orders,omitempty"`
 	SerialId string `json:"serialId,omitempty"`
 	TimeInForce TimeInForce `json:"timeInForce,omitempty"`

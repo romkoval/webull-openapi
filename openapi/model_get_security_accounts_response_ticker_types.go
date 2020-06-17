@@ -11,7 +11,7 @@
 package openapi
 // GetSecurityAccountsResponseTickerTypes struct for GetSecurityAccountsResponseTickerTypes
 type GetSecurityAccountsResponseTickerTypes struct {
-	OrderTypes []string `json:"orderTypes,omitempty"`
+	OrderTypes []OrderType `json:"orderTypes,omitempty"`
 	RegionId int32 `json:"regionId,omitempty"`
 	TickerType int32 `json:"tickerType,omitempty"`
 }

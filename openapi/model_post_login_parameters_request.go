@@ -13,8 +13,7 @@ package openapi
 type PostLoginParametersRequest struct {
 	// username for your account
 	Account string `json:"account,omitempty"`
-	// 2 is email, 1 is phone
-	AccountType float32 `json:"accountType,omitempty"`
+	AccountType AccountType `json:"accountType,omitempty"`
 	DeviceId string `json:"deviceId,omitempty"`
 	// device name
 	DeviceName string `json:"deviceName,omitempty"`

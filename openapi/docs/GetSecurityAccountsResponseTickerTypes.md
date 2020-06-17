@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**OrderTypes** | **[]string** |  | [optional] 
+**OrderTypes** | [**[]OrderType**](OrderType.md) |  | [optional] 
 **RegionId** | **int32** |  | [optional] 
 **TickerType** | **int32** |  | [optional] 
 

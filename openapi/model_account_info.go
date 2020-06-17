@@ -11,7 +11,7 @@
 package openapi
 // AccountInfo struct for AccountInfo
 type AccountInfo struct {
-	AccountType float32 `json:"accountType,omitempty"`
+	AccountType AccountType `json:"accountType,omitempty"`
 	Currency string `json:"currency,omitempty"`
 	NetLiquidation float32 `json:"netLiquidation,omitempty"`
 	Pdt bool `json:"pdt,omitempty"`

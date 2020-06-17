@@ -323,7 +323,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Anything'
+                $ref: "#/components/schemas/GetPaperAccountsResponse"
           description: OK
         '401':
           content:
@@ -599,27 +599,23 @@ paths:
           name: paper_account_id
           required: true
           schema:
-            type: string
+            type: integer
         - in: query
           name: startTime
-          required: true
           schema:
             type: string
+            default: 1970-0-1
         - in: query
           name: dateType
           required: true
           schema:
             type: string
+            default: ORDER
         - in: query
           name: pageSize
           schema:
             type: number
             default: 256
-        - in: query
-          name: id
-          required: true
-          schema:
-            type: string
         - in: query
           name: status
           schema:
@@ -629,7 +625,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Anything'
+                $ref: "#/components/schemas/GetPaperTradeOrdersResponse"
           description: OK
         '401':
           content:
@@ -718,6 +714,11 @@ paths:
       deprecated: false
       description: Modify paper trade
       operationId: modifyPaperTradeOrder
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostStockOrderRequest'
       parameters:
         - in: header
           name: did
@@ -736,7 +737,7 @@ paths:
           name: paper_account_id
           required: true
           schema:
-            type: string
+            type: integer
         - in: path
           name: order_id
           required: true
@@ -777,6 +778,11 @@ paths:
       deprecated: false
       description: Place paper trade
       operationId: placePaperTradeOrder
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostStockOrderRequest'
       parameters:
         - in: header
           name: did
@@ -795,7 +801,7 @@ paths:
           name: paper_account_id
           required: true
           schema:
-            type: string
+            type: integer
         - in: path
           name: stock
           required: true
@@ -1022,6 +1028,9 @@ paths:
           schema:
             $ref: '#/components/schemas/AccountType'
             default: 2
+            enum:
+              - 1
+              - 2
         - description: deviceId
           in: query
           name: deviceId
@@ -2509,7 +2518,7 @@ components:
     AccountInfo:
       properties:
         accountType:
-          type: number
+          $ref: '#/components/schemas/AccountType'
         currency:
           type: string
         netLiquidation:
@@ -2530,7 +2539,6 @@ components:
       enum:
         - 1
         - 2
-      title: number
       type: number
     AddAlertRequest:
       properties:
@@ -3152,7 +3160,8 @@ components:
             items:
               properties:
                 action:
-                  type: string
+                  $ref: '#/components/schemas/OrderSide'
+                  description: Order side
                 assetType:
                   type: string
                 avgFilledPrice:
@@ -3182,7 +3191,7 @@ components:
                 orderId:
                   type: number
                 orderType:
-                  type: string
+                  $ref: '#/components/schemas/OrderType'
                 relation:
                   type: string
                 remainQuantity:
@@ -3328,7 +3337,7 @@ components:
                   properties:
                     orderTypes:
                       items:
-                        type: string
+                        $ref: '#/components/schemas/OrderType'
                       type: array
                     regionId:
                       format: int32
@@ -3696,7 +3705,8 @@ components:
     OptionOrder:
       properties:
         action:
-          type: string
+          $ref: '#/components/schemas/OrderSide'
+          description: Order side
         quantity:
           type: number
         tickerId:
@@ -3758,6 +3768,7 @@ components:
           default: 2
           description: '2 is email, 1 is phone'
           type: number
+          $ref: '#/components/schemas/AccountType'
         deviceId:
           type: string
         deviceName:
@@ -3878,12 +3889,7 @@ components:
         lmtPrice:
           type: number
         orderType:
-          description: 'Order type, like: Limit, Stop, Stop Limit.'
-          enum:
-            - LMT
-            - STP
-            - STP LMT
-          type: string
+          $ref: '#/components/schemas/OrderType'
         orders:
           items:
             $ref: '#/components/schemas/OptionOrder'
@@ -3901,7 +3907,7 @@ components:
           description: limit price
           type: string
         orderType:
-          type: string
+          $ref: '#/components/schemas/OrderType'
         outsideRegularTradingHour:
           type: boolean
         quantity:
@@ -3915,8 +3921,8 @@ components:
     PostStockOrderRequest:
       properties:
         action:
-          description: action
-          type: string
+          $ref: '#/components/schemas/OrderSide'
+          description: Order side
         comboType:
           enum:
             - NORMAL
@@ -3930,7 +3936,7 @@ components:
           description: limit price
           type: string
         orderType:
-          type: string
+          $ref: '#/components/schemas/OrderType'
         outsideRegularTradingHour:
           type: boolean
         quantity:
@@ -3982,8 +3988,7 @@ components:
         lmtPrice:
           type: number
         orderType:
-          description: 'Example: ''LMT'', ''STP'', ''STP'' ''LIMIT'''
-          type: string
+          $ref: '#/components/schemas/OrderType'
         orders:
           items:
             $ref: '#/components/schemas/OptionOrder'
@@ -4096,6 +4101,139 @@ components:
                 type: number
               types: 
                 type: string
+    GetPaperTradeOrdersResponse:
+      type: array
+      items:
+        type: object
+        properties: 
+          orderId: 
+            type: integer
+            format: int32
+          paperId: 
+            type: integer
+            format: int32
+          action:
+            $ref: '#/components/schemas/OrderSide'
+            description: Order side
+          totalQuantity: 
+            type: string
+          filledQuantity: 
+            type: string
+          placedTime: 
+            type: string
+          timeInForce: 
+            type: string
+          orderType: 
+            $ref: '#/components/schemas/OrderType'
+          lmtPrice: 
+            type: string
+          ticker: 
+            type: object
+            properties: 
+              tickerId: 
+                type: integer
+                format: int32
+              symbol: 
+                type: string
+              name: 
+                type: string
+              tinyName: 
+                type: string
+              listStatus: 
+                type: integer
+                format: int32
+              exchangeCode: 
+                type: string
+              exchangeId: 
+                type: integer
+                format: int32
+              extType: 
+                type: array
+                items: 
+                  type: object
+              type: 
+                type: integer
+                format: int32
+              regionId: 
+                type: integer
+                format: int32
+              regionName: 
+                type: string
+              regionIsoCode: 
+                type: string
+              currencyId: 
+                type: integer
+                format: int32
+              currencyCode: 
+                type: string
+              secType: 
+                type: array
+                items: 
+                  type: integer
+                  format: int32
+              exchangeTrade: 
+                type: boolean
+              disExchangeCode: 
+                type: string
+              disSymbol: 
+                type: string
+          canModify: 
+            type: boolean
+          canCancel: 
+            type: boolean
+          createTime: 
+            type: string
+          createTime0: 
+            type: integer
+            format: int64
+          status: 
+            type: string
+          statusStr: 
+            type: string
+          outsideRegularTradingHour: 
+            type: boolean
+    GetPaperAccountsResponse:
+      type: array
+      items:
+        type: object
+        properties: 
+          id: 
+            type: integer
+            format: int32
+          paperId: 
+            type: integer
+            format: int32
+          status: 
+            type: integer
+            format: int32
+          paperType: 
+            type: integer
+            format: int32
+          paperName: 
+            type: string
+          paperTickerPoolCode: 
+            type: string
+          currency: 
+            type: string
+          currencyId: 
+            type: integer
+            format: int32
+          supportOutsideRth: 
+            type: boolean
+          timeInForces: 
+            type: array
+            items: 
+              type: string
+          orderTypes: 
+            type: array
+            items: 
+              $ref: '#/components/schemas/OrderType'
+    OrderType:
+      description: 'Order type, like: Limit (LMT), Stop (STP), and Stop Limit (STP LMT).'
+      enum:
+        - LMT
+        - STP
+        - STP LMT
     Transfer:
       properties:
         amount:

@@ -14,7 +14,7 @@ type PostOtocoStockOrderRequest struct {
 	Action OrderSide `json:"action,omitempty"`
 	// limit price
 	LmtPrice string `json:"lmtPrice,omitempty"`
-	OrderType string `json:"orderType,omitempty"`
+	OrderType OrderType `json:"orderType,omitempty"`
 	OutsideRegularTradingHour bool `json:"outsideRegularTradingHour,omitempty"`
 	Quantity float32 `json:"quantity,omitempty"`
 	SerialId string `json:"serialId,omitempty"`
