@@ -13,11 +13,11 @@ package openapi
 type PostOtocoStockOrderRequest struct {
 	Action OrderSide `json:"action,omitempty"`
 	// limit price
-	LmtPrice string `json:"lmtPrice,omitempty"`
+	LmtPrice float32 `json:"lmtPrice,omitempty"`
 	OrderType OrderType `json:"orderType,omitempty"`
 	OutsideRegularTradingHour bool `json:"outsideRegularTradingHour,omitempty"`
 	Quantity float32 `json:"quantity,omitempty"`
 	SerialId string `json:"serialId,omitempty"`
 	TickerId float32 `json:"tickerId,omitempty"`
-	TimeInForce string `json:"timeInForce,omitempty"`
+	TimeInForce TimeInForce `json:"timeInForce,omitempty"`
 }

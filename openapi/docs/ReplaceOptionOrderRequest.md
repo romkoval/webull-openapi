@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **OrderType** | [**OrderType**](OrderType.md) |  | [optional] 
 **Orders** | [**[]OptionOrder**](OptionOrder.md) |  | [optional] 
 **SerialId** | **string** |  | [optional] 
-**TimeInForce** | **string** |  | [optional] 
+**TimeInForce** | [**TimeInForce**](TimeInForce.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

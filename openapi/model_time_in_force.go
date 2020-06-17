@@ -16,5 +16,4 @@ type TimeInForce string
 const (
 	GTC TimeInForce = "GTC"
 	DAY TimeInForce = "DAY"
-	IOC TimeInForce = "IOC"
 )

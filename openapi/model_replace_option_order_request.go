@@ -17,5 +17,5 @@ type ReplaceOptionOrderRequest struct {
 	OrderType OrderType `json:"orderType,omitempty"`
 	Orders []OptionOrder `json:"orders,omitempty"`
 	SerialId string `json:"serialId,omitempty"`
-	TimeInForce string `json:"timeInForce,omitempty"`
+	TimeInForce TimeInForce `json:"timeInForce,omitempty"`
 }

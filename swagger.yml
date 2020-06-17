@@ -545,7 +545,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Anything'
+                properties:
+                  orderId:
+                    type: number
           description: OK
         '201':
           content:
@@ -814,7 +816,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Anything'
+                properties:
+                  orderId:
+                    type: number
           description: OK
         '401':
           content:
@@ -1111,6 +1115,7 @@ paths:
           required: true
           schema:
             type: number
+            default: 913243251
         - description: derivativeIds
           in: query
           name: derivativeIds
@@ -2557,6 +2562,7 @@ components:
                 $ref: '#/components/schemas/SmartRule'
             tickerId:
               type: number
+              default: 913243251
           type: object
         exchangeCode:
           type: string
@@ -2566,6 +2572,7 @@ components:
           type: string
         tickerId:
           type: number
+          default: 913243251
         tickerName:
           type: string
         tickerSymbol:
@@ -2581,6 +2588,7 @@ components:
                 $ref: '#/components/schemas/PriceRule'
             tickerId:
               type: number
+              default: 913243251
             warningFrequency:
               default: 1
               description: '1 is once a day, 2 is once a minute'
@@ -3265,7 +3273,7 @@ components:
                     type: object
                   type: array
                 timeInForce:
-                  type: string
+                  $ref: '#/components/schemas/TimeInForce'
                 totalQuantity:
                   type: string
                 updateTime:
@@ -3905,7 +3913,7 @@ components:
           $ref: '#/components/schemas/OrderSide'
         lmtPrice:
           description: limit price
-          type: string
+          type: number
         orderType:
           $ref: '#/components/schemas/OrderType'
         outsideRegularTradingHour:
@@ -3917,7 +3925,7 @@ components:
         tickerId:
           type: number
         timeInForce:
-          type: string
+          $ref: '#/components/schemas/TimeInForce'
     PostStockOrderRequest:
       properties:
         action:
@@ -3934,8 +3942,9 @@ components:
           type: string
         lmtPrice:
           description: limit price
-          type: string
+          type: number
         orderType:
+          type: string
           $ref: '#/components/schemas/OrderType'
         outsideRegularTradingHour:
           type: boolean
@@ -3946,7 +3955,7 @@ components:
         tickerId:
           type: number
         timeInForce:
-          type: string
+          $ref: '#/components/schemas/TimeInForce'
     PriceRule:
       properties:
         active:
@@ -3996,7 +4005,7 @@ components:
         serialId:
           type: string
         timeInForce:
-          type: string
+          $ref: '#/components/schemas/TimeInForce'
       type: object
     Rule:
       oneOf:
@@ -4035,7 +4044,7 @@ components:
       enum:
         - GTC
         - DAY
-        - IOC
+        # - IOC # supported yet
       type: string
     TradeToken:
       properties:
@@ -4122,11 +4131,11 @@ components:
           placedTime: 
             type: string
           timeInForce: 
-            type: string
+            $ref: '#/components/schemas/TimeInForce'
           orderType: 
             $ref: '#/components/schemas/OrderType'
           lmtPrice: 
-            type: string
+            type: number
           ticker: 
             type: object
             properties: 
