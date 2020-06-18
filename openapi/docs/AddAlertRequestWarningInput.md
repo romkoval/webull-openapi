@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Rules** | [**[]PriceRule**](PriceRule.md) |  | [optional] 
+**Rules** | [**[]SmartRule**](SmartRule.md) |  | [optional] 
 **TickerId** | **float32** |  | [optional] [default to 913243251]
 **WarningFrequency** | **float32** | 1 is once a day, 2 is once a minute | [optional] [default to 1]
 **WarningInterval** | **float32** | 1 is once, 0 is repeating | [optional] [default to 1]

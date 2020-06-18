@@ -11,7 +11,7 @@
 package openapi
 // AddAlertRequestWarningInput struct for AddAlertRequestWarningInput
 type AddAlertRequestWarningInput struct {
-	Rules []PriceRule `json:"rules,omitempty"`
+	Rules []SmartRule `json:"rules,omitempty"`
 	TickerId float32 `json:"tickerId,omitempty"`
 	// 1 is once a day, 2 is once a minute
 	WarningFrequency float32 `json:"warningFrequency,omitempty"`

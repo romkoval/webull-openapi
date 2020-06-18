@@ -92,7 +92,7 @@ paths:
       summary: getAccount
       tags:
         - accounts
-  # '/asset/{id}/getWebullTransferList':
+  # '/asset/{account_id}/getWebullTransferList':
   #   post:
   #     deprecated: false
   #     description: (TODO) Get transfer history
@@ -112,14 +112,13 @@ paths:
   #         schema:
   #           type: string
   #       - in: path
-  #         name: id
+  #         name: account_id
   #         required: true
   #         schema:
   #           type: string
   #       - description: pageSize
   #         in: query
   #         name: pageSize
-  #         required: true
   #         schema:
   #           default: 256
   #           type: string
@@ -130,23 +129,21 @@ paths:
   #           type: string
   #       - description: time
   #         in: header
-  #         name: time
+  #         name: t_time
   #         schema:
-  #           default: true
-  #           type: boolean
-  #       - description: tradeToken
+  #           type: string
+  #       - description: t_token
   #         in: header
-  #         name: tradeToken
+  #         name: t_token
   #         schema:
-  #           default: true
-  #           type: boolean
+  #           type: string
   #     responses:
   #       '200':
   #         content:
   #           application/json:
   #             schema:
   #               items:
-  #                 $ref: '#/components/schemas/Transfer'
+  #                 $ref: '#/components/schemas/Anything'
   #         description: OK
   #       '401':
   #         content:
@@ -170,7 +167,7 @@ paths:
   #       - url: 'https://tradeapi.webullbroker.com/api/trade'
   #     summary: getTransferHistory
   #     tags:
-  #       - user
+  #       - accounts
   '/information/news/v5/tickerNews/{stock}':
     get:
       deprecated: false
@@ -1752,59 +1749,59 @@ paths:
       summary: getUser
       tags:
         - user
-  "/user/warning/v2/manage/overlap":
-    post:
-      description: Modify alerts
-      operationId: modifyAlert
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/AlertRequest'
-      parameters:
-        - in: header
-          name: did
-          description: "Device ID"
-          required: true
-          schema:
-            type: string
-            default: "your_device"
-        - in: header
-          name: access_token
-          description: "Access token"
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Anything'
-          description: OK
-        '401':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorBody'
-          description: Unauthorized
-        '403':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorBody'
-          description: Forbidden
-        '404':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorBody'
-          description: Not Found
-      servers:
-        - url: 'https://userapi.webullbroker.com/api'
-      summary: modifyAlert
-      tags:
-        - alerts
+  # "/user/warning/v2/manage/overlap":
+  #   post:
+  #     description: Modify alerts
+  #     operationId: modifyAlert
+  #     requestBody:
+  #       content:
+  #         application/json:
+  #           schema:
+  #             $ref: '#/components/schemas/AlertRequest'
+  #     parameters:
+  #       - in: header
+  #         name: did
+  #         description: "Device ID"
+  #         required: true
+  #         schema:
+  #           type: string
+  #           default: "your_device"
+  #       - in: header
+  #         name: access_token
+  #         description: "Access token"
+  #         required: true
+  #         schema:
+  #           type: string
+  #     responses:
+  #       '200':
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/Anything'
+  #         description: OK
+  #       '401':
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/ErrorBody'
+  #         description: Unauthorized
+  #       '403':
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/ErrorBody'
+  #         description: Forbidden
+  #       '404':
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/ErrorBody'
+  #         description: Not Found
+  #     servers:
+  #       - url: 'https://userapi.webullbroker.com/api'
+  #     summary: modifyAlert
+  #     tags:
+  #       - alerts
 
   "/user/warning/v2/query/tickers":
     get:
@@ -2585,7 +2582,7 @@ components:
           properties:
             rules:
               items:
-                $ref: '#/components/schemas/PriceRule'
+                $ref: '#/components/schemas/SmartRule'
             tickerId:
               type: number
               default: 913243251
@@ -2606,9 +2603,7 @@ components:
               type: boolean
             rules:
               items:
-                anyOf:
-                  - $ref: '#/components/schemas/SmartRule'
-                  - $ref: '#/components/schemas/PriceRule'
+                $ref: '#/components/schemas/SmartRule'
           type: object
         tickerWarning:
           properties:
@@ -2618,12 +2613,12 @@ components:
         warningInput:
           type: object
       type: object
-    AlertRequest:
-      properties:
-        schema:
-          oneOf:
-            - $ref: '#/components/schemas/AddAlertRequest'
-            - $ref: '#/components/schemas/RemoveAlertRequest'
+    # AlertRequest:
+    #   properties:
+    #     schema:
+    #       anyOf:
+    #         - $ref: '#/components/schemas/AddAlertRequest'
+    #         - $ref: '#/components/schemas/RemoveAlertRequest'
     Anything:
       type: object
     Auth:
@@ -3759,7 +3754,6 @@ components:
         - Queued
         - Unconfirmed
         - Confirmed
-        - Partially_filled
         - Partially Filled
         - Filled
         - Rejected
@@ -3956,38 +3950,38 @@ components:
           type: number
         timeInForce:
           $ref: '#/components/schemas/TimeInForce'
-    PriceRule:
-      properties:
-        active:
-          type: string
-        alertRuleKey:
-          type: string
-        field:
-          type: string
-        remark:
-          type: string
-        type:
-          description: 'Example: ''earnPre'', ''fastUp'', ''fastDown'', ''week52Up'', ''week52Down'', ''day5Down'''
-          enum:
-            - earnPre
-            - fastUp
-            - fastDown
-            - week52Up
-            - week52Down
-            - day5Up
-            - day10Up
-            - day20Up
-            - day5Down
-            - day10Down
-            - day20Down
-          type: string
-        value:
-          type: string
-      type: object
-    RemoveAlertRequest:
-      properties:
-        schema:
-          $ref: '#/components/schemas/Alert'
+    # PriceRule:
+    #   properties:
+    #     active:
+    #       type: string
+    #     alertRuleKey:
+    #       type: string
+    #     field:
+    #       type: string
+    #     remark:
+    #       type: string
+    #     type:
+    #       description: 'Example: ''earnPre'', ''fastUp'', ''fastDown'', ''week52Up'', ''week52Down'', ''day5Down'''
+    #       enum:
+    #         - earnPre
+    #         - fastUp
+    #         - fastDown
+    #         - week52Up
+    #         - week52Down
+    #         - day5Up
+    #         - day10Up
+    #         - day20Up
+    #         - day5Down
+    #         - day10Down
+    #         - day20Down
+    #       type: string
+    #     value:
+    #       type: string
+    #   type: object
+    # RemoveAlertRequest:
+    #   properties:
+    #     schema:
+    #       $ref: '#/components/schemas/Alert'
     ReplaceOptionOrderRequest:
       properties:
         auxPrice:
@@ -4008,10 +4002,7 @@ components:
           $ref: '#/components/schemas/TimeInForce'
       type: object
     Rule:
-      oneOf:
-        - $ref: '#/components/schemas/SmartRule'
-        - $ref: '#/components/schemas/PriceRule'
-      type: object
+      $ref: '#/components/schemas/SmartRule'
     SmartRule:
       properties:
         active:
@@ -4036,8 +4027,6 @@ components:
             - day5Down
             - day10Down
             - day20Down
-          type: string
-        value:
           type: string
       type: object
     TimeInForce:

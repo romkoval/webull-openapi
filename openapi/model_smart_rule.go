@@ -17,5 +17,4 @@ type SmartRule struct {
 	Remark string `json:"remark,omitempty"`
 	// Example: 'earnPre', 'fastUp', 'fastDown', 'week52Up', 'week52Down', 'day5Down'
 	Type string `json:"type,omitempty"`
-	Value string `json:"value,omitempty"`
 }

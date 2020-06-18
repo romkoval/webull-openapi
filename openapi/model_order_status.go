@@ -17,7 +17,6 @@ const (
 	QUEUED OrderStatus = "Queued"
 	UNCONFIRMED OrderStatus = "Unconfirmed"
 	CONFIRMED OrderStatus = "Confirmed"
-	PARTIALLY_FILLED OrderStatus = "Partially_filled"
 	PARTIALLY_FILLED OrderStatus = "Partially Filled"
 	FILLED OrderStatus = "Filled"
 	REJECTED OrderStatus = "Rejected"

@@ -12,5 +12,5 @@ package openapi
 // AlertEventWarning struct for AlertEventWarning
 type AlertEventWarning struct {
 	Remove bool `json:"remove,omitempty"`
-	Rules []AnyOfSmartRulePriceRule `json:"rules,omitempty"`
+	Rules []SmartRule `json:"rules,omitempty"`
 }

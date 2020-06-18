@@ -35,7 +35,6 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**GetAccount**](docs/AccountsApi.md#getaccount) | **Get** /account/getSecAccountList/v4 | getAccount
 *AccountsApi* | [**GetAccountInfo**](docs/AccountsApi.md#getaccountinfo) | **Get** /v2/home/{account_id} | getAccountInfo
 *AlertsApi* | [**GetAlerts**](docs/AlertsApi.md#getalerts) | **Get** /user/warning/v2/query/tickers | getAlerts
-*AlertsApi* | [**ModifyAlert**](docs/AlertsApi.md#modifyalert) | **Post** /user/warning/v2/manage/overlap | modifyAlert
 *AuthenticationApi* | [**GetMultiFactorAuth**](docs/AuthenticationApi.md#getmultifactorauth) | **Post** /passport/verificationCode/sendCode | getMultiFactorAuth
 *AuthenticationApi* | [**GetTradeToken**](docs/AuthenticationApi.md#gettradetoken) | **Post** /login | getTradeToken
 *AuthenticationApi* | [**Login**](docs/AuthenticationApi.md#login) | **Post** /passport/login/v3/account | login
@@ -77,7 +76,6 @@ Class | Method | HTTP request | Description
  - [AddAlertRequestWarningInput](docs/AddAlertRequestWarningInput.md)
  - [Alert](docs/Alert.md)
  - [AlertEventWarning](docs/AlertEventWarning.md)
- - [AlertRequest](docs/AlertRequest.md)
  - [AlertTickerWarning](docs/AlertTickerWarning.md)
  - [Attach](docs/Attach.md)
  - [Auth](docs/Auth.md)
@@ -148,10 +146,7 @@ Class | Method | HTTP request | Description
  - [PostOptionOrderRequest](docs/PostOptionOrderRequest.md)
  - [PostOtocoStockOrderRequest](docs/PostOtocoStockOrderRequest.md)
  - [PostStockOrderRequest](docs/PostStockOrderRequest.md)
- - [PriceRule](docs/PriceRule.md)
- - [RemoveAlertRequest](docs/RemoveAlertRequest.md)
  - [ReplaceOptionOrderRequest](docs/ReplaceOptionOrderRequest.md)
- - [Rule](docs/Rule.md)
  - [SmartRule](docs/SmartRule.md)
  - [TimeInForce](docs/TimeInForce.md)
  - [TradeToken](docs/TradeToken.md)
