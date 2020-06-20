@@ -2638,6 +2638,8 @@ components:
           type: string
         uuid:
           type: string
+        MFA:
+          type: string
       type: object
     Direction:
       enum:

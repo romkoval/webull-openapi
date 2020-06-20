@@ -17,4 +17,5 @@ type Auth struct {
 	TokenExpireTime string `json:"token_expire_time,omitempty"`
 	Username string `json:"username,omitempty"`
 	Uuid string `json:"uuid,omitempty"`
+	MFA string `json:"MFA,omitempty"`
 }
