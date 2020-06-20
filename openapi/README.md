@@ -146,6 +146,8 @@ Class | Method | HTTP request | Description
  - [PostOptionOrderRequest](docs/PostOptionOrderRequest.md)
  - [PostOtocoStockOrderRequest](docs/PostOtocoStockOrderRequest.md)
  - [PostStockOrderRequest](docs/PostStockOrderRequest.md)
+ - [PostTradeTokenResponse](docs/PostTradeTokenResponse.md)
+ - [PostTradeTokenResponseData](docs/PostTradeTokenResponseData.md)
  - [ReplaceOptionOrderRequest](docs/ReplaceOptionOrderRequest.md)
  - [SmartRule](docs/SmartRule.md)
  - [TimeInForce](docs/TimeInForce.md)

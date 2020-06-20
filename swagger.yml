@@ -244,7 +244,7 @@ paths:
   "/login":
     post:
       deprecated: false
-      description: Trading related authorize trade, must be done before trade action
+      description: "Trading related authorize trade, must be done before trade action. Note: ensure 'pwd' is your trade PIN. Your password isn't used here.'"
       parameters:
         - in: header
           name: did
@@ -271,7 +271,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/PostLoginResponse'
+                  $ref: '#/components/schemas/PostTradeTokenResponse'
           description: OK
         '401':
           content:
@@ -4232,6 +4232,18 @@ components:
         - LMT
         - STP
         - STP LMT
+    PostTradeTokenResponse:
+      properties: 
+        success: 
+          type: boolean
+        data: 
+          type: object
+          properties: 
+            tradeToken: 
+              type: string
+            tradeTokenExpireIn: 
+              type: integer
+              format: int32
     Transfer:
       properties:
         amount:
