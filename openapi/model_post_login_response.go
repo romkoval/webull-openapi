@@ -11,12 +11,12 @@
 package openapi
 // PostLoginResponse struct for PostLoginResponse
 type PostLoginResponse struct {
-	AccessToken string `json:"accessToken,omitempty"`
 	ExtInfo PostLoginResponseExtInfo `json:"extInfo,omitempty"`
-	FirstTimeOfThird bool `json:"firstTimeOfThird,omitempty"`
+	AccessToken string `json:"accessToken,omitempty"`
+	Uuid string `json:"uuid,omitempty"`
 	RefreshToken string `json:"refreshToken,omitempty"`
+	TokenExpireTime string `json:"tokenExpireTime,omitempty"`
+	FirstTimeOfThird bool `json:"firstTimeOfThird,omitempty"`
 	RegisterAddress int32 `json:"registerAddress,omitempty"`
 	Settings PostLoginResponseSettings `json:"settings,omitempty"`
-	TokenExpireTime string `json:"tokenExpireTime,omitempty"`
-	Uuid string `json:"uuid,omitempty"`
 }

@@ -11,15 +11,15 @@ servers:
   - url: https://userapi.webull.com/api
     description: User API
   - url: https://quoteapi.webullbroker.com/api
-    description: Quotes API
+    description: Broker Quotes API
   - url: https://quotes-gw.webullbroker.com/api
-    description: Quotes API
+    description: webullbroker Quotes API
   - url: https://securitiesapi.webullbroker.com/api
     description: Securities API
   - url: https://userapi.webullbroker.com/api
     description: User API
   - url: https://act.webullbroker.com/webull-paper-center/api
-    description: Paper API
+    description: Paper Trade API
   - url: https://tradeapi.webulltrade.com/api/trade
     description: Trade API
 externalDocs:
@@ -3793,97 +3793,95 @@ components:
           type: number
     PostLoginResponse:
       properties:
-        accessToken:
-          type: string
-        extInfo:
-          properties:
-            equipmentCheck:
-              type: string
-            userPwdFlag:
-              type: string
+        extInfo: 
           type: object
-        firstTimeOfThird:
+          properties: 
+            userPwdFlag: 
+              type: string
+        accessToken: 
+          type: string
+        uuid: 
+          type: string
+        refreshToken: 
+          type: string
+        tokenExpireTime: 
+          type: string
+        firstTimeOfThird: 
           type: boolean
-        refreshToken:
-          type: string
-        registerAddress:
-          format: int32
+        registerAddress: 
           type: integer
-        settings:
-          properties:
-            chartOption:
-              format: int32
-              type: integer
-            createTime:
-              type: string
-            focusMarketId:
-              type: string
-            fontSize:
-              type: string
-            hotNews:
-              format: int32
-              type: integer
-            id:
-              format: unsafe
-              type: integer
-            increDecreColor:
-              format: int32
-              type: integer
-            kdata:
-              format: int32
-              type: integer
-            language:
-              type: string
-            languageUpdateTime:
-              type: string
-            listStyle:
-              format: int32
-              type: integer
-            operateTime:
-              type: string
-            orderDealRemind:
-              format: int32
-              type: integer
-            portfolioBulletin:
-              format: int32
-              type: integer
-            portfolioDisplayMode:
-              format: int32
-              type: integer
-            portfolioHoldingsDisplay:
-              format: int32
-              type: integer
-            portfolioIndexDisplay:
-              format: int32
-              type: integer
-            portfolioNameNewline:
-              format: int32
-              type: integer
-            refreshFrequency:
-              format: int32
-              type: integer
-            regionId:
-              format: int32
-              type: integer
-            shock:
-              format: int32
-              type: integer
-            theme:
-              format: int32
-              type: integer
-            tickerPriceRemind:
-              format: int32
-              type: integer
-            updateTime:
-              type: string
-            userId:
-              format: int32
-              type: integer
+          format: int32
+        settings: 
           type: object
-        tokenExpireTime:
-          type: string
-        uuid:
-          type: string
+          properties: 
+            id: 
+              type: integer
+              format: unsafe
+            userId: 
+              type: integer
+              format: int32
+            regionId: 
+              type: integer
+              format: int32
+            language: 
+              type: string
+            focusMarketId: 
+              type: string
+            theme: 
+              type: integer
+              format: int32
+            increDecreColor: 
+              type: integer
+              format: int32
+            fontSize: 
+              type: string
+            portfolioDisplayMode: 
+              type: integer
+              format: int32
+            portfolioNameNewline: 
+              type: integer
+              format: int32
+            portfolioHoldingsDisplay: 
+              type: integer
+              format: int32
+            portfolioIndexDisplay: 
+              type: integer
+              format: int32
+            portfolioBulletin: 
+              type: integer
+              format: int32
+            kdata: 
+              type: integer
+              format: int32
+            refreshFrequency: 
+              type: integer
+              format: int32
+            shock: 
+              type: integer
+              format: int32
+            tickerPriceRemind: 
+              type: integer
+              format: int32
+            orderDealRemind: 
+              type: integer
+              format: int32
+            hotNews: 
+              type: integer
+              format: int32
+            chartOption: 
+              type: integer
+              format: int32
+            operateTime: 
+              type: string
+            languageUpdateTime: 
+              type: string
+            createTime: 
+              type: string
+            updateTime: 
+              type: string
+            listStyle: 
+              type: integer
+              format: int32
     PostOptionOrderRequest:
       properties:
         auxPrice:

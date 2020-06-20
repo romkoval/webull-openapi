@@ -11,6 +11,5 @@
 package openapi
 // PostLoginResponseExtInfo struct for PostLoginResponseExtInfo
 type PostLoginResponseExtInfo struct {
-	EquipmentCheck string `json:"equipmentCheck,omitempty"`
 	UserPwdFlag string `json:"userPwdFlag,omitempty"`
 }
