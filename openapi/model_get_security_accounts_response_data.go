@@ -11,28 +11,28 @@
 package openapi
 // GetSecurityAccountsResponseData struct for GetSecurityAccountsResponseData
 type GetSecurityAccountsResponseData struct {
-	AccountTypes []string `json:"accountTypes,omitempty"`
-	AllowDeposit bool `json:"allowDeposit,omitempty"`
-	BrokerAccountId string `json:"brokerAccountId,omitempty"`
-	BrokerId int32 `json:"brokerId,omitempty"`
+	SecAccountId float32 `json:"secAccountId,omitempty"`
+	RegisterRegionId float32 `json:"registerRegionId,omitempty"`
+	BrokerId float32 `json:"brokerId,omitempty"`
 	BrokerName string `json:"brokerName,omitempty"`
-	ComboTypes []string `json:"comboTypes,omitempty"`
-	CustomerType string `json:"customerType,omitempty"`
-	Deposit bool `json:"deposit,omitempty"`
-	DepositStatus string `json:"depositStatus,omitempty"`
-	GiftStockStatus int32 `json:"giftStockStatus,omitempty"`
-	IsDefault bool `json:"isDefault,omitempty"`
-	IsDefaultChecked bool `json:"isDefaultChecked,omitempty"`
-	OpenAccountUrl string `json:"openAccountUrl,omitempty"`
-	OptionOpenStatus string `json:"optionOpenStatus,omitempty"`
-	RegisterRegionId int32 `json:"registerRegionId,omitempty"`
-	RegisterTradeUrl string `json:"registerTradeUrl,omitempty"`
-	SecAccountId int32 `json:"secAccountId,omitempty"`
+	BrokerAccountId string `json:"brokerAccountId,omitempty"`
 	Status string `json:"status,omitempty"`
-	SupportClickIPO bool `json:"supportClickIPO,omitempty"`
-	SupportOpenOption bool `json:"supportOpenOption,omitempty"`
+	RegisterTradeUrl string `json:"registerTradeUrl,omitempty"`
+	OpenAccountUrl string `json:"openAccountUrl,omitempty"`
 	SupportOutsideRth bool `json:"supportOutsideRth,omitempty"`
 	TickerTypes []GetSecurityAccountsResponseTickerTypes `json:"tickerTypes,omitempty"`
-	TimeInForces []GetSecurityAccountsResponseTimeInForces `json:"timeInForces,omitempty"`
+	AccountTypes []string `json:"accountTypes,omitempty"`
 	UserTradePermissionVOs []GetSecurityAccountsResponseUserTradePermissionVOs `json:"userTradePermissionVOs,omitempty"`
+	IsDefault bool `json:"isDefault,omitempty"`
+	Deposit bool `json:"deposit,omitempty"`
+	AllowDeposit bool `json:"allowDeposit,omitempty"`
+	CustomerType string `json:"customerType,omitempty"`
+	GiftStockStatus float32 `json:"giftStockStatus,omitempty"`
+	DepositStatus string `json:"depositStatus,omitempty"`
+	TimeInForces []GetSecurityAccountsResponseTimeInForces `json:"timeInForces,omitempty"`
+	ComboTypes []string `json:"comboTypes,omitempty"`
+	SupportClickIPO bool `json:"supportClickIPO,omitempty"`
+	IsDefaultChecked bool `json:"isDefaultChecked,omitempty"`
+	OptionOpenStatus string `json:"optionOpenStatus,omitempty"`
+	SupportOpenOption bool `json:"supportOpenOption,omitempty"`
 }
