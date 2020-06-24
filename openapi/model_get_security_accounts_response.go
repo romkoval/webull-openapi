@@ -11,6 +11,6 @@
 package openapi
 // GetSecurityAccountsResponse struct for GetSecurityAccountsResponse
 type GetSecurityAccountsResponse struct {
-	Success bool `json:"success,omitempty"`
 	Data []GetSecurityAccountsResponseData `json:"data,omitempty"`
+	Success bool `json:"success,omitempty"`
 }

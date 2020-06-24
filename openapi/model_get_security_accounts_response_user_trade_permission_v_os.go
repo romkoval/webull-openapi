@@ -11,6 +11,6 @@
 package openapi
 // GetSecurityAccountsResponseUserTradePermissionVOs struct for GetSecurityAccountsResponseUserTradePermissionVOs
 type GetSecurityAccountsResponseUserTradePermissionVOs struct {
-	Type string `json:"type,omitempty"`
 	HasPermission bool `json:"hasPermission,omitempty"`
+	Type string `json:"type,omitempty"`
 }

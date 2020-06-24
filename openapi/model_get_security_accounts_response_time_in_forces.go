@@ -11,6 +11,6 @@
 package openapi
 // GetSecurityAccountsResponseTimeInForces struct for GetSecurityAccountsResponseTimeInForces
 type GetSecurityAccountsResponseTimeInForces struct {
-	Name string `json:"name,omitempty"`
 	Alias string `json:"alias,omitempty"`
+	Name string `json:"name,omitempty"`
 }
