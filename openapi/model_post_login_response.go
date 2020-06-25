@@ -17,6 +17,6 @@ type PostLoginResponse struct {
 	RefreshToken string `json:"refreshToken,omitempty"`
 	TokenExpireTime string `json:"tokenExpireTime,omitempty"`
 	FirstTimeOfThird bool `json:"firstTimeOfThird,omitempty"`
-	RegisterAddress int32 `json:"registerAddress,omitempty"`
+	RegisterAddress float32 `json:"registerAddress,omitempty"`
 	Settings PostLoginResponseSettings `json:"settings,omitempty"`
 }

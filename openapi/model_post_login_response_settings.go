@@ -11,29 +11,29 @@
 package openapi
 // PostLoginResponseSettings struct for PostLoginResponseSettings
 type PostLoginResponseSettings struct {
-	Id int32 `json:"id,omitempty"`
-	UserId int32 `json:"userId,omitempty"`
-	RegionId int32 `json:"regionId,omitempty"`
+	Id float32 `json:"id,omitempty"`
+	UserId float32 `json:"userId,omitempty"`
+	RegionId float32 `json:"regionId,omitempty"`
 	Language string `json:"language,omitempty"`
 	FocusMarketId string `json:"focusMarketId,omitempty"`
-	Theme int32 `json:"theme,omitempty"`
-	IncreDecreColor int32 `json:"increDecreColor,omitempty"`
+	Theme float32 `json:"theme,omitempty"`
+	IncreDecreColor float32 `json:"increDecreColor,omitempty"`
 	FontSize string `json:"fontSize,omitempty"`
-	PortfolioDisplayMode int32 `json:"portfolioDisplayMode,omitempty"`
-	PortfolioNameNewline int32 `json:"portfolioNameNewline,omitempty"`
-	PortfolioHoldingsDisplay int32 `json:"portfolioHoldingsDisplay,omitempty"`
-	PortfolioIndexDisplay int32 `json:"portfolioIndexDisplay,omitempty"`
-	PortfolioBulletin int32 `json:"portfolioBulletin,omitempty"`
-	Kdata int32 `json:"kdata,omitempty"`
-	RefreshFrequency int32 `json:"refreshFrequency,omitempty"`
-	Shock int32 `json:"shock,omitempty"`
-	TickerPriceRemind int32 `json:"tickerPriceRemind,omitempty"`
-	OrderDealRemind int32 `json:"orderDealRemind,omitempty"`
-	HotNews int32 `json:"hotNews,omitempty"`
-	ChartOption int32 `json:"chartOption,omitempty"`
+	PortfolioDisplayMode float32 `json:"portfolioDisplayMode,omitempty"`
+	PortfolioNameNewline float32 `json:"portfolioNameNewline,omitempty"`
+	PortfolioHoldingsDisplay float32 `json:"portfolioHoldingsDisplay,omitempty"`
+	PortfolioIndexDisplay float32 `json:"portfolioIndexDisplay,omitempty"`
+	PortfolioBulletin float32 `json:"portfolioBulletin,omitempty"`
+	Kdata float32 `json:"kdata,omitempty"`
+	RefreshFrequency float32 `json:"refreshFrequency,omitempty"`
+	Shock float32 `json:"shock,omitempty"`
+	TickerPriceRemind float32 `json:"tickerPriceRemind,omitempty"`
+	OrderDealRemind float32 `json:"orderDealRemind,omitempty"`
+	HotNews float32 `json:"hotNews,omitempty"`
+	ChartOption float32 `json:"chartOption,omitempty"`
 	OperateTime string `json:"operateTime,omitempty"`
 	LanguageUpdateTime string `json:"languageUpdateTime,omitempty"`
 	CreateTime string `json:"createTime,omitempty"`
 	UpdateTime string `json:"updateTime,omitempty"`
-	ListStyle int32 `json:"listStyle,omitempty"`
+	ListStyle float32 `json:"listStyle,omitempty"`
 }

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **RefreshToken** | **string** |  | [optional] 
 **TokenExpireTime** | **string** |  | [optional] 
 **FirstTimeOfThird** | **bool** |  | [optional] 
-**RegisterAddress** | **int32** |  | [optional] 
+**RegisterAddress** | **float32** |  | [optional] 
 **Settings** | [**PostLoginResponseSettings**](PostLoginResponse_settings.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
