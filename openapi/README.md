@@ -149,6 +149,7 @@ Class | Method | HTTP request | Description
  - [PostLoginResponseSettings](docs/PostLoginResponseSettings.md)
  - [PostOptionOrderRequest](docs/PostOptionOrderRequest.md)
  - [PostOtocoStockOrderRequest](docs/PostOtocoStockOrderRequest.md)
+ - [PostRefreshTokenResponse](docs/PostRefreshTokenResponse.md)
  - [PostStockOrderRequest](docs/PostStockOrderRequest.md)
  - [PostTradeTokenResponse](docs/PostTradeTokenResponse.md)
  - [PostTradeTokenResponseData](docs/PostTradeTokenResponseData.md)

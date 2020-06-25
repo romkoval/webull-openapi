@@ -967,7 +967,7 @@ paths:
           required: true
           schema:
             type: string
-        - description: Numeric ID of the user to get
+        - description: Refresh token
           in: query
           name: refreshToken
           required: true
@@ -979,7 +979,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/PostLoginResponse'
+                  $ref: '#/components/schemas/PostRefreshTokenResponse'
           description: OK
         '401':
           content:
@@ -4387,6 +4387,14 @@ components:
           type: array
           items:
             type: object
+    PostRefreshTokenResponse:
+      properties: 
+        accessToken: 
+          type: string
+        refreshToken: 
+          type: string
+        tokenExpireTime: 
+          type: string
     Transfer:
       properties:
         amount:
