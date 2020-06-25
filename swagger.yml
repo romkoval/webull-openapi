@@ -2153,7 +2153,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GetAcccountRequest"
+                $ref: "#/components/schemas/GetAccountResponse"
           description: OK
         '401':
           content:
@@ -4243,7 +4243,169 @@ components:
               type: string
             tradeTokenExpireIn: 
               type: integer
-              format: int32
+              format: int3
+    GetAccountResponse:
+      properties: 
+        secAccountId: 
+          type: integer
+          format: int32
+        brokerId: 
+          type: integer
+          format: int32
+        accountType: 
+          type: string
+        brokerAccountId: 
+          type: string
+        currency: 
+          type: string
+        currencyId: 
+          type: integer
+          format: int32
+        pdt: 
+          type: boolean
+        professional: 
+          type: boolean
+        showUpgrade: 
+          type: boolean
+        totalCost: 
+          type: string
+        netLiquidation: 
+          type: string
+        unrealizedProfitLoss: 
+          type: string
+        unrealizedProfitLossRate: 
+          type: string
+        unrealizedProfitLossBase: 
+          type: number
+        warning: 
+          type: boolean
+        banners: 
+          type: array
+          items: 
+            type: object
+            properties: 
+              imgUrl: 
+                type: string
+              link: 
+                type: string
+              type: 
+                type: string
+              title: 
+                type: string
+              subTitle: 
+                type: string
+        openIpoOrders: 
+          type: array
+          items:
+            type: object
+        accountMembers: 
+          type: array
+          items: 
+            type: object
+            properties: 
+              key: 
+                type: string
+              value: 
+                type: string
+        positions: 
+          type: array
+          items: 
+            type: object
+            properties: 
+              id: 
+                type: integer
+                format: int32
+              brokerId: 
+                type: integer
+                format: int32
+              ticker: 
+                type: object
+                properties: 
+                  tickerId: 
+                    type: integer
+                    format: int32
+                  symbol: 
+                    type: string
+                  name: 
+                    type: string
+                  tinyName: 
+                    type: string
+                  listStatus: 
+                    type: integer
+                    format: int32
+                  exchangeCode: 
+                    type: string
+                  exchangeId: 
+                    type: integer
+                    format: int32
+                  extType: 
+                    type: array
+                    items: 
+                      type: object
+                  type: 
+                    type: integer
+                    format: int32
+                  regionId: 
+                    type: integer
+                    format: int32
+                  regionName: 
+                    type: string
+                  regionIsoCode: 
+                    type: string
+                  currencyId: 
+                    type: integer
+                    format: int32
+                  currencyCode: 
+                    type: string
+                  secType: 
+                    type: array
+                    items: 
+                      type: integer
+                      format: int32
+                  disExchangeCode: 
+                    type: string
+                  disSymbol: 
+                    type: string
+              position: 
+                type: string
+              assetType: 
+                type: string
+              cost: 
+                type: string
+              costPrice: 
+                type: string
+              currency: 
+                type: string
+              lastPrice: 
+                type: string
+              marketValue: 
+                type: string
+              unrealizedProfitLoss: 
+                type: string
+              unrealizedProfitLossRate: 
+                type: string
+              positionProportion: 
+                type: string
+              exchangeRate: 
+                type: string
+              lock: 
+                type: boolean
+              lastOpenTime: 
+                type: string
+              updatePositionTimeStamp: 
+                type: integer
+                format: int64
+        openOrders: 
+          type: array
+          items: 
+            type: object
+        openOrderSize: 
+          type: integer
+          format: int32
+        deposits: 
+          type: array
+          items:
+            type: object
     Transfer:
       properties:
         amount:
