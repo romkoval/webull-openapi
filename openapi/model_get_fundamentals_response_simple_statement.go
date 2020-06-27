@@ -14,8 +14,8 @@ type GetFundamentalsResponseSimpleStatement struct {
 	CurrencyName string `json:"currencyName,omitempty"`
 	Labels []GetFundamentalsResponseLabels `json:"labels,omitempty"`
 	List []GetFundamentalsResponseList `json:"list,omitempty"`
-	ReportType float32 `json:"reportType,omitempty"`
+	ReportType int32 `json:"reportType,omitempty"`
 	Single GetFundamentalsResponseSingle `json:"single,omitempty"`
-	StatementType float32 `json:"statementType,omitempty"`
+	StatementType int32 `json:"statementType,omitempty"`
 	Title string `json:"title,omitempty"`
 }

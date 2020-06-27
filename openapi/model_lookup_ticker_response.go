@@ -11,7 +11,7 @@
 package openapi
 // LookupTickerResponse struct for LookupTickerResponse
 type LookupTickerResponse struct {
-	CategoryId float32 `json:"categoryId,omitempty"`
+	CategoryId int32 `json:"categoryId,omitempty"`
 	CategoryName string `json:"categoryName,omitempty"`
 	HasMore bool `json:"hasMore,omitempty"`
 	List []LookupTickerResponseList `json:"list,omitempty"`

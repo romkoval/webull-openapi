@@ -11,7 +11,7 @@
 package openapi
 // GetFundamentalsResponseDataPoints struct for GetFundamentalsResponseDataPoints
 type GetFundamentalsResponseDataPoints struct {
-	ValueActual float32 `json:"valueActual,omitempty"`
-	ValueForecast float32 `json:"valueForecast,omitempty"`
+	ValueActual int32 `json:"valueActual,omitempty"`
+	ValueForecast int32 `json:"valueForecast,omitempty"`
 	XAxis string `json:"xAxis,omitempty"`
 }

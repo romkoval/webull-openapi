@@ -9,7 +9,7 @@
  */
 
 package openapi
-// GetActiveGainersLosersResponse struct for GetActiveGainersLosersResponse
-type GetActiveGainersLosersResponse struct {
-	Items GetActiveGainersLosersResponseItems `json:"items,omitempty"`
+// PostPaperTradeResponse struct for PostPaperTradeResponse
+type PostPaperTradeResponse struct {
+	OrderId int32 `json:"orderId,omitempty"`
 }

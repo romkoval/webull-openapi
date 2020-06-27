@@ -19,7 +19,7 @@ type GetStockQuoteResponse struct {
 	ChangeRatio string `json:"changeRatio,omitempty"`
 	Close string `json:"close,omitempty"`
 	CurrencyCode string `json:"currencyCode,omitempty"`
-	DerivativeSupport float32 `json:"derivativeSupport,omitempty"`
+	DerivativeSupport int32 `json:"derivativeSupport,omitempty"`
 	Dividend string `json:"dividend,omitempty"`
 	Eps string `json:"eps,omitempty"`
 	EpsTtm string `json:"epsTtm,omitempty"`
@@ -35,7 +35,7 @@ type GetStockQuoteResponse struct {
 	NetAsset string `json:"netAsset,omitempty"`
 	NetExpenseRatio string `json:"netExpenseRatio,omitempty"`
 	NetValue string `json:"netValue,omitempty"`
-	NtvSize float32 `json:"ntvSize,omitempty"`
+	NtvSize int32 `json:"ntvSize,omitempty"`
 	Open string `json:"open,omitempty"`
 	PChRatio string `json:"pChRatio,omitempty"`
 	PChange string `json:"pChange,omitempty"`
@@ -43,10 +43,10 @@ type GetStockQuoteResponse struct {
 	Pe string `json:"pe,omitempty"`
 	PeTtm string `json:"peTtm,omitempty"`
 	PreClose string `json:"preClose,omitempty"`
-	Rating float32 `json:"rating,omitempty"`
+	Rating int32 `json:"rating,omitempty"`
 	ReturnThisYear string `json:"returnThisYear,omitempty"`
 	Status string `json:"status,omitempty"`
-	TickerId float32 `json:"tickerId,omitempty"`
+	TickerId int32 `json:"tickerId,omitempty"`
 	TimeZone string `json:"timeZone,omitempty"`
 	TotalAsset string `json:"totalAsset,omitempty"`
 	TradeTime string `json:"tradeTime,omitempty"`

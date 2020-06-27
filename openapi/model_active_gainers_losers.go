@@ -9,31 +9,31 @@
  */
 
 package openapi
-// GetActiveGainersLosersResponseItems struct for GetActiveGainersLosersResponseItems
-type GetActiveGainersLosersResponseItems struct {
+// ActiveGainersLosers struct for ActiveGainersLosers
+type ActiveGainersLosers struct {
 	Change string `json:"change,omitempty"`
 	ChangeRatio string `json:"changeRatio,omitempty"`
 	Close string `json:"close,omitempty"`
-	CurrencyId float32 `json:"currencyId,omitempty"`
-	DerivativeSupport float32 `json:"derivativeSupport,omitempty"`
+	CurrencyId int32 `json:"currencyId,omitempty"`
+	DerivativeSupport int32 `json:"derivativeSupport,omitempty"`
 	DisExchangeCode string `json:"disExchangeCode,omitempty"`
 	DisSymbol string `json:"disSymbol,omitempty"`
 	ExchangeCode string `json:"exchangeCode,omitempty"`
-	ExchangeId float32 `json:"exchangeId,omitempty"`
-	ListStatus float32 `json:"listStatus,omitempty"`
+	ExchangeId int32 `json:"exchangeId,omitempty"`
+	ListStatus int32 `json:"listStatus,omitempty"`
 	MarketValue string `json:"marketValue,omitempty"`
 	Name string `json:"name,omitempty"`
 	PChRatio string `json:"pChRatio,omitempty"`
 	PChange string `json:"pChange,omitempty"`
 	PPrice string `json:"pPrice,omitempty"`
 	RegionCode string `json:"regionCode,omitempty"`
-	RegionId float32 `json:"regionId,omitempty"`
-	SecType []float32 `json:"secType,omitempty"`
+	RegionId int32 `json:"regionId,omitempty"`
+	SecType []int32 `json:"secType,omitempty"`
 	Status string `json:"status,omitempty"`
 	Symbol string `json:"symbol,omitempty"`
 	Template string `json:"template,omitempty"`
-	TickerId float32 `json:"tickerId,omitempty"`
+	TickerId int32 `json:"tickerId,omitempty"`
 	TurnoverRate string `json:"turnoverRate,omitempty"`
-	Type float32 `json:"type,omitempty"`
+	Type int32 `json:"type,omitempty"`
 	Volume string `json:"volume,omitempty"`
 }

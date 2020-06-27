@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Buy** | **float32** |  | [optional] 
-**Hold** | **float32** |  | [optional] 
-**Sell** | **float32** |  | [optional] 
-**StrongBuy** | **float32** |  | [optional] 
-**UnderPerform** | **float32** |  | [optional] 
+**Buy** | **int32** |  | [optional] 
+**Hold** | **int32** |  | [optional] 
+**Sell** | **int32** |  | [optional] 
+**StrongBuy** | **int32** |  | [optional] 
+**UnderPerform** | **int32** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

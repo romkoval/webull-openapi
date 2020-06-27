@@ -12,11 +12,11 @@ package openapi
 // GetAlertsResponseEventWarning struct for GetAlertsResponseEventWarning
 type GetAlertsResponseEventWarning struct {
 	Del bool `json:"del,omitempty"`
-	ExchangeId float32 `json:"exchangeId,omitempty"`
-	Id float32 `json:"id,omitempty"`
+	ExchangeId int32 `json:"exchangeId,omitempty"`
+	Id int32 `json:"id,omitempty"`
 	Remove bool `json:"remove,omitempty"`
 	Rules []GetAlertsResponseEventWarningRules `json:"rules,omitempty"`
-	TickerId float32 `json:"tickerId,omitempty"`
-	TickerType float32 `json:"tickerType,omitempty"`
-	UserId float32 `json:"userId,omitempty"`
+	TickerId int32 `json:"tickerId,omitempty"`
+	TickerType int32 `json:"tickerType,omitempty"`
+	UserId int32 `json:"userId,omitempty"`
 }

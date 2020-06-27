@@ -19,6 +19,6 @@ type GetStockOptionsResponse struct {
 	ExpireDate string `json:"expireDate,omitempty"`
 	ExpireDateList []GetStockOptionsResponseExpireDateList `json:"expireDateList,omitempty"`
 	Name string `json:"name,omitempty"`
-	TickerId float32 `json:"tickerId,omitempty"`
+	TickerId int32 `json:"tickerId,omitempty"`
 	UnSymbol string `json:"unSymbol,omitempty"`
 }

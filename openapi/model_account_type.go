@@ -10,7 +10,7 @@
 
 package openapi
 // AccountType number: 1, email: 2
-type AccountType float32
+type AccountType int32
 
 // List of AccountType
 const (

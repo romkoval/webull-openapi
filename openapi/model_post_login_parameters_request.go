@@ -18,8 +18,8 @@ type PostLoginParametersRequest struct {
 	// device name
 	DeviceName string `json:"deviceName,omitempty"`
 	ExtInfo PostLoginParametersRequestExtInfo `json:"extInfo,omitempty"`
-	Grade float32 `json:"grade,omitempty"`
+	Grade int32 `json:"grade,omitempty"`
 	// pwd = md5(passwordHash + password)
 	Pwd string `json:"pwd,omitempty"`
-	RegionId float32 `json:"regionId,omitempty"`
+	RegionId int32 `json:"regionId,omitempty"`
 }

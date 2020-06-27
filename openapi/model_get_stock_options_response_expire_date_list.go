@@ -12,7 +12,7 @@ package openapi
 // GetStockOptionsResponseExpireDateList struct for GetStockOptionsResponseExpireDateList
 type GetStockOptionsResponseExpireDateList struct {
 	Date string `json:"date,omitempty"`
-	Days float32 `json:"days,omitempty"`
+	Days int32 `json:"days,omitempty"`
 	UnSymbol string `json:"unSymbol,omitempty"`
-	Weekly float32 `json:"weekly,omitempty"`
+	Weekly int32 `json:"weekly,omitempty"`
 }

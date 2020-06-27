@@ -17,4 +17,5 @@ const (
 	LMT OrderType = "LMT"
 	STP OrderType = "STP"
 	STP_LMT OrderType = "STP LMT"
+	MKT OrderType = "MKT"
 )

@@ -5,10 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CollectSource** | **string** |  | [optional] 
-**Id** | **float32** |  | [optional] 
+**Id** | **int32** |  | [optional] 
 **NewsTime** | **string** |  | [optional] 
 **NewsUrl** | **string** |  | [optional] 
-**SiteType** | **float32** |  | [optional] 
+**SiteType** | **int32** |  | [optional] 
 **SourceName** | **string** |  | [optional] 
 **Summary** | **string** |  | [optional] 
 **Title** | **string** |  | [optional] 

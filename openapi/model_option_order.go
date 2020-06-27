@@ -12,8 +12,8 @@ package openapi
 // OptionOrder struct for OptionOrder
 type OptionOrder struct {
 	Action OrderSide `json:"action,omitempty"`
-	Quantity float32 `json:"quantity,omitempty"`
-	TickerId float32 `json:"tickerId,omitempty"`
+	Quantity int32 `json:"quantity,omitempty"`
+	TickerId int32 `json:"tickerId,omitempty"`
 	TickerType string `json:"tickerType,omitempty"`
-	TotalQuantity float32 `json:"totalQuantity,omitempty"`
+	TotalQuantity int32 `json:"totalQuantity,omitempty"`
 }

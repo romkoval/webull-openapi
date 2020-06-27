@@ -14,8 +14,8 @@ type GetFundamentalsResponseAnalysisDatas struct {
 	Label string `json:"label,omitempty"`
 	MaxValue string `json:"maxValue,omitempty"`
 	Name string `json:"name,omitempty"`
-	Rank float32 `json:"rank,omitempty"`
-	TotalCount float32 `json:"totalCount,omitempty"`
-	Type float32 `json:"type,omitempty"`
+	Rank int32 `json:"rank,omitempty"`
+	TotalCount int32 `json:"totalCount,omitempty"`
+	Type int32 `json:"type,omitempty"`
 	Value string `json:"value,omitempty"`
 }

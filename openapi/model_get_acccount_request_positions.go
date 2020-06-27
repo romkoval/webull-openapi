@@ -12,12 +12,12 @@ package openapi
 // GetAcccountRequestPositions struct for GetAcccountRequestPositions
 type GetAcccountRequestPositions struct {
 	AssetType string `json:"assetType,omitempty"`
-	BrokerId float32 `json:"brokerId,omitempty"`
+	BrokerId int32 `json:"brokerId,omitempty"`
 	Cost string `json:"cost,omitempty"`
 	CostPrice string `json:"costPrice,omitempty"`
 	Currency string `json:"currency,omitempty"`
 	ExchangeRate string `json:"exchangeRate,omitempty"`
-	Id float32 `json:"id,omitempty"`
+	Id int32 `json:"id,omitempty"`
 	LastOpenTime string `json:"lastOpenTime,omitempty"`
 	LastPrice string `json:"lastPrice,omitempty"`
 	Lock bool `json:"lock,omitempty"`

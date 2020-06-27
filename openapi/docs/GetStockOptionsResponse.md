@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **ExpireDate** | **string** |  | [optional] 
 **ExpireDateList** | [**[]GetStockOptionsResponseExpireDateList**](GetStockOptionsResponse_expireDateList.md) |  | [optional] 
 **Name** | **string** |  | [optional] 
-**TickerId** | **float32** |  | [optional] 
+**TickerId** | **int32** |  | [optional] 
 **UnSymbol** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

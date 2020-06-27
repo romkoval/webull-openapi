@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **ExchangeCode** | **string** |  | [optional] 
 **RegionId** | **string** |  | [optional] 
 **ShowCode** | **string** |  | [optional] 
-**TickerId** | **float32** |  | [optional] [default to 913243251]
+**TickerId** | **int32** |  | [optional] [default to 913243251]
 **TickerName** | **string** |  | [optional] 
 **TickerSymbol** | **string** |  | [optional] 
 **TickerType** | **string** |  | [optional] 

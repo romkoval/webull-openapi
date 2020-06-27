@@ -12,10 +12,10 @@ package openapi
 // GetNewsResponseItems struct for GetNewsResponseItems
 type GetNewsResponseItems struct {
 	CollectSource string `json:"collectSource,omitempty"`
-	Id float32 `json:"id,omitempty"`
+	Id int32 `json:"id,omitempty"`
 	NewsTime string `json:"newsTime,omitempty"`
 	NewsUrl string `json:"newsUrl,omitempty"`
-	SiteType float32 `json:"siteType,omitempty"`
+	SiteType int32 `json:"siteType,omitempty"`
 	SourceName string `json:"sourceName,omitempty"`
 	Summary string `json:"summary,omitempty"`
 	Title string `json:"title,omitempty"`

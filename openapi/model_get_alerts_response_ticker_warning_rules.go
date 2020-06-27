@@ -12,7 +12,7 @@ package openapi
 // GetAlertsResponseTickerWarningRules struct for GetAlertsResponseTickerWarningRules
 type GetAlertsResponseTickerWarningRules struct {
 	Active string `json:"active,omitempty"`
-	AlertId float32 `json:"alertId,omitempty"`
+	AlertId int32 `json:"alertId,omitempty"`
 	Field string `json:"field,omitempty"`
 	Remark string `json:"remark,omitempty"`
 	Timestamp float32 `json:"timestamp,omitempty"`

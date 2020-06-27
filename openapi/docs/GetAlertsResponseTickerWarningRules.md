@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Active** | **string** |  | [optional] 
-**AlertId** | **float32** |  | [optional] 
+**AlertId** | **int32** |  | [optional] 
 **Field** | **string** |  | [optional] 
 **Remark** | **string** |  | [optional] 
 **Timestamp** | **float32** |  | [optional] 

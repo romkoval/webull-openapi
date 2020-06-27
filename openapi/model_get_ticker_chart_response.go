@@ -14,8 +14,8 @@ type GetTickerChartResponse struct {
 	Data []string `json:"data,omitempty"`
 	Dates []GetTickerChartResponseDates `json:"dates,omitempty"`
 	ExchangeStatus bool `json:"exchangeStatus,omitempty"`
-	HasMore float32 `json:"hasMore,omitempty"`
+	HasMore int32 `json:"hasMore,omitempty"`
 	PreClose string `json:"preClose,omitempty"`
-	TickerId float32 `json:"tickerId,omitempty"`
+	TickerId int32 `json:"tickerId,omitempty"`
 	TimeZone string `json:"timeZone,omitempty"`
 }

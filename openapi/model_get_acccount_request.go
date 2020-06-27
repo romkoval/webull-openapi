@@ -15,18 +15,18 @@ type GetAcccountRequest struct {
 	AccountType string `json:"accountType,omitempty"`
 	Banners []GetAcccountRequestBanners `json:"banners,omitempty"`
 	BrokerAccountId string `json:"brokerAccountId,omitempty"`
-	BrokerId float32 `json:"brokerId,omitempty"`
+	BrokerId int32 `json:"brokerId,omitempty"`
 	Currency string `json:"currency,omitempty"`
-	CurrencyId float32 `json:"currencyId,omitempty"`
+	CurrencyId int32 `json:"currencyId,omitempty"`
 	Deposits []map[string]interface{} `json:"deposits,omitempty"`
 	NetLiquidation string `json:"netLiquidation,omitempty"`
 	OpenIpoOrders []map[string]interface{} `json:"openIpoOrders,omitempty"`
-	OpenOrderSize float32 `json:"openOrderSize,omitempty"`
+	OpenOrderSize int32 `json:"openOrderSize,omitempty"`
 	OpenOrders []map[string]interface{} `json:"openOrders,omitempty"`
 	Pdt bool `json:"pdt,omitempty"`
 	Positions []GetAcccountRequestPositions `json:"positions,omitempty"`
 	Professional bool `json:"professional,omitempty"`
-	SecAccountId float32 `json:"secAccountId,omitempty"`
+	SecAccountId int32 `json:"secAccountId,omitempty"`
 	ShowUpgrade bool `json:"showUpgrade,omitempty"`
 	TotalCost string `json:"totalCost,omitempty"`
 	UnrealizedProfitLoss string `json:"unrealizedProfitLoss,omitempty"`

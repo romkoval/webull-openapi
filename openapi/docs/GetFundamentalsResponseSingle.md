@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CurrencyId** | **float32** |  | [optional] 
+**CurrencyId** | **int32** |  | [optional] 
 **DilutedEps** | **string** |  | [optional] 
 **GrossProfit** | **string** |  | [optional] 
 **NetIncomeAfterTax** | **string** |  | [optional] 

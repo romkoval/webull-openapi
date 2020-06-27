@@ -12,6 +12,6 @@ package openapi
 // GetStockAnalysisResponseRating struct for GetStockAnalysisResponseRating
 type GetStockAnalysisResponseRating struct {
 	RatingAnalysis string `json:"ratingAnalysis,omitempty"`
-	RatingAnalysisTotals float32 `json:"ratingAnalysisTotals,omitempty"`
+	RatingAnalysisTotals int32 `json:"ratingAnalysisTotals,omitempty"`
 	RatingSpread GetStockAnalysisResponseRatingRatingSpread `json:"ratingSpread,omitempty"`
 }

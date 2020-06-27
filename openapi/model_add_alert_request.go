@@ -17,7 +17,7 @@ type AddAlertRequest struct {
 	ExchangeCode string `json:"exchangeCode,omitempty"`
 	RegionId string `json:"regionId,omitempty"`
 	ShowCode string `json:"showCode,omitempty"`
-	TickerId float32 `json:"tickerId,omitempty"`
+	TickerId int32 `json:"tickerId,omitempty"`
 	TickerName string `json:"tickerName,omitempty"`
 	TickerSymbol string `json:"tickerSymbol,omitempty"`
 	TickerType string `json:"tickerType,omitempty"`

@@ -14,10 +14,10 @@ type GetUserDetailsResponse struct {
 	AvatarUrl string `json:"avatarUrl,omitempty"`
 	Email string `json:"email,omitempty"`
 	NickName string `json:"nickName,omitempty"`
-	PwdFlag float32 `json:"pwdFlag,omitempty"`
-	RegionId float32 `json:"regionId,omitempty"`
+	PwdFlag int32 `json:"pwdFlag,omitempty"`
+	RegionId int32 `json:"regionId,omitempty"`
 	RegionName string `json:"regionName,omitempty"`
-	Sex float32 `json:"sex,omitempty"`
+	Sex int32 `json:"sex,omitempty"`
 	ThirdAccounts []map[string]interface{} `json:"thirdAccounts,omitempty"`
 	TradeLockemail string `json:"tradeLockemail,omitempty"`
 	Uuid string `json:"uuid,omitempty"`

@@ -1,12 +1,12 @@
-# GetFundamentalsResponseForecast
+# GetStockAnalysisResponseForecastEps
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Data** | [**GetFundamentalsResponseData**](GetFundamentalsResponse_data.md) |  | [optional] 
-**ReportType** | **int32** |  | [optional] 
-**StatementType** | **int32** |  | [optional] 
+**CurrencyName** | **string** |  | [optional] 
+**Id** | **string** |  | [optional] 
+**Points** | [**[]GetStockAnalysisResponseForecastEpsPoints**](GetStockAnalysisResponse_forecastEps_points.md) |  | [optional] 
 **Title** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

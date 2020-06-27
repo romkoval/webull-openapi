@@ -5,12 +5,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AssetType** | **string** |  | [optional] 
-**BrokerId** | **float32** |  | [optional] 
+**BrokerId** | **int32** |  | [optional] 
 **Cost** | **string** |  | [optional] 
 **CostPrice** | **string** |  | [optional] 
 **Currency** | **string** |  | [optional] 
 **ExchangeRate** | **string** |  | [optional] 
-**Id** | **float32** |  | [optional] 
+**Id** | **int32** |  | [optional] 
 **LastOpenTime** | **string** |  | [optional] 
 **LastPrice** | **string** |  | [optional] 
 **Lock** | **bool** |  | [optional] 

@@ -11,9 +11,9 @@
 package openapi
 // GetStockAnalysisResponseRatingRatingSpread struct for GetStockAnalysisResponseRatingRatingSpread
 type GetStockAnalysisResponseRatingRatingSpread struct {
-	Buy float32 `json:"buy,omitempty"`
-	Hold float32 `json:"hold,omitempty"`
-	Sell float32 `json:"sell,omitempty"`
-	StrongBuy float32 `json:"strongBuy,omitempty"`
-	UnderPerform float32 `json:"underPerform,omitempty"`
+	Buy int32 `json:"buy,omitempty"`
+	Hold int32 `json:"hold,omitempty"`
+	Sell int32 `json:"sell,omitempty"`
+	StrongBuy int32 `json:"strongBuy,omitempty"`
+	UnderPerform int32 `json:"underPerform,omitempty"`
 }

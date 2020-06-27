@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ForecastEps** | [**GetFundamentalsResponseData**](GetFundamentalsResponse_data.md) |  | [optional] 
+**ForecastEps** | [**GetStockAnalysisResponseForecastEps**](GetStockAnalysisResponse_forecastEps.md) |  | [optional] 
 **Rating** | [**GetStockAnalysisResponseRating**](GetStockAnalysisResponse_rating.md) |  | [optional] 
 **TargetPrice** | [**GetStockAnalysisResponseTargetPrice**](GetStockAnalysisResponse_targetPrice.md) |  | [optional] 
 

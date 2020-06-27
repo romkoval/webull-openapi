@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**CategoryId** | **float32** |  | [optional] 
+**CategoryId** | **int32** |  | [optional] 
 **CategoryName** | **string** |  | [optional] 
 **HasMore** | **bool** |  | [optional] 
 **List** | [**[]LookupTickerResponseList**](LookupTickerResponse_list.md) |  | [optional] 

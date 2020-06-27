@@ -14,5 +14,5 @@ type AddAlertRequestEventWarningInput struct {
 	Del bool `json:"del,omitempty"`
 	Remove bool `json:"remove,omitempty"`
 	Rules []SmartRule `json:"rules,omitempty"`
-	TickerId float32 `json:"tickerId,omitempty"`
+	TickerId int32 `json:"tickerId,omitempty"`
 }

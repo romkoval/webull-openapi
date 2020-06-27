@@ -12,7 +12,7 @@ package openapi
 // GetFundamentalsResponseForecast struct for GetFundamentalsResponseForecast
 type GetFundamentalsResponseForecast struct {
 	Data GetFundamentalsResponseData `json:"data,omitempty"`
-	ReportType float32 `json:"reportType,omitempty"`
-	StatementType float32 `json:"statementType,omitempty"`
+	ReportType int32 `json:"reportType,omitempty"`
+	StatementType int32 `json:"statementType,omitempty"`
 	Title string `json:"title,omitempty"`
 }

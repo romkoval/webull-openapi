@@ -13,5 +13,5 @@ package openapi
 type GetFundamentalsResponseAnalysis struct {
 	Datas []GetFundamentalsResponseAnalysisDatas `json:"datas,omitempty"`
 	IndustryName string `json:"industryName,omitempty"`
-	TotalCount float32 `json:"totalCount,omitempty"`
+	TotalCount int32 `json:"totalCount,omitempty"`
 }

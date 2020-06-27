@@ -17,16 +17,16 @@ type GetAlertsResponseTickerWarning struct {
 	DisSymbol string `json:"disSymbol,omitempty"`
 	ExchangeCode string `json:"exchangeCode,omitempty"`
 	ExchangeTrade bool `json:"exchangeTrade,omitempty"`
-	RegionId float32 `json:"regionId,omitempty"`
+	RegionId int32 `json:"regionId,omitempty"`
 	Rules []GetAlertsResponseTickerWarningRules `json:"rules,omitempty"`
 	ShowCode string `json:"showCode,omitempty"`
-	TickerId float32 `json:"tickerId,omitempty"`
+	TickerId int32 `json:"tickerId,omitempty"`
 	TickerName string `json:"tickerName,omitempty"`
 	TickerSymbol string `json:"tickerSymbol,omitempty"`
-	TickerType float32 `json:"tickerType,omitempty"`
+	TickerType int32 `json:"tickerType,omitempty"`
 	TinyName string `json:"tinyName,omitempty"`
 	UpdateTime string `json:"updateTime,omitempty"`
-	WarningFrequency float32 `json:"warningFrequency,omitempty"`
-	WarningInterval float32 `json:"warningInterval,omitempty"`
-	WarningMode float32 `json:"warningMode,omitempty"`
+	WarningFrequency int32 `json:"warningFrequency,omitempty"`
+	WarningInterval int32 `json:"warningInterval,omitempty"`
+	WarningMode int32 `json:"warningMode,omitempty"`
 }

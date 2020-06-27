@@ -14,6 +14,6 @@ type GetTickerChartRequest struct {
 	// Number of bars to return
 	Count string `json:"count,omitempty"`
 	// Whether to include pre-market and afterhours bars. '1' is used for pre-market and after-hours bars.
-	ExtendTrading float32 `json:"extendTrading,omitempty"`
+	ExtendTrading int32 `json:"extendTrading,omitempty"`
 	Type string `json:"type,omitempty"`
 }

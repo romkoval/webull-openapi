@@ -11,7 +11,7 @@
 package openapi
 // GetFundamentalsResponseSingle struct for GetFundamentalsResponseSingle
 type GetFundamentalsResponseSingle struct {
-	CurrencyId float32 `json:"currencyId,omitempty"`
+	CurrencyId int32 `json:"currencyId,omitempty"`
 	DilutedEps string `json:"dilutedEps,omitempty"`
 	GrossProfit string `json:"grossProfit,omitempty"`
 	NetIncomeAfterTax string `json:"netIncomeAfterTax,omitempty"`

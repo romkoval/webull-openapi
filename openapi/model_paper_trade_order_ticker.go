@@ -9,8 +9,8 @@
  */
 
 package openapi
-// GetIsTradeableResponseData struct for GetIsTradeableResponseData
-type GetIsTradeableResponseData struct {
+// PaperTradeOrderTicker struct for PaperTradeOrderTicker
+type PaperTradeOrderTicker struct {
 	TickerId int32 `json:"tickerId,omitempty"`
 	Symbol string `json:"symbol,omitempty"`
 	Name string `json:"name,omitempty"`
@@ -29,9 +29,4 @@ type GetIsTradeableResponseData struct {
 	ExchangeTrade bool `json:"exchangeTrade,omitempty"`
 	DisExchangeCode string `json:"disExchangeCode,omitempty"`
 	DisSymbol string `json:"disSymbol,omitempty"`
-	TickerName string `json:"tickerName,omitempty"`
-	TickerType int32 `json:"tickerType,omitempty"`
-	ShowCode string `json:"showCode,omitempty"`
-	BrokerId int32 `json:"brokerId,omitempty"`
-	Types string `json:"types,omitempty"`
 }

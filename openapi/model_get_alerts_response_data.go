@@ -16,12 +16,12 @@ type GetAlertsResponseData struct {
 	EventWarning GetAlertsResponseEventWarning `json:"eventWarning,omitempty"`
 	ExchangeCode string `json:"exchangeCode,omitempty"`
 	ExchangeTrade bool `json:"exchangeTrade,omitempty"`
-	RegionId float32 `json:"regionId,omitempty"`
+	RegionId int32 `json:"regionId,omitempty"`
 	ShowCode string `json:"showCode,omitempty"`
-	TickerId float32 `json:"tickerId,omitempty"`
+	TickerId int32 `json:"tickerId,omitempty"`
 	TickerName string `json:"tickerName,omitempty"`
 	TickerSymbol string `json:"tickerSymbol,omitempty"`
-	TickerType float32 `json:"tickerType,omitempty"`
+	TickerType int32 `json:"tickerType,omitempty"`
 	TickerWarning GetAlertsResponseTickerWarning `json:"tickerWarning,omitempty"`
 	TinyName string `json:"tinyName,omitempty"`
 }

@@ -11,7 +11,7 @@
 package openapi
 // GetOptionQuotesRequest struct for GetOptionQuotesRequest
 type GetOptionQuotesRequest struct {
-	DerivativeIds float32 `json:"derivativeIds,omitempty"`
+	DerivativeIds int32 `json:"derivativeIds,omitempty"`
 	// tickerId
-	TickerId float32 `json:"tickerId,omitempty"`
+	TickerId int32 `json:"tickerId,omitempty"`
 }
