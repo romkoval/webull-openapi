@@ -18,7 +18,7 @@ type GetOrdersItemOrders struct {
 	CanCancel bool `json:"canCancel,omitempty"`
 	CanModify bool `json:"canModify,omitempty"`
 	CreateTime string `json:"createTime,omitempty"`
-	CreateTime0 int32 `json:"createTime0,omitempty"`
+	CreateTime0 int64 `json:"createTime0,omitempty"`
 	FilledQuantity string `json:"filledQuantity,omitempty"`
 	FilledTime string `json:"filledTime,omitempty"`
 	FilledTime0 int32 `json:"filledTime0,omitempty"`

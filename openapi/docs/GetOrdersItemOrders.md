@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **CanCancel** | **bool** |  | [optional] 
 **CanModify** | **bool** |  | [optional] 
 **CreateTime** | **string** |  | [optional] 
-**CreateTime0** | **int32** |  | [optional] 
+**CreateTime0** | **int64** |  | [optional] 
 **FilledQuantity** | **string** |  | [optional] 
 **FilledTime** | **string** |  | [optional] 
 **FilledTime0** | **int32** |  | [optional] 
