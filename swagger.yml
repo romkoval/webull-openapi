@@ -3233,144 +3233,148 @@ components:
           description: tickerId
           type: integer
     GetOrdersResponse:
-      items:
-        properties:
-          comboTickerType:
-            type: string
-          orders:
-            items:
-              properties:
-                action:
-                  $ref: '#/components/schemas/OrderSide'
-                  description: Order side
-                assetType:
-                  type: string
-                avgFilledPrice:
-                  type: string
-                brokerId:
-                  format: int32
-                  type: integer
-                canCancel:
-                  type: boolean
-                canModify:
-                  type: boolean
-                createTime:
-                  type: string
-                createTime0:
-                  format: int32
-                  type: integer
-                filledQuantity:
-                  type: string
-                filledTime:
-                  type: string
-                filledTime0:
-                  format: int32
-                  type: integer
-                filledValue:
-                  type: string
-                optionContractMultiplier:
-                  type: string
-                optionExercisePrice:
-                  type: string
-                orderId:
-                  format: int32
-                  type: integer
-                orderType:
-                  $ref: '#/components/schemas/OrderType'
-                relation:
-                  type: string
-                remainQuantity:
-                  type: string
-                statusCode:
-                  type: string
-                statusStr:
-                  type: string
-                symbol:
-                  type: string
-                ticker:
+      properties:
+        data:
+          items:
+            $ref: "#/components/schemas/GetOrdersItem"
+          type: array
+    GetOrdersItem:
+      properties:
+        comboTickerType:
+          type: string
+        orders:
+          items:
+            properties:
+              action:
+                $ref: '#/components/schemas/OrderSide'
+                description: Order side
+              assetType:
+                type: string
+              avgFilledPrice:
+                type: string
+              brokerId:
+                format: int32
+                type: integer
+              canCancel:
+                type: boolean
+              canModify:
+                type: boolean
+              createTime:
+                type: string
+              createTime0:
+                format: int32
+                type: integer
+              filledQuantity:
+                type: string
+              filledTime:
+                type: string
+              filledTime0:
+                format: int32
+                type: integer
+              filledValue:
+                type: string
+              optionContractMultiplier:
+                type: string
+              optionExercisePrice:
+                type: string
+              orderId:
+                format: int32
+                type: integer
+              orderType:
+                $ref: '#/components/schemas/OrderType'
+              relation:
+                type: string
+              remainQuantity:
+                type: string
+              statusCode:
+                type: string
+              statusStr:
+                type: string
+              symbol:
+                type: string
+              ticker:
+                properties:
+                  currencyCode:
+                    type: string
+                  currencyId:
+                    format: int32
+                    type: integer
+                  disExchangeCode:
+                    type: string
+                  disSymbol:
+                    type: string
+                  exchangeCode:
+                    type: string
+                  exchangeId:
+                    format: int32
+                    type: integer
+                  exchangeTrade:
+                    type: boolean
+                  extType:
+                    items:
+                      type: object
+                    type: array
+                  listStatus:
+                    format: int32
+                    type: integer
+                  name:
+                    type: string
+                  regionId:
+                    format: int32
+                    type: integer
+                  regionIsoCode:
+                    type: string
+                  regionName:
+                    type: string
+                  secType:
+                    items:
+                      format: int32
+                      type: integer
+                    type: array
+                  symbol:
+                    type: string
+                  tickerId:
+                    format: int32
+                    type: integer
+                  tinyName:
+                    type: string
+                  type:
+                    format: int32
+                    type: integer
+                type: object
+              tickerId:
+                format: int32
+                type: integer
+              tickerPriceDefineList:
+                items:
                   properties:
-                    currencyCode:
-                      type: string
-                    currencyId:
-                      format: int32
-                      type: integer
-                    disExchangeCode:
-                      type: string
-                    disSymbol:
-                      type: string
-                    exchangeCode:
-                      type: string
-                    exchangeId:
-                      format: int32
-                      type: integer
-                    exchangeTrade:
+                    containBegin:
                       type: boolean
-                    extType:
-                      items:
-                        type: object
-                      type: array
-                    listStatus:
-                      format: int32
-                      type: integer
-                    name:
+                    containEnd:
+                      type: boolean
+                    priceUnit:
                       type: string
-                    regionId:
-                      format: int32
-                      type: integer
-                    regionIsoCode:
+                    rangeBegin:
                       type: string
-                    regionName:
-                      type: string
-                    secType:
-                      items:
-                        format: int32
-                        type: integer
-                      type: array
-                    symbol:
+                    rangeEnd:
                       type: string
                     tickerId:
                       format: int32
                       type: integer
-                    tinyName:
-                      type: string
-                    type:
-                      format: int32
-                      type: integer
                   type: object
-                tickerId:
-                  format: int32
-                  type: integer
-                tickerPriceDefineList:
-                  items:
-                    properties:
-                      containBegin:
-                        type: boolean
-                      containEnd:
-                        type: boolean
-                      priceUnit:
-                        type: string
-                      rangeBegin:
-                        type: string
-                      rangeEnd:
-                        type: string
-                      tickerId:
-                        format: int32
-                        type: integer
-                    type: object
-                  type: array
-                timeInForce:
-                  $ref: '#/components/schemas/TimeInForce'
-                totalQuantity:
-                  type: string
-                updateTime:
-                  type: string
-                updateTime0:
-                  type: number
-              type: object
-            type: array
-          outsideRegularTradingHour:
-            type: boolean
-      type: array
+                type: array
+              timeInForce:
+                $ref: '#/components/schemas/TimeInForce'
+              totalQuantity:
+                type: string
+              updateTime:
+                type: string
+              updateTime0:
+                type: number
+            type: object
+          type: array
+        outsideRegularTradingHour:
+          type: boolean
     GetSecurityAccountsResponse:
       properties:
         data:
