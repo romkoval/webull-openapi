@@ -3464,64 +3464,82 @@ components:
         success:
           type: boolean
     GetStockAnalysisResponse:
-      properties:
-        forecastEps:
-          properties:
-            currencyName:
-              type: string
-            id:
-              type: string
-            points:
-              items:
-                properties:
-                  valueActual:
-                    type: number
-                  valueForecast:
-                    type: number
-                  xAxis:
-                    type: string
-                type: object
-              type: array
-            title:
-              type: string
+      properties: 
+        rating: 
           type: object
-        rating:
-          properties:
-            ratingAnalysis:
-              type: string
-            ratingAnalysisTotals:
-              format: int32
+          properties: 
+            ratingAnalysisTotals: 
               type: integer
-            ratingSpread:
-              properties:
-                buy:
-                  format: int32
-                  type: integer
-                hold:
-                  format: int32
-                  type: integer
-                sell:
-                  format: int32
-                  type: integer
-                strongBuy:
-                  format: int32
-                  type: integer
-                underPerform:
-                  format: int32
-                  type: integer
+              format: int32
+              example: 39
+            ratingAnalysis: 
+              type: string
+              example: buy
+            ratingSpread: 
               type: object
+              properties: 
+                underPerform: 
+                  type: integer
+                  format: int32
+                  example: 2
+                buy: 
+                  type: integer
+                  format: int32
+                  example: 17
+                sell: 
+                  type: integer
+                  format: int32
+                  example: 0
+                strongBuy: 
+                  type: integer
+                  format: int32
+                  example: 12
+                hold: 
+                  type: integer
+                  format: int32
+                  example: 8
+        targetPrice: 
           type: object
-        targetPrice:
-          properties:
-            current:
+          properties: 
+            low: 
               type: string
-            high:
+              example: 195.43
+            high: 
               type: string
-            low:
+              example: 425.00
+            current: 
               type: string
-            mean:
+              example: 353.63
+            mean: 
               type: string
+              example: 345.35
+        forecastEps: 
           type: object
+          properties: 
+            id: 
+              type: string
+              example: EPS
+            title: 
+              type: string
+              example: EPS
+            currencyName: 
+              type: string
+              example: USD
+            points: 
+              type: array
+              items: 
+                type: object
+                properties: 
+                  xAxis: 
+                    type: string
+                    example: Q3 2019
+                  valueActual: 
+                    type: number
+                    example: 2.18
+                  valueForecast: 
+                    type: number
+                    example: 2.1
+
     GetStockOptionsResponse:
       properties:
         change:

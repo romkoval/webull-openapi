@@ -11,8 +11,8 @@
 package openapi
 // GetStockAnalysisResponseForecastEps struct for GetStockAnalysisResponseForecastEps
 type GetStockAnalysisResponseForecastEps struct {
-	CurrencyName string `json:"currencyName,omitempty"`
 	Id string `json:"id,omitempty"`
-	Points []GetStockAnalysisResponseForecastEpsPoints `json:"points,omitempty"`
 	Title string `json:"title,omitempty"`
+	CurrencyName string `json:"currencyName,omitempty"`
+	Points []GetStockAnalysisResponseForecastEpsPoints `json:"points,omitempty"`
 }
