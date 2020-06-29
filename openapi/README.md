@@ -46,6 +46,8 @@ Class | Method | HTTP request | Description
 *OptionsApi* | [**PlaceOptionOrder**](docs/OptionsApi.md#placeoptionorder) | **Post** /v2/option/placeOrder/{account_id} | placeOptionOrder
 *OptionsApi* | [**ReplaceOptionOrder**](docs/OptionsApi.md#replaceoptionorder) | **Post** /v2/option/replaceOrder/{account_id} | replaceOptionOrder
 *OrderApi* | [**CancelOrder**](docs/OrderApi.md#cancelorder) | **Post** /order/{account_id}/cancelStockOrder/ | cancelOrder
+*OrderApi* | [**CancelOtocoOrder**](docs/OrderApi.md#cancelotocoorder) | **Post** /v2/corder/stock/modify/{account_id} | cancelOtocoOrder
+*OrderApi* | [**CheckOtocoOrder**](docs/OrderApi.md#checkotocoorder) | **Get** /v2/corder/stock/check/{account_id} | checkOtocoOrder
 *OrderApi* | [**GetOrders**](docs/OrderApi.md#getorders) | **Get** /v2/option/list | getOrders
 *OrderApi* | [**IsTradeable**](docs/OrderApi.md#istradeable) | **Get** /ticker/broker/permissionV2 | isTradeable
 *OrderApi* | [**ModifyOrder**](docs/OrderApi.md#modifyorder) | **Post** /order/{account_id}/modifyStockOrder/{order_id} | modifyOrder
@@ -140,6 +142,7 @@ Class | Method | HTTP request | Description
  - [GetTickerChartResponse](docs/GetTickerChartResponse.md)
  - [GetTickerChartResponseDates](docs/GetTickerChartResponseDates.md)
  - [GetUserDetailsResponse](docs/GetUserDetailsResponse.md)
+ - [InlineObject](docs/InlineObject.md)
  - [Leg](docs/Leg.md)
  - [LookupTickerResponse](docs/LookupTickerResponse.md)
  - [LookupTickerResponseList](docs/LookupTickerResponseList.md)
@@ -158,6 +161,7 @@ Class | Method | HTTP request | Description
  - [PostLoginResponseExtInfo](docs/PostLoginResponseExtInfo.md)
  - [PostLoginResponseSettings](docs/PostLoginResponseSettings.md)
  - [PostOptionOrderRequest](docs/PostOptionOrderRequest.md)
+ - [PostOtocoOrderRequest](docs/PostOtocoOrderRequest.md)
  - [PostOtocoStockOrderRequest](docs/PostOtocoStockOrderRequest.md)
  - [PostPaperTradeResponse](docs/PostPaperTradeResponse.md)
  - [PostRefreshTokenResponse](docs/PostRefreshTokenResponse.md)

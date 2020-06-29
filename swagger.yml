@@ -1930,142 +1930,148 @@ paths:
       summary: getDividends
       tags:
         - dividends
-  # '/v2/corder/stock/check/{account_id}':
-  #   get:
-  #     deprecated: false
-  #     description: Check OTOCO order
-  #     operationId: checkOtocoOrder
-  #     parameters:
-  #       - in: header
-  #         name: did
-  #         description: "Device ID"
-  #         required: true
-  #         schema:
-  #           type: string
-  #           default: "your_device"
-  #       - in: header
-  #         name: access_token
-  #         description: "Access token"
-  #         required: true
-  #         schema:
-  #           type: string
-  #       - description: Account ID
-  #         in: path
-  #         name: account_id
-  #         required: true
-  #         schema:
-  #           type: string
-  #     responses:
-  #       '200':
-  #         content:
-  #           application/json:
-  #             schema:
-  #               items:
-  #                 $ref: '#/components/schemas/Anything'
-  #         description: OK
-  #       '401':
-  #         content:
-  #           application/json:
-  #             schema:
-  #               $ref: '#/components/schemas/ErrorBody'
-  #         description: Unauthorized
-  #       '403':
-  #         content:
-  #           application/json:
-  #             schema:
-  #               $ref: '#/components/schemas/ErrorBody'
-  #         description: Forbidden
-  #       '404':
-  #         content:
-  #           application/json:
-  #             schema:
-  #               $ref: '#/components/schemas/ErrorBody'
-  #         description: Not Found
-  #     servers:
-  #       - url: 'https://tradeapi.webulltrade.com/api/trade'
-  #     summary: checkOtocoOrder
-  #     tags:
-  #       - order
-  # '/v2/corder/stock/modify/{account_id}':
-  #   post:
-  #     deprecated: false
-  #     description: Cancel order
-  #     operationId: cancelOtocoOrder
-  #     requestBody:
-  #       required: true
-  #       content:
-  #         application/json:
-  #           schema:
-  #             type: object
-  #             properties:
-  #               serialId:
-  #                 type: string
-  #               cancelOrders:
-  #                 items:
-  #                   type: string
-  #     parameters:
-  #       - in: header
-  #         name: did
-  #         description: "Device ID"
-  #         required: true
-  #         schema:
-  #           type: string
-  #           default: "your_device"
-  #       - in: header
-  #         name: access_token
-  #         description: "Access token"
-  #         required: true
-  #         schema:
-  #           type: string
-  #       - description: Trade token
-  #         in: header
-  #         name: t_token
-  #         required: true
-  #         schema:
-  #           type: string
-  #       - description: Time
-  #         in: header
-  #         name: t_time
-  #         required: true
-  #         schema:
-  #           type: string
-  #       - description: Account ID
-  #         in: path
-  #         name: account_id
-  #         required: true
-  #         schema:
-  #           type: string
-  #     responses:
-  #       '200':
-  #         content:
-  #           application/json:
-  #             schema:
-  #               items:
-  #                 $ref: '#/components/schemas/Anything'
-  #         description: OK
-  #       '401':
-  #         content:
-  #           application/json:
-  #             schema:
-  #               $ref: '#/components/schemas/ErrorBody'
-  #         description: Unauthorized
-  #       '403':
-  #         content:
-  #           application/json:
-  #             schema:
-  #               $ref: '#/components/schemas/ErrorBody'
-  #         description: Forbidden
-  #       '404':
-  #         content:
-  #           application/json:
-  #             schema:
-  #               $ref: '#/components/schemas/ErrorBody'
-  #         description: Not Found
-  #     servers:
-  #       - url: 'https://tradeapi.webulltrade.com/api/trade'
-  #     summary: cancelOtocoOrder
-  #     tags:
-  #       - order
+  '/v2/corder/stock/check/{account_id}':
+    get:
+      deprecated: false
+      description: Check OTOCO order
+      operationId: checkOtocoOrder
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PostOtocoOrderRequest"
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+        - description: Account ID
+          in: path
+          name: account_id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Anything'
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://tradeapi.webulltrade.com/api/trade'
+      summary: checkOtocoOrder
+      tags:
+        - order
+  '/v2/corder/stock/modify/{account_id}':
+    post:
+      deprecated: false
+      description: Cancel order
+      operationId: cancelOtocoOrder
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                serialId:
+                  type: string
+                cancelOrders:
+                  items:
+                    type: string
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+        - description: Trade token
+          in: header
+          name: t_token
+          required: true
+          schema:
+            type: string
+        - description: Time
+          in: header
+          name: t_time
+          required: true
+          schema:
+            type: string
+        - description: Account ID
+          in: path
+          name: account_id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Anything'
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://tradeapi.webulltrade.com/api/trade'
+      summary: cancelOtocoOrder
+      tags:
+        - order
   '/v2/corder/stock/place/{account_id}':
     post:
       deprecated: false
@@ -2075,7 +2081,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PostOtocoStockOrderRequest'
+              $ref: '#/components/schemas/PostOtocoOrderRequest'
       parameters:
         - in: header
           name: did
@@ -4648,6 +4654,12 @@ components:
         orderId:
           type: integer
           format: int32
+    PostOtocoOrderRequest:
+      properties:
+        newOrders: 
+          type: array
+          items: 
+            $ref: "#/components/schemas/PostStockOrderRequest"
     Transfer:
       properties:
         amount:
