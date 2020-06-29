@@ -11,7 +11,7 @@
 package openapi
 // GetStockAnalysisResponseForecastEpsPoints struct for GetStockAnalysisResponseForecastEpsPoints
 type GetStockAnalysisResponseForecastEpsPoints struct {
-	XAxis string `json:"xAxis,omitempty"`
 	ValueActual float32 `json:"valueActual,omitempty"`
 	ValueForecast float32 `json:"valueForecast,omitempty"`
+	XAxis string `json:"xAxis,omitempty"`
 }

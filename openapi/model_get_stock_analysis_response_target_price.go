@@ -11,8 +11,8 @@
 package openapi
 // GetStockAnalysisResponseTargetPrice struct for GetStockAnalysisResponseTargetPrice
 type GetStockAnalysisResponseTargetPrice struct {
-	Low string `json:"low,omitempty"`
-	High string `json:"high,omitempty"`
 	Current string `json:"current,omitempty"`
+	High string `json:"high,omitempty"`
+	Low string `json:"low,omitempty"`
 	Mean string `json:"mean,omitempty"`
 }

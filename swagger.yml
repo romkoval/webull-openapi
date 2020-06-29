@@ -545,9 +545,7 @@ paths:
           content:
             application/json:
               schema:
-                properties:
-                  orderId:
-                    type: number
+                $ref:  "#/components/schemas/PostTradeResponse"
           description: OK
         '201':
           content:
@@ -627,7 +625,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GetPaperTradeOrdersResponse"
+                $ref: "#/components/schemas/GetPaperOrdersResponse"
           description: OK
         '401':
           content:
@@ -817,7 +815,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/PostPaperTradeResponse"
+                $ref: "#/components/schemas/PostPaperOrderResponse"
           description: OK
         '401':
           content:
@@ -1931,7 +1929,7 @@ paths:
       tags:
         - dividends
   '/v2/corder/stock/check/{account_id}':
-    get:
+    post:
       deprecated: false
       description: Check OTOCO order
       operationId: checkOtocoOrder
@@ -2564,8 +2562,71 @@ components:
       enum:
         - 1
         - 2
-      type: integer
       format: int32
+      type: integer
+    ActiveGainersLosers:
+      properties:
+        change:
+          type: string
+        changeRatio:
+          type: string
+        close:
+          type: string
+        currencyId:
+          format: int32
+          type: integer
+        derivativeSupport:
+          format: int32
+          type: integer
+        disExchangeCode:
+          type: string
+        disSymbol:
+          type: string
+        exchangeCode:
+          type: string
+        exchangeId:
+          format: int32
+          type: integer
+        listStatus:
+          format: int32
+          type: integer
+        marketValue:
+          type: string
+        name:
+          type: string
+        pChRatio:
+          type: string
+        pChange:
+          type: string
+        pPrice:
+          type: string
+        regionCode:
+          type: string
+        regionId:
+          format: int32
+          type: integer
+        secType:
+          items:
+            format: int32
+            type: integer
+          type: array
+        status:
+          type: string
+        symbol:
+          type: string
+        template:
+          type: string
+        tickerId:
+          format: int32
+          type: integer
+        turnoverRate:
+          type: string
+        type:
+          format: int32
+          type: integer
+        volume:
+          type: string
+      type: object
     AddAlertRequest:
       properties:
         disExchangeCode:
@@ -2582,9 +2643,9 @@ components:
               items:
                 $ref: '#/components/schemas/SmartRule'
             tickerId:
-              type: integer
               default: 913243251
               format: int32
+              type: integer
           type: object
         exchangeCode:
           type: string
@@ -2593,9 +2654,9 @@ components:
         showCode:
           type: string
         tickerId:
-          type: integer
-          format: int32
           default: 913243251
+          format: int32
+          type: integer
         tickerName:
           type: string
         tickerSymbol:
@@ -2610,19 +2671,19 @@ components:
               items:
                 $ref: '#/components/schemas/SmartRule'
             tickerId:
-              type: integer
               default: 913243251
               format: int32
+              type: integer
             warningFrequency:
               default: 1
               description: '1 is once a day, 2 is once a minute'
-              type: integer
               format: int32
+              type: integer
             warningInterval:
               default: 1
               description: '1 is once, 0 is repeating'
-              type: integer
               format: int32
+              type: integer
           type: object
     Alert:
       properties:
@@ -2642,16 +2703,12 @@ components:
         warningInput:
           type: object
       type: object
-    # AlertRequest:
-    #   properties:
-    #     schema:
-    #       anyOf:
-    #         - $ref: '#/components/schemas/AddAlertRequest'
-    #         - $ref: '#/components/schemas/RemoveAlertRequest'
     Anything:
       type: object
     Auth:
       properties:
+        MFA:
+          type: string
         access_token:
           title: accessToken
           type: string
@@ -2666,8 +2723,6 @@ components:
         username:
           type: string
         uuid:
-          type: string
-        MFA:
           type: string
       type: object
     Direction:
@@ -2740,13 +2795,13 @@ components:
         brokerAccountId:
           type: string
         brokerId:
-          type: integer
           format: int32
+          type: integer
         currency:
           type: string
         currencyId:
-          type: integer
           format: int32
+          type: integer
         deposits:
           items:
             type: object
@@ -2758,8 +2813,8 @@ components:
             type: object
           type: array
         openOrderSize:
-          type: integer
           format: int32
+          type: integer
         openOrders:
           items:
             type: object
@@ -2772,8 +2827,8 @@ components:
               assetType:
                 type: string
               brokerId:
-                type: integer
                 format: int32
+                type: integer
               cost:
                 type: string
               costPrice:
@@ -2783,8 +2838,8 @@ components:
               exchangeRate:
                 type: string
               id:
-                type: integer
                 format: int32
+                type: integer
               lastOpenTime:
                 type: string
               lastPrice:
@@ -2802,8 +2857,8 @@ components:
                   currencyCode:
                     type: string
                   currencyId:
-                    type: integer
                     format: int32
+                    type: integer
                   disExchangeCode:
                     type: string
                   disSymbol:
@@ -2811,39 +2866,39 @@ components:
                   exchangeCode:
                     type: string
                   exchangeId:
-                    type: integer
                     format: int32
+                    type: integer
                   extType:
                     items:
                       type: object
                     type: array
                   listStatus:
-                    type: integer
                     format: int32
+                    type: integer
                   name:
                     type: string
                   regionId:
-                    type: integer
                     format: int32
+                    type: integer
                   regionIsoCode:
                     type: string
                   regionName:
                     type: string
                   secType:
                     items:
-                      type: integer
                       format: int32
+                      type: integer
                     type: array
                   symbol:
                     type: string
                   tickerId:
-                    type: integer
                     format: int32
+                    type: integer
                   tinyName:
                     type: string
                   type:
-                    type: integer
                     format: int32
+                    type: integer
                 type: object
               unrealizedProfitLoss:
                 type: string
@@ -2856,8 +2911,170 @@ components:
         professional:
           type: boolean
         secAccountId:
-          type: integer
           format: int32
+          type: integer
+        showUpgrade:
+          type: boolean
+        totalCost:
+          type: string
+        unrealizedProfitLoss:
+          type: string
+        unrealizedProfitLossBase:
+          type: number
+        unrealizedProfitLossRate:
+          type: string
+        warning:
+          type: boolean
+    GetAccountResponse:
+      properties:
+        accountMembers:
+          items:
+            properties:
+              key:
+                type: string
+              value:
+                type: string
+            type: object
+          type: array
+        accountType:
+          type: string
+        banners:
+          items:
+            properties:
+              imgUrl:
+                type: string
+              link:
+                type: string
+              subTitle:
+                type: string
+              title:
+                type: string
+              type:
+                type: string
+            type: object
+          type: array
+        brokerAccountId:
+          type: string
+        brokerId:
+          format: int32
+          type: integer
+        currency:
+          type: string
+        currencyId:
+          format: int32
+          type: integer
+        deposits:
+          items:
+            type: object
+          type: array
+        netLiquidation:
+          type: string
+        openIpoOrders:
+          items:
+            type: object
+          type: array
+        openOrderSize:
+          format: int32
+          type: integer
+        openOrders:
+          items:
+            type: object
+          type: array
+        pdt:
+          type: boolean
+        positions:
+          items:
+            properties:
+              assetType:
+                type: string
+              brokerId:
+                format: int32
+                type: integer
+              cost:
+                type: string
+              costPrice:
+                type: string
+              currency:
+                type: string
+              exchangeRate:
+                type: string
+              id:
+                format: int32
+                type: integer
+              lastOpenTime:
+                type: string
+              lastPrice:
+                type: string
+              lock:
+                type: boolean
+              marketValue:
+                type: string
+              position:
+                type: string
+              positionProportion:
+                type: string
+              ticker:
+                properties:
+                  currencyCode:
+                    type: string
+                  currencyId:
+                    format: int32
+                    type: integer
+                  disExchangeCode:
+                    type: string
+                  disSymbol:
+                    type: string
+                  exchangeCode:
+                    type: string
+                  exchangeId:
+                    format: int32
+                    type: integer
+                  extType:
+                    items:
+                      type: object
+                    type: array
+                  listStatus:
+                    format: int32
+                    type: integer
+                  name:
+                    type: string
+                  regionId:
+                    format: int32
+                    type: integer
+                  regionIsoCode:
+                    type: string
+                  regionName:
+                    type: string
+                  secType:
+                    items:
+                      format: int32
+                      type: integer
+                    type: array
+                  symbol:
+                    type: string
+                  tickerId:
+                    format: int32
+                    type: integer
+                  tinyName:
+                    type: string
+                  type:
+                    format: int32
+                    type: integer
+                type: object
+              unrealizedProfitLoss:
+                type: string
+              unrealizedProfitLossRate:
+                type: string
+              updatePositionTimeStamp:
+                format: int64
+                type: integer
+            type: object
+          type: array
+        professional:
+          type: boolean
+        secAccountId:
+          format: int32
+          type: integer
         showUpgrade:
           type: boolean
         totalCost:
@@ -2871,72 +3088,9 @@ components:
         warning:
           type: boolean
     GetActiveGainersLosersResponse:
-      type: array
       items:
-        $ref: "#/components/schemas/ActiveGainersLosers"
-    ActiveGainersLosers:
-      properties:
-        change:
-          type: string
-        changeRatio:
-          type: string
-        close:
-          type: string
-        currencyId:
-          type: integer
-          format: int32
-        derivativeSupport:
-          type: integer
-          format: int32
-        disExchangeCode:
-          type: string
-        disSymbol:
-          type: string
-        exchangeCode:
-          type: string
-        exchangeId:
-          type: integer
-          format: int32
-        listStatus:
-          type: integer
-          format: int32
-        marketValue:
-          type: string
-        name:
-          type: string
-        pChRatio:
-          type: string
-        pChange:
-          type: string
-        pPrice:
-          type: string
-        regionCode:
-          type: string
-        regionId:
-          type: integer
-          format: int32
-        secType:
-          items:
-            type: integer
-            format: int32
-          type: array
-        status:
-          type: string
-        symbol:
-          type: string
-        template:
-          type: string
-        tickerId:
-          type: integer
-          format: int32
-        turnoverRate:
-          type: string
-        type:
-          type: integer
-          format: int32
-        volume:
-          type: string
-      type: object
+        $ref: '#/components/schemas/ActiveGainersLosers'
+      type: array
     GetAlertsResponse:
       properties:
         code:
@@ -2953,11 +3107,11 @@ components:
                   del:
                     type: boolean
                   exchangeId:
-                    type: integer
                     format: int32
+                    type: integer
                   id:
-                    type: integer
                     format: int32
+                    type: integer
                   remove:
                     type: boolean
                   rules:
@@ -2970,34 +3124,34 @@ components:
                       type: object
                     type: array
                   tickerId:
-                    type: integer
                     format: int32
+                    type: integer
                   tickerType:
-                    type: integer
                     format: int32
+                    type: integer
                   userId:
-                    type: integer
                     format: int32
+                    type: integer
                 type: object
               exchangeCode:
                 type: string
               exchangeTrade:
                 type: boolean
               regionId:
-                type: integer
                 format: int32
+                type: integer
               showCode:
                 type: string
               tickerId:
-                type: integer
                 format: int32
+                type: integer
               tickerName:
                 type: string
               tickerSymbol:
                 type: string
               tickerType:
-                type: integer
                 format: int32
+                type: integer
               tickerWarning:
                 properties:
                   bizTimestamp:
@@ -3013,16 +3167,16 @@ components:
                   exchangeTrade:
                     type: boolean
                   regionId:
-                    type: integer
                     format: int32
+                    type: integer
                   rules:
                     items:
                       properties:
                         active:
                           type: string
                         alertId:
-                          type: integer
                           format: int32
+                          type: integer
                         field:
                           type: string
                         remark:
@@ -3206,6 +3360,74 @@ components:
                 type: string
             type: object
           type: array
+    GetIsTradeableResponse:
+      properties:
+        data:
+          items:
+            properties:
+              brokerId:
+                format: int32
+                type: integer
+              currencyCode:
+                type: string
+              currencyId:
+                format: int32
+                type: integer
+              disExchangeCode:
+                type: string
+              disSymbol:
+                type: string
+              exchangeCode:
+                type: string
+              exchangeId:
+                format: int32
+                type: integer
+              exchangeTrade:
+                type: boolean
+              extType:
+                items:
+                  type: object
+                type: array
+              listStatus:
+                format: int32
+                type: integer
+              name:
+                type: string
+              regionId:
+                format: int32
+                type: integer
+              regionIsoCode:
+                type: string
+              regionName:
+                type: string
+              secType:
+                items:
+                  format: int32
+                  type: integer
+                type: array
+              showCode:
+                type: string
+              symbol:
+                type: string
+              tickerId:
+                format: int32
+                type: integer
+              tickerName:
+                type: string
+              tickerType:
+                format: int32
+                type: integer
+              tinyName:
+                type: string
+              type:
+                format: int32
+                type: integer
+              types:
+                type: string
+            type: object
+          type: array
+        success:
+          type: boolean
     GetNewsResponse:
       properties:
         items:
@@ -3235,15 +3457,31 @@ components:
           format: int32
           type: integer
         tickerId:
-          format: int32
           description: tickerId
+          format: int32
           type: integer
-    GetOrdersResponse:
+    GetOptionsQuotesResponse:
       properties:
         data:
           items:
-            $ref: "#/components/schemas/GetOrdersItem"
+            type: object
           type: array
+        disExchangeCode:
+          example: NYSEARCA
+          type: string
+        disSymbol:
+          example: SPY
+          type: string
+        name:
+          example: SPDR® S&P 500 ETF Trust
+          type: string
+        symbol:
+          example: SPY
+          type: string
+        tickerId:
+          example: 913243251
+          format: int32
+          type: integer
     GetOrdersItem:
       properties:
         comboTickerType:
@@ -3381,6 +3619,20 @@ components:
           type: array
         outsideRegularTradingHour:
           type: boolean
+    GetOrdersResponse:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/GetOrdersItem'
+          type: array
+    GetPaperAccountsResponse:
+      items:
+        $ref: components/schemas/PaperAccount
+      type: array
+    GetPaperOrdersResponse:
+      items:
+        $ref: components/schemas/PaperOrder
+      type: array
     GetSecurityAccountsResponse:
       properties:
         data:
@@ -3474,82 +3726,81 @@ components:
         success:
           type: boolean
     GetStockAnalysisResponse:
-      properties: 
-        rating: 
-          type: object
-          properties: 
-            ratingAnalysisTotals: 
-              type: integer
-              format: int32
-              example: 39
-            ratingAnalysis: 
-              type: string
-              example: buy
-            ratingSpread: 
-              type: object
-              properties: 
-                underPerform: 
-                  type: integer
-                  format: int32
-                  example: 2
-                buy: 
-                  type: integer
-                  format: int32
-                  example: 17
-                sell: 
-                  type: integer
-                  format: int32
-                  example: 0
-                strongBuy: 
-                  type: integer
-                  format: int32
-                  example: 12
-                hold: 
-                  type: integer
-                  format: int32
-                  example: 8
-        targetPrice: 
-          type: object
-          properties: 
-            low: 
-              type: string
-              example: 195.43
-            high: 
-              type: string
-              example: 425.00
-            current: 
-              type: string
-              example: 353.63
-            mean: 
-              type: string
-              example: 345.35
-        forecastEps: 
-          type: object
-          properties: 
-            id: 
-              type: string
-              example: EPS
-            title: 
-              type: string
-              example: EPS
-            currencyName: 
-              type: string
+      properties:
+        forecastEps:
+          properties:
+            currencyName:
               example: USD
-            points: 
-              type: array
-              items: 
-                type: object
-                properties: 
-                  xAxis: 
-                    type: string
-                    example: Q3 2019
-                  valueActual: 
-                    type: number
+              type: string
+            id:
+              example: EPS
+              type: string
+            points:
+              items:
+                properties:
+                  valueActual:
                     example: 2.18
-                  valueForecast: 
                     type: number
+                  valueForecast:
                     example: 2.1
-
+                    type: number
+                  xAxis:
+                    example: Q3 2019
+                    type: string
+                type: object
+              type: array
+            title:
+              example: EPS
+              type: string
+          type: object
+        rating:
+          properties:
+            ratingAnalysis:
+              example: buy
+              type: string
+            ratingAnalysisTotals:
+              example: 39
+              format: int32
+              type: integer
+            ratingSpread:
+              properties:
+                buy:
+                  example: 17
+                  format: int32
+                  type: integer
+                hold:
+                  example: 8
+                  format: int32
+                  type: integer
+                sell:
+                  example: 0
+                  format: int32
+                  type: integer
+                strongBuy:
+                  example: 12
+                  format: int32
+                  type: integer
+                underPerform:
+                  example: 2
+                  format: int32
+                  type: integer
+              type: object
+          type: object
+        targetPrice:
+          properties:
+            current:
+              example: 353.63
+              type: string
+            high:
+              example: 425
+              type: string
+            low:
+              example: 195.43
+              type: string
+            mean:
+              example: 345.35
+              type: string
+          type: object
     GetStockOptionsResponse:
       properties:
         change:
@@ -3691,8 +3942,8 @@ components:
         extendTrading:
           default: 1
           description: Whether to include pre-market and afterhours bars. '1' is used for pre-market and after-hours bars.
-          type: integer
           format: int32
+          type: integer
         type:
           enum:
             - m1
@@ -3800,75 +4051,75 @@ components:
       type: object
     LookupTickerResponse:
       properties:
-        categoryId: 
+        categoryId:
+          example: 0
           format: int32
           type: integer
-          example: 0
-        categoryName: 
-          type: string
+        categoryName:
           example: 综合
-        hasMore: 
+          type: string
+        hasMore:
           type: boolean
-        list: 
-          type: array
-          items: 
-            type: object
-            properties: 
-              tickerId:
-                format: int32
-                type: integer
-                example: 913243251
-              exchangeId: 
-                type: integer
-                format: int32
-                example: 34
-              type: 
-                type: integer
-                format: int32
-                example: 3
-              secType: 
-                type: array
-                items: 
-                  type: integer
-                  format: int32
-                  example: 1
-              regionId:
-                type: integer
-                format: int32
-                example: 6
-              regionCode: 
-                type: string
-                example: US
+        list:
+          items:
+            properties:
               currencyId:
-                format: int32
-                type: integer
                 example: 247
-              name: 
-                type: string
-                example: SPDR® S&P 500 ETF Trust
-              symbol: 
-                type: string
-                example: SPY
-              disSymbol: 
-                type: string
-                example: SPY
-              disExchangeCode: 
-                type: string
-                example: NYSEARCA
-              exchangeCode: 
-                type: string
-                example: PSE
-              listStatus: 
-                type: integer
                 format: int32
-                example: 1
-              template: 
-                type: string
-                example: etf
+                type: integer
               derivativeSupport:
+                example: 1
                 format: int32
                 type: integer
+              disExchangeCode:
+                example: NYSEARCA
+                type: string
+              disSymbol:
+                example: SPY
+                type: string
+              exchangeCode:
+                example: PSE
+                type: string
+              exchangeId:
+                example: 34
+                format: int32
+                type: integer
+              listStatus:
                 example: 1
+                format: int32
+                type: integer
+              name:
+                example: SPDR® S&P 500 ETF Trust
+                type: string
+              regionCode:
+                example: US
+                type: string
+              regionId:
+                example: 6
+                format: int32
+                type: integer
+              secType:
+                items:
+                  example: 1
+                  format: int32
+                  type: integer
+                type: array
+              symbol:
+                example: SPY
+                type: string
+              template:
+                example: etf
+                type: string
+              tickerId:
+                example: 913243251
+                format: int32
+                type: integer
+              type:
+                example: 3
+                format: int32
+                type: integer
+            type: object
+          type: array
     OptionOrder:
       properties:
         action:
@@ -3928,15 +4179,144 @@ components:
         - Failed
         - Working
       type: string
+    OrderType:
+      description: 'Order type, like: Limit (LMT), Stop (STP), and Stop Limit (STP LMT).'
+      enum:
+        - LMT
+        - STP
+        - STP LMT
+        - MKT
+    PaperAccount:
+      properties:
+        currency:
+          type: string
+        currencyId:
+          format: int32
+          type: integer
+        id:
+          format: int32
+          type: integer
+        orderTypes:
+          items:
+            $ref: '#/components/schemas/OrderType'
+          type: array
+        paperId:
+          format: int32
+          type: integer
+        paperName:
+          type: string
+        paperTickerPoolCode:
+          type: string
+        paperType:
+          format: int32
+          type: integer
+        status:
+          format: int32
+          type: integer
+        supportOutsideRth:
+          type: boolean
+        timeInForces:
+          items:
+            type: string
+          type: array
+    PaperOrder:
+      properties:
+        action:
+          $ref: '#/components/schemas/OrderSide'
+          description: Order side
+        canCancel:
+          type: boolean
+        canModify:
+          type: boolean
+        createTime:
+          type: string
+        createTime0:
+          format: int64
+          type: integer
+        filledQuantity:
+          type: string
+        lmtPrice:
+          type: string
+        orderId:
+          format: int32
+          type: integer
+        orderType:
+          $ref: '#/components/schemas/OrderType'
+        outsideRegularTradingHour:
+          type: boolean
+        paperId:
+          format: int32
+          type: integer
+        placedTime:
+          type: string
+        status:
+          type: string
+        statusStr:
+          type: string
+        ticker:
+          properties:
+            currencyCode:
+              type: string
+            currencyId:
+              format: int32
+              type: integer
+            disExchangeCode:
+              type: string
+            disSymbol:
+              type: string
+            exchangeCode:
+              type: string
+            exchangeId:
+              format: int32
+              type: integer
+            exchangeTrade:
+              type: boolean
+            extType:
+              items:
+                type: object
+              type: array
+            listStatus:
+              format: int32
+              type: integer
+            name:
+              type: string
+            regionId:
+              format: int32
+              type: integer
+            regionIsoCode:
+              type: string
+            regionName:
+              type: string
+            secType:
+              items:
+                format: int32
+                type: integer
+              type: array
+            symbol:
+              type: string
+            tickerId:
+              format: int32
+              type: integer
+            tinyName:
+              type: string
+            type:
+              format: int32
+              type: integer
+          type: object
+        timeInForce:
+          $ref: '#/components/schemas/TimeInForce'
+        totalQuantity:
+          type: string
+      type: object
     PostLoginParametersRequest:
       properties:
         account:
           description: username for your account
           type: string
         accountType:
+          $ref: '#/components/schemas/AccountType'
           default: 2
           description: '2 is email, 1 is phone'
-          $ref: '#/components/schemas/AccountType'
         deviceId:
           type: string
         deviceName:
@@ -3950,136 +4330,136 @@ components:
           type: object
         grade:
           default: 1
-          type: integer
           format: int32
+          type: integer
         pwd:
           description: pwd = md5(passwordHash + password)
           type: string
         regionId:
           default: 1
-          type: integer
           format: int32
+          type: integer
     PostLoginResponse:
-      properties: 
-        extInfo: 
-          type: object
-          properties: 
-            userPwdFlag: 
-              type: string
-              example: 1
-        accessToken: 
-          type: string
+      properties:
+        accessToken:
           example: dc_us1.abc123-def456
-        uuid: 
           type: string
-          example: 170a86831bd58e0a7ce33cf414aa467ed431ee69999
-        refreshToken: 
-          type: string
-          example: 172f863677b-811148238f3344c68c5d4f50ee69999
-        tokenExpireTime: 
-          type: string
-          example: 2020-08-27T00:46:03.643+0000
-        firstTimeOfThird: 
-          type: boolean
-        registerAddress: 
-          type: integer
-          format: int32
-          example: 6
-        settings: 
+        extInfo:
+          properties:
+            userPwdFlag:
+              example: 1
+              type: string
           type: object
-          properties: 
-            id: 
-              type: number
-              example: 123
-            userId: 
-              type: integer
+        firstTimeOfThird:
+          type: boolean
+        refreshToken:
+          example: 172f863677b-811148238f3344c68c5d4f50ee69999
+          type: string
+        registerAddress:
+          example: 6
+          format: int32
+          type: integer
+        settings:
+          properties:
+            chartOption:
+              example: 2
               format: int32
-              example: 123
-            regionId: 
               type: integer
-              format: int32
-              example: 6
-            language: 
+            createTime:
+              example: '2020-03-05T01:56:05.000+0000'
               type: string
-              example: en
-            focusMarketId: 
-              type: string
+            focusMarketId:
               example: 132
-            theme: 
-              type: integer
-              format: int32
-              example: 2
-            increDecreColor: 
-              type: integer
-              format: int32
-              example: 2
-            fontSize: 
               type: string
+            fontSize:
               example: M
-            portfolioDisplayMode: 
-              type: integer
+              type: string
+            hotNews:
+              example: 1
               format: int32
+              type: integer
+            id:
+              example: 123
+              type: number
+            increDecreColor:
               example: 2
-            portfolioNameNewline: 
-              type: integer
               format: int32
+              type: integer
+            kdata:
               example: 1
-            portfolioHoldingsDisplay: 
-              type: integer
               format: int32
+              type: integer
+            language:
+              example: en
+              type: string
+            languageUpdateTime:
+              example: '1970-01-01T00:00:00.000+0000'
+              type: string
+            listStyle:
               example: 1
-            portfolioIndexDisplay: 
-              type: integer
               format: int32
+              type: integer
+            operateTime:
+              example: '1969-12-31T00:00:00.000+0000'
+              type: string
+            orderDealRemind:
               example: 1
-            portfolioBulletin: 
-              type: integer
               format: int32
+              type: integer
+            portfolioBulletin:
               example: 1
-            kdata: 
-              type: integer
               format: int32
+              type: integer
+            portfolioDisplayMode:
+              example: 2
+              format: int32
+              type: integer
+            portfolioHoldingsDisplay:
               example: 1
-            refreshFrequency: 
-              type: integer
               format: int32
+              type: integer
+            portfolioIndexDisplay:
               example: 1
-            shock: 
-              type: integer
               format: int32
+              type: integer
+            portfolioNameNewline:
+              example: 1
+              format: int32
+              type: integer
+            refreshFrequency:
+              example: 1
+              format: int32
+              type: integer
+            regionId:
+              example: 6
+              format: int32
+              type: integer
+            shock:
               example: 0
-            tickerPriceRemind: 
-              type: integer
               format: int32
-              example: 1
-            orderDealRemind: 
               type: integer
-              format: int32
-              example: 1
-            hotNews: 
-              type: integer
-              format: int32
-              example: 1
-            chartOption: 
-              type: integer
-              format: int32
+            theme:
               example: 2
-            operateTime: 
-              type: string
-              example: 1969-12-31T00:00:00.000+0000
-            languageUpdateTime: 
-              type: string
-              example: 1970-01-01T00:00:00.000+0000
-            createTime: 
-              type: string
-              example: 2020-03-05T01:56:05.000+0000
-            updateTime: 
-              type: string
-              example: 2020-03-05T01:56:05.000+0000
-            listStyle: 
-              type: integer
               format: int32
+              type: integer
+            tickerPriceRemind:
               example: 1
+              format: int32
+              type: integer
+            updateTime:
+              example: '2020-03-05T01:56:05.000+0000'
+              type: string
+            userId:
+              example: 123
+              format: int32
+              type: integer
+          type: object
+        tokenExpireTime:
+          example: '2020-08-27T00:46:03.643+0000'
+          type: string
+        uuid:
+          example: 170a86831bd58e0a7ce33cf414aa467ed431ee69999
+          type: string
     PostOptionOrderRequest:
       properties:
         auxPrice:
@@ -4097,6 +4477,12 @@ components:
         timeInForce:
           $ref: '#/components/schemas/TimeInForce'
       type: object
+    PostOtocoOrderRequest:
+      properties:
+        newOrders:
+          items:
+            $ref: '#/components/schemas/PostStockOrderRequest'
+          type: array
     PostOtocoStockOrderRequest:
       properties:
         action:
@@ -4118,6 +4504,19 @@ components:
           type: integer
         timeInForce:
           $ref: '#/components/schemas/TimeInForce'
+    PostPaperOrderResponse:
+      properties:
+        orderId:
+          format: int32
+          type: integer
+    PostRefreshTokenResponse:
+      properties:
+        accessToken:
+          type: string
+        refreshToken:
+          type: string
+        tokenExpireTime:
+          type: string
     PostStockOrderRequest:
       properties:
         action:
@@ -4136,8 +4535,8 @@ components:
           description: limit price
           type: number
         orderType:
-          type: string
           $ref: '#/components/schemas/OrderType'
+          type: string
         outsideRegularTradingHour:
           type: boolean
         quantity:
@@ -4150,38 +4549,23 @@ components:
           type: integer
         timeInForce:
           $ref: '#/components/schemas/TimeInForce'
-    # PriceRule:
-    #   properties:
-    #     active:
-    #       type: string
-    #     alertRuleKey:
-    #       type: string
-    #     field:
-    #       type: string
-    #     remark:
-    #       type: string
-    #     type:
-    #       description: 'Example: ''earnPre'', ''fastUp'', ''fastDown'', ''week52Up'', ''week52Down'', ''day5Down'''
-    #       enum:
-    #         - earnPre
-    #         - fastUp
-    #         - fastDown
-    #         - week52Up
-    #         - week52Down
-    #         - day5Up
-    #         - day10Up
-    #         - day20Up
-    #         - day5Down
-    #         - day10Down
-    #         - day20Down
-    #       type: string
-    #     value:
-    #       type: string
-    #   type: object
-    # RemoveAlertRequest:
-    #   properties:
-    #     schema:
-    #       $ref: '#/components/schemas/Alert'
+    PostTradeResponse:
+      properties:
+        orderId:
+          format: int32
+          type: integer
+    PostTradeTokenResponse:
+      properties:
+        data:
+          properties:
+            tradeToken:
+              type: string
+            tradeTokenExpireIn:
+              format: int3
+              type: integer
+          type: object
+        success:
+          type: boolean
     ReplaceOptionOrderRequest:
       properties:
         auxPrice:
@@ -4233,433 +4617,12 @@ components:
       enum:
         - GTC
         - DAY
-        # - IOC # supported yet
       type: string
     TradeToken:
       properties:
         username:
           type: string
       type: object
-    GetIsTradeableResponse:
-      properties:
-        success: 
-          type: boolean
-        data: 
-          type: array
-          items: 
-            type: object
-            properties: 
-              tickerId:
-                format: int32
-                type: integer
-              symbol: 
-                type: string
-              name: 
-                type: string
-              tinyName: 
-                type: string
-              listStatus:
-                format: int32
-                type: integer
-              exchangeCode: 
-                type: string
-              exchangeId: 
-                format: int32
-                type: integer
-              extType: 
-                type: array
-                items: 
-                  type: object
-              type: 
-                format: int32
-                type: integer
-              regionId: 
-                format: int32
-                type: integer
-              regionName: 
-                type: string
-              regionIsoCode: 
-                type: string
-              currencyId: 
-                format: int32
-                type: integer
-              currencyCode: 
-                type: string
-              secType: 
-                type: array
-                items: 
-                  format: int32
-                  type: integer
-              exchangeTrade: 
-                type: boolean
-              disExchangeCode: 
-                type: string
-              disSymbol: 
-                type: string
-              tickerName: 
-                type: string
-              tickerType:
-                format: int32
-                type: integer
-              showCode: 
-                type: string
-              brokerId:
-                format: int32
-                type: integer
-              types: 
-                type: string
-    PaperTradeOrder:
-      type: object
-      properties: 
-        orderId: 
-          type: integer
-          format: int32
-        paperId: 
-          type: integer
-          format: int32
-        action:
-          $ref: '#/components/schemas/OrderSide'
-          description: Order side
-        totalQuantity: 
-          type: string
-        filledQuantity: 
-          type: string
-        placedTime: 
-          type: string
-        timeInForce: 
-          $ref: '#/components/schemas/TimeInForce'
-        orderType: 
-          $ref: '#/components/schemas/OrderType'
-        lmtPrice: 
-          type: string
-        ticker: 
-          type: object
-          properties: 
-            tickerId: 
-              type: integer
-              format: int32
-            symbol: 
-              type: string
-            name: 
-              type: string
-            tinyName: 
-              type: string
-            listStatus: 
-              type: integer
-              format: int32
-            exchangeCode: 
-              type: string
-            exchangeId: 
-              type: integer
-              format: int32
-            extType: 
-              type: array
-              items: 
-                type: object
-            type: 
-              type: integer
-              format: int32
-            regionId: 
-              type: integer
-              format: int32
-            regionName: 
-              type: string
-            regionIsoCode: 
-              type: string
-            currencyId: 
-              type: integer
-              format: int32
-            currencyCode: 
-              type: string
-            secType: 
-              type: array
-              items: 
-                type: integer
-                format: int32
-            exchangeTrade: 
-              type: boolean
-            disExchangeCode: 
-              type: string
-            disSymbol: 
-              type: string
-        canModify: 
-          type: boolean
-        canCancel: 
-          type: boolean
-        createTime: 
-          type: string
-        createTime0: 
-          type: integer
-          format: int64
-        status: 
-          type: string
-        statusStr: 
-          type: string
-        outsideRegularTradingHour: 
-          type: boolean
-    GetPaperTradeOrdersResponse:
-      type: array
-      items:
-        $ref: "components/schemas/PaperTradeOrder"
-    GetPaperAccountsResponse:
-      type: array
-      items:
-        $ref: "components/schemas/PaperTradeAccount"
-    PaperTradeAccount:
-      properties: 
-        id: 
-          type: integer
-          format: int32
-        paperId: 
-          type: integer
-          format: int32
-        status: 
-          type: integer
-          format: int32
-        paperType: 
-          type: integer
-          format: int32
-        paperName: 
-          type: string
-        paperTickerPoolCode: 
-          type: string
-        currency: 
-          type: string
-        currencyId: 
-          type: integer
-          format: int32
-        supportOutsideRth: 
-          type: boolean
-        timeInForces: 
-          type: array
-          items: 
-            type: string
-        orderTypes: 
-          type: array
-          items: 
-            $ref: '#/components/schemas/OrderType'
-    OrderType:
-      description: 'Order type, like: Limit (LMT), Stop (STP), and Stop Limit (STP LMT).'
-      enum:
-        - LMT
-        - STP
-        - STP LMT
-        - MKT
-    PostTradeTokenResponse:
-      properties: 
-        success: 
-          type: boolean
-        data: 
-          type: object
-          properties: 
-            tradeToken: 
-              type: string
-            tradeTokenExpireIn: 
-              type: integer
-              format: int3
-    GetAccountResponse:
-      properties: 
-        secAccountId: 
-          type: integer
-          format: int32
-        brokerId: 
-          type: integer
-          format: int32
-        accountType: 
-          type: string
-        brokerAccountId: 
-          type: string
-        currency: 
-          type: string
-        currencyId: 
-          type: integer
-          format: int32
-        pdt: 
-          type: boolean
-        professional: 
-          type: boolean
-        showUpgrade: 
-          type: boolean
-        totalCost: 
-          type: string
-        netLiquidation: 
-          type: string
-        unrealizedProfitLoss: 
-          type: string
-        unrealizedProfitLossRate: 
-          type: string
-        unrealizedProfitLossBase: 
-          type: number
-        warning: 
-          type: boolean
-        banners: 
-          type: array
-          items: 
-            type: object
-            properties: 
-              imgUrl: 
-                type: string
-              link: 
-                type: string
-              type: 
-                type: string
-              title: 
-                type: string
-              subTitle: 
-                type: string
-        openIpoOrders: 
-          type: array
-          items:
-            type: object
-        accountMembers: 
-          type: array
-          items: 
-            type: object
-            properties: 
-              key: 
-                type: string
-              value: 
-                type: string
-        positions: 
-          type: array
-          items: 
-            type: object
-            properties: 
-              id: 
-                type: integer
-                format: int32
-              brokerId: 
-                type: integer
-                format: int32
-              ticker: 
-                type: object
-                properties: 
-                  tickerId: 
-                    type: integer
-                    format: int32
-                  symbol: 
-                    type: string
-                  name: 
-                    type: string
-                  tinyName: 
-                    type: string
-                  listStatus: 
-                    type: integer
-                    format: int32
-                  exchangeCode: 
-                    type: string
-                  exchangeId: 
-                    type: integer
-                    format: int32
-                  extType: 
-                    type: array
-                    items: 
-                      type: object
-                  type: 
-                    type: integer
-                    format: int32
-                  regionId: 
-                    type: integer
-                    format: int32
-                  regionName: 
-                    type: string
-                  regionIsoCode: 
-                    type: string
-                  currencyId: 
-                    type: integer
-                    format: int32
-                  currencyCode: 
-                    type: string
-                  secType: 
-                    type: array
-                    items: 
-                      type: integer
-                      format: int32
-                  disExchangeCode: 
-                    type: string
-                  disSymbol: 
-                    type: string
-              position: 
-                type: string
-              assetType: 
-                type: string
-              cost: 
-                type: string
-              costPrice: 
-                type: string
-              currency: 
-                type: string
-              lastPrice: 
-                type: string
-              marketValue: 
-                type: string
-              unrealizedProfitLoss: 
-                type: string
-              unrealizedProfitLossRate: 
-                type: string
-              positionProportion: 
-                type: string
-              exchangeRate: 
-                type: string
-              lock: 
-                type: boolean
-              lastOpenTime: 
-                type: string
-              updatePositionTimeStamp: 
-                type: integer
-                format: int64
-        openOrders: 
-          type: array
-          items: 
-            type: object
-        openOrderSize: 
-          type: integer
-          format: int32
-        deposits: 
-          type: array
-          items:
-            type: object
-    GetOptionsQuotesResponse:
-      properties:
-        tickerId: 
-          type: integer
-          format: int32
-          example: 913243251
-        name: 
-          type: string
-          example: SPDR® S&P 500 ETF Trust
-        symbol: 
-          type: string
-          example: SPY
-        disSymbol: 
-          type: string
-          example: SPY
-        disExchangeCode: 
-          type: string
-          example: NYSEARCA
-        data: 
-          type: array
-          items: 
-            type: object
-    PostRefreshTokenResponse:
-      properties: 
-        accessToken: 
-          type: string
-        refreshToken: 
-          type: string
-        tokenExpireTime: 
-          type: string
-    PostPaperTradeResponse:
-      properties:
-        orderId:
-          type: integer
-          format: int32
-    PostOtocoOrderRequest:
-      properties:
-        newOrders: 
-          type: array
-          items: 
-            $ref: "#/components/schemas/PostStockOrderRequest"
     Transfer:
       properties:
         amount:

@@ -9,8 +9,7 @@
  */
 
 package openapi
-// GetIsTradeableResponse struct for GetIsTradeableResponse
-type GetIsTradeableResponse struct {
-	Data []GetIsTradeableResponseData `json:"data,omitempty"`
-	Success bool `json:"success,omitempty"`
+// PostPaperOrderResponse struct for PostPaperOrderResponse
+type PostPaperOrderResponse struct {
+	OrderId int32 `json:"orderId,omitempty"`
 }

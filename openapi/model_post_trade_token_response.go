@@ -11,6 +11,6 @@
 package openapi
 // PostTradeTokenResponse struct for PostTradeTokenResponse
 type PostTradeTokenResponse struct {
-	Success bool `json:"success,omitempty"`
 	Data PostTradeTokenResponseData `json:"data,omitempty"`
+	Success bool `json:"success,omitempty"`
 }

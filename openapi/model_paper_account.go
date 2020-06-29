@@ -9,17 +9,17 @@
  */
 
 package openapi
-// PaperTradeAccount struct for PaperTradeAccount
-type PaperTradeAccount struct {
-	Id int32 `json:"id,omitempty"`
-	PaperId int32 `json:"paperId,omitempty"`
-	Status int32 `json:"status,omitempty"`
-	PaperType int32 `json:"paperType,omitempty"`
-	PaperName string `json:"paperName,omitempty"`
-	PaperTickerPoolCode string `json:"paperTickerPoolCode,omitempty"`
+// PaperAccount struct for PaperAccount
+type PaperAccount struct {
 	Currency string `json:"currency,omitempty"`
 	CurrencyId int32 `json:"currencyId,omitempty"`
+	Id int32 `json:"id,omitempty"`
+	OrderTypes []OrderType `json:"orderTypes,omitempty"`
+	PaperId int32 `json:"paperId,omitempty"`
+	PaperName string `json:"paperName,omitempty"`
+	PaperTickerPoolCode string `json:"paperTickerPoolCode,omitempty"`
+	PaperType int32 `json:"paperType,omitempty"`
+	Status int32 `json:"status,omitempty"`
 	SupportOutsideRth bool `json:"supportOutsideRth,omitempty"`
 	TimeInForces []string `json:"timeInForces,omitempty"`
-	OrderTypes []OrderType `json:"orderTypes,omitempty"`
 }

@@ -11,27 +11,27 @@
 package openapi
 // GetIsTradeableResponseData struct for GetIsTradeableResponseData
 type GetIsTradeableResponseData struct {
-	TickerId int32 `json:"tickerId,omitempty"`
-	Symbol string `json:"symbol,omitempty"`
-	Name string `json:"name,omitempty"`
-	TinyName string `json:"tinyName,omitempty"`
-	ListStatus int32 `json:"listStatus,omitempty"`
-	ExchangeCode string `json:"exchangeCode,omitempty"`
-	ExchangeId int32 `json:"exchangeId,omitempty"`
-	ExtType []map[string]interface{} `json:"extType,omitempty"`
-	Type int32 `json:"type,omitempty"`
-	RegionId int32 `json:"regionId,omitempty"`
-	RegionName string `json:"regionName,omitempty"`
-	RegionIsoCode string `json:"regionIsoCode,omitempty"`
-	CurrencyId int32 `json:"currencyId,omitempty"`
+	BrokerId int32 `json:"brokerId,omitempty"`
 	CurrencyCode string `json:"currencyCode,omitempty"`
-	SecType []int32 `json:"secType,omitempty"`
-	ExchangeTrade bool `json:"exchangeTrade,omitempty"`
+	CurrencyId int32 `json:"currencyId,omitempty"`
 	DisExchangeCode string `json:"disExchangeCode,omitempty"`
 	DisSymbol string `json:"disSymbol,omitempty"`
+	ExchangeCode string `json:"exchangeCode,omitempty"`
+	ExchangeId int32 `json:"exchangeId,omitempty"`
+	ExchangeTrade bool `json:"exchangeTrade,omitempty"`
+	ExtType []map[string]interface{} `json:"extType,omitempty"`
+	ListStatus int32 `json:"listStatus,omitempty"`
+	Name string `json:"name,omitempty"`
+	RegionId int32 `json:"regionId,omitempty"`
+	RegionIsoCode string `json:"regionIsoCode,omitempty"`
+	RegionName string `json:"regionName,omitempty"`
+	SecType []int32 `json:"secType,omitempty"`
+	ShowCode string `json:"showCode,omitempty"`
+	Symbol string `json:"symbol,omitempty"`
+	TickerId int32 `json:"tickerId,omitempty"`
 	TickerName string `json:"tickerName,omitempty"`
 	TickerType int32 `json:"tickerType,omitempty"`
-	ShowCode string `json:"showCode,omitempty"`
-	BrokerId int32 `json:"brokerId,omitempty"`
+	TinyName string `json:"tinyName,omitempty"`
+	Type int32 `json:"type,omitempty"`
 	Types string `json:"types,omitempty"`
 }

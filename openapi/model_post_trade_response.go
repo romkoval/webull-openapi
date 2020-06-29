@@ -9,7 +9,7 @@
  */
 
 package openapi
-// PostPaperTradeResponse struct for PostPaperTradeResponse
-type PostPaperTradeResponse struct {
+// PostTradeResponse struct for PostTradeResponse
+type PostTradeResponse struct {
 	OrderId int32 `json:"orderId,omitempty"`
 }

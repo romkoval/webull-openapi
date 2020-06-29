@@ -11,11 +11,11 @@
 package openapi
 // Auth struct for Auth
 type Auth struct {
+	MFA string `json:"MFA,omitempty"`
 	AccessToken string `json:"access_token,omitempty"`
 	DeviceId string `json:"deviceId,omitempty"`
 	RefreshToken string `json:"refresh_token,omitempty"`
 	TokenExpireTime string `json:"token_expire_time,omitempty"`
 	Username string `json:"username,omitempty"`
 	Uuid string `json:"uuid,omitempty"`
-	MFA string `json:"MFA,omitempty"`
 }

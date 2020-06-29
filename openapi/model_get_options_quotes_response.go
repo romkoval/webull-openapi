@@ -11,10 +11,10 @@
 package openapi
 // GetOptionsQuotesResponse struct for GetOptionsQuotesResponse
 type GetOptionsQuotesResponse struct {
-	TickerId int32 `json:"tickerId,omitempty"`
+	Data []map[string]interface{} `json:"data,omitempty"`
+	DisExchangeCode string `json:"disExchangeCode,omitempty"`
+	DisSymbol string `json:"disSymbol,omitempty"`
 	Name string `json:"name,omitempty"`
 	Symbol string `json:"symbol,omitempty"`
-	DisSymbol string `json:"disSymbol,omitempty"`
-	DisExchangeCode string `json:"disExchangeCode,omitempty"`
-	Data []map[string]interface{} `json:"data,omitempty"`
+	TickerId int32 `json:"tickerId,omitempty"`
 }

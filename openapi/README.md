@@ -47,7 +47,7 @@ Class | Method | HTTP request | Description
 *OptionsApi* | [**ReplaceOptionOrder**](docs/OptionsApi.md#replaceoptionorder) | **Post** /v2/option/replaceOrder/{account_id} | replaceOptionOrder
 *OrderApi* | [**CancelOrder**](docs/OrderApi.md#cancelorder) | **Post** /order/{account_id}/cancelStockOrder/ | cancelOrder
 *OrderApi* | [**CancelOtocoOrder**](docs/OrderApi.md#cancelotocoorder) | **Post** /v2/corder/stock/modify/{account_id} | cancelOtocoOrder
-*OrderApi* | [**CheckOtocoOrder**](docs/OrderApi.md#checkotocoorder) | **Get** /v2/corder/stock/check/{account_id} | checkOtocoOrder
+*OrderApi* | [**CheckOtocoOrder**](docs/OrderApi.md#checkotocoorder) | **Post** /v2/corder/stock/check/{account_id} | checkOtocoOrder
 *OrderApi* | [**GetOrders**](docs/OrderApi.md#getorders) | **Get** /v2/option/list | getOrders
 *OrderApi* | [**IsTradeable**](docs/OrderApi.md#istradeable) | **Get** /ticker/broker/permissionV2 | isTradeable
 *OrderApi* | [**ModifyOrder**](docs/OrderApi.md#modifyorder) | **Post** /order/{account_id}/modifyStockOrder/{order_id} | modifyOrder
@@ -92,9 +92,7 @@ Class | Method | HTTP request | Description
  - [GetAcccountRequestPositions](docs/GetAcccountRequestPositions.md)
  - [GetAcccountRequestTicker](docs/GetAcccountRequestTicker.md)
  - [GetAccountResponse](docs/GetAccountResponse.md)
- - [GetAccountResponseBanners](docs/GetAccountResponseBanners.md)
  - [GetAccountResponsePositions](docs/GetAccountResponsePositions.md)
- - [GetAccountResponseTicker](docs/GetAccountResponseTicker.md)
  - [GetAlertsResponse](docs/GetAlertsResponse.md)
  - [GetAlertsResponseData](docs/GetAlertsResponseData.md)
  - [GetAlertsResponseEventWarning](docs/GetAlertsResponseEventWarning.md)
@@ -152,9 +150,8 @@ Class | Method | HTTP request | Description
  - [OrderSide](docs/OrderSide.md)
  - [OrderStatus](docs/OrderStatus.md)
  - [OrderType](docs/OrderType.md)
- - [PaperTradeAccount](docs/PaperTradeAccount.md)
- - [PaperTradeOrder](docs/PaperTradeOrder.md)
- - [PaperTradeOrderTicker](docs/PaperTradeOrderTicker.md)
+ - [PaperAccount](docs/PaperAccount.md)
+ - [PaperOrder](docs/PaperOrder.md)
  - [PostLoginParametersRequest](docs/PostLoginParametersRequest.md)
  - [PostLoginParametersRequestExtInfo](docs/PostLoginParametersRequestExtInfo.md)
  - [PostLoginResponse](docs/PostLoginResponse.md)
@@ -163,9 +160,10 @@ Class | Method | HTTP request | Description
  - [PostOptionOrderRequest](docs/PostOptionOrderRequest.md)
  - [PostOtocoOrderRequest](docs/PostOtocoOrderRequest.md)
  - [PostOtocoStockOrderRequest](docs/PostOtocoStockOrderRequest.md)
- - [PostPaperTradeResponse](docs/PostPaperTradeResponse.md)
+ - [PostPaperOrderResponse](docs/PostPaperOrderResponse.md)
  - [PostRefreshTokenResponse](docs/PostRefreshTokenResponse.md)
  - [PostStockOrderRequest](docs/PostStockOrderRequest.md)
+ - [PostTradeResponse](docs/PostTradeResponse.md)
  - [PostTradeTokenResponse](docs/PostTradeTokenResponse.md)
  - [PostTradeTokenResponseData](docs/PostTradeTokenResponseData.md)
  - [ReplaceOptionOrderRequest](docs/ReplaceOptionOrderRequest.md)

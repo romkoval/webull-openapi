@@ -11,19 +11,19 @@
 package openapi
 // LookupTickerResponseList struct for LookupTickerResponseList
 type LookupTickerResponseList struct {
-	TickerId int32 `json:"tickerId,omitempty"`
-	ExchangeId int32 `json:"exchangeId,omitempty"`
-	Type int32 `json:"type,omitempty"`
-	SecType []int32 `json:"secType,omitempty"`
-	RegionId int32 `json:"regionId,omitempty"`
-	RegionCode string `json:"regionCode,omitempty"`
 	CurrencyId int32 `json:"currencyId,omitempty"`
-	Name string `json:"name,omitempty"`
-	Symbol string `json:"symbol,omitempty"`
-	DisSymbol string `json:"disSymbol,omitempty"`
-	DisExchangeCode string `json:"disExchangeCode,omitempty"`
-	ExchangeCode string `json:"exchangeCode,omitempty"`
-	ListStatus int32 `json:"listStatus,omitempty"`
-	Template string `json:"template,omitempty"`
 	DerivativeSupport int32 `json:"derivativeSupport,omitempty"`
+	DisExchangeCode string `json:"disExchangeCode,omitempty"`
+	DisSymbol string `json:"disSymbol,omitempty"`
+	ExchangeCode string `json:"exchangeCode,omitempty"`
+	ExchangeId int32 `json:"exchangeId,omitempty"`
+	ListStatus int32 `json:"listStatus,omitempty"`
+	Name string `json:"name,omitempty"`
+	RegionCode string `json:"regionCode,omitempty"`
+	RegionId int32 `json:"regionId,omitempty"`
+	SecType []int32 `json:"secType,omitempty"`
+	Symbol string `json:"symbol,omitempty"`
+	Template string `json:"template,omitempty"`
+	TickerId int32 `json:"tickerId,omitempty"`
+	Type int32 `json:"type,omitempty"`
 }

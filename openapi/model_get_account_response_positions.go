@@ -11,21 +11,21 @@
 package openapi
 // GetAccountResponsePositions struct for GetAccountResponsePositions
 type GetAccountResponsePositions struct {
-	Id int32 `json:"id,omitempty"`
-	BrokerId int32 `json:"brokerId,omitempty"`
-	Ticker GetAccountResponseTicker `json:"ticker,omitempty"`
-	Position string `json:"position,omitempty"`
 	AssetType string `json:"assetType,omitempty"`
+	BrokerId int32 `json:"brokerId,omitempty"`
 	Cost string `json:"cost,omitempty"`
 	CostPrice string `json:"costPrice,omitempty"`
 	Currency string `json:"currency,omitempty"`
+	ExchangeRate string `json:"exchangeRate,omitempty"`
+	Id int32 `json:"id,omitempty"`
+	LastOpenTime string `json:"lastOpenTime,omitempty"`
 	LastPrice string `json:"lastPrice,omitempty"`
+	Lock bool `json:"lock,omitempty"`
 	MarketValue string `json:"marketValue,omitempty"`
+	Position string `json:"position,omitempty"`
+	PositionProportion string `json:"positionProportion,omitempty"`
+	Ticker GetAcccountRequestTicker `json:"ticker,omitempty"`
 	UnrealizedProfitLoss string `json:"unrealizedProfitLoss,omitempty"`
 	UnrealizedProfitLossRate string `json:"unrealizedProfitLossRate,omitempty"`
-	PositionProportion string `json:"positionProportion,omitempty"`
-	ExchangeRate string `json:"exchangeRate,omitempty"`
-	Lock bool `json:"lock,omitempty"`
-	LastOpenTime string `json:"lastOpenTime,omitempty"`
 	UpdatePositionTimeStamp int64 `json:"updatePositionTimeStamp,omitempty"`
 }

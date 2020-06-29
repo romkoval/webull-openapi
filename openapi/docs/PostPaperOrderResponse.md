@@ -1,4 +1,4 @@
-# PostPaperTradeResponse
+# PostPaperOrderResponse
 
 ## Properties
 

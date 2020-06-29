@@ -11,7 +11,7 @@
 package openapi
 // GetStockAnalysisResponse struct for GetStockAnalysisResponse
 type GetStockAnalysisResponse struct {
+	ForecastEps GetStockAnalysisResponseForecastEps `json:"forecastEps,omitempty"`
 	Rating GetStockAnalysisResponseRating `json:"rating,omitempty"`
 	TargetPrice GetStockAnalysisResponseTargetPrice `json:"targetPrice,omitempty"`
-	ForecastEps GetStockAnalysisResponseForecastEps `json:"forecastEps,omitempty"`
 }
