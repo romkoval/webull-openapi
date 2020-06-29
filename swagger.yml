@@ -545,7 +545,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref:  "#/components/schemas/PostTradeResponse"
+                $ref:  "#/components/schemas/PostOrderResponse"
           description: OK
         '201':
           content:
@@ -4549,7 +4549,7 @@ components:
           type: integer
         timeInForce:
           $ref: '#/components/schemas/TimeInForce'
-    PostTradeResponse:
+    PostOrderResponse:
       properties:
         orderId:
           format: int32
