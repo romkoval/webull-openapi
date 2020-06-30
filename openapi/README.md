@@ -77,11 +77,13 @@ Class | Method | HTTP request | Description
  - [AddAlertRequest](docs/AddAlertRequest.md)
  - [AddAlertRequestEventWarningInput](docs/AddAlertRequestEventWarningInput.md)
  - [AddAlertRequestWarningInput](docs/AddAlertRequestWarningInput.md)
+ - [AdvancedDeclinedDirection](docs/AdvancedDeclinedDirection.md)
  - [Alert](docs/Alert.md)
  - [AlertEventWarning](docs/AlertEventWarning.md)
  - [AlertTickerWarning](docs/AlertTickerWarning.md)
  - [Attach](docs/Attach.md)
  - [Auth](docs/Auth.md)
+ - [ComboType](docs/ComboType.md)
  - [Direction](docs/Direction.md)
  - [ErrorBody](docs/ErrorBody.md)
  - [Execution](docs/Execution.md)
@@ -144,6 +146,7 @@ Class | Method | HTTP request | Description
  - [Leg](docs/Leg.md)
  - [LookupTickerResponse](docs/LookupTickerResponse.md)
  - [LookupTickerResponseList](docs/LookupTickerResponseList.md)
+ - [OptionDirection](docs/OptionDirection.md)
  - [OptionOrder](docs/OptionOrder.md)
  - [Order](docs/Order.md)
  - [OrderAction](docs/OrderAction.md)
@@ -171,6 +174,7 @@ Class | Method | HTTP request | Description
  - [TimeInForce](docs/TimeInForce.md)
  - [TradeToken](docs/TradeToken.md)
  - [Transfer](docs/Transfer.md)
+ - [TransferDirection](docs/TransferDirection.md)
 
 
 ## Documentation For Authorization

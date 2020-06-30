@@ -1198,12 +1198,7 @@ paths:
         - in: query
           name: direction
           schema:
-            default: all
-            type: string
-            enum:
-              - all
-              - calls
-              - puts
+            $ref: "#/components/schemas/OptionDirection"
         - in: query
           name: expireDate
           schema:
@@ -1549,11 +1544,7 @@ paths:
           name: direction
           required: true
           schema:
-            enum:
-              - advanced
-              - decline
-              - active
-            type: string
+            $ref: "#/components/schemas/AdvancedDeclinedDirection"
         - description: regionId
           in: query
           name: regionId
@@ -2725,6 +2716,12 @@ components:
         uuid:
           type: string
       type: object
+    OptionDirection:
+      type: string
+      enum:
+        - all
+        - calls
+        - puts
     Direction:
       enum:
         - debit
@@ -3653,7 +3650,7 @@ components:
                 type: string
               comboTypes:
                 items:
-                  type: string
+                  $ref: '#/components/schemas/ComboType'
                 type: array
               customerType:
                 type: string
@@ -4517,20 +4514,22 @@ components:
           type: string
         tokenExpireTime:
           type: string
+    ComboType:
+      type: string
+      enum:
+        - NORMAL
+        - MASTER
+        - STOP_LOSS
+        - STOP_PROFIT
+        - LMT
+        - MKT
     PostStockOrderRequest:
       properties:
         action:
           $ref: '#/components/schemas/OrderSide'
           description: Order side
         comboType:
-          enum:
-            - NORMAL
-            - MASTER
-            - STOP_LOSS
-            - STOP_PROFIT
-            - LMT
-            - MKT
-          type: string
+          $ref: '#/components/schemas/ComboType'
         lmtPrice:
           description: limit price
           type: number
@@ -4549,6 +4548,12 @@ components:
           type: integer
         timeInForce:
           $ref: '#/components/schemas/TimeInForce'
+    AdvancedDeclinedDirection:
+      type: string
+      enum:
+        - advanced
+        - declined
+        - active
     PostOrderResponse:
       properties:
         orderId:
@@ -4623,6 +4628,12 @@ components:
         username:
           type: string
       type: object
+    TransferDirection:
+      description: 'Example: ''IN'', which is credit.'
+      type: string
+      enum:
+        - IN
+        - OUT
     Transfer:
       properties:
         amount:
@@ -4630,8 +4641,7 @@ components:
         date:
           type: string
         direction:
-          description: 'Example: ''IN'', which is credit credit.'
-          type: string
+          $ref: '#/components/schemas/TransferDirection'
         legs:
           items:
             $ref: '#/components/schemas/Leg'

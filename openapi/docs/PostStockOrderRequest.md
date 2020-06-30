@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Action** | [**OrderSide**](OrderSide.md) |  | [optional] 
-**ComboType** | **string** |  | [optional] 
+**ComboType** | [**ComboType**](ComboType.md) |  | [optional] 
 **LmtPrice** | **float32** | limit price | [optional] 
 **OrderType** | [**OrderType**](OrderType.md) |  | [optional] 
 **OutsideRegularTradingHour** | **bool** |  | [optional] 

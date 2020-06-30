@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **BrokerAccountId** | **string** |  | [optional] 
 **BrokerId** | **int32** |  | [optional] 
 **BrokerName** | **string** |  | [optional] 
-**ComboTypes** | **[]string** |  | [optional] 
+**ComboTypes** | [**[]ComboType**](ComboType.md) |  | [optional] 
 **CustomerType** | **string** |  | [optional] 
 **Deposit** | **bool** |  | [optional] 
 **DepositStatus** | **string** |  | [optional] 

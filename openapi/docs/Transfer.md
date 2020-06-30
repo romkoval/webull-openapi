@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Amount** | **float32** |  | [optional] 
 **Date** | **string** |  | [optional] 
-**Direction** | **string** | Example: &#39;IN&#39;, which is credit credit. | [optional] 
+**Direction** | [**TransferDirection**](TransferDirection.md) |  | [optional] 
 **Legs** | [**[]Leg**](Leg.md) |  | [optional] 
 **SubStatus** | **string** | Example: COMPLETED | [optional] 
 **TransferType** | **string** |  | [optional] [default to transfer]

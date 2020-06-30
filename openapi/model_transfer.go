@@ -13,8 +13,7 @@ package openapi
 type Transfer struct {
 	Amount float32 `json:"amount,omitempty"`
 	Date string `json:"date,omitempty"`
-	// Example: 'IN', which is credit credit.
-	Direction string `json:"direction,omitempty"`
+	Direction TransferDirection `json:"direction,omitempty"`
 	Legs []Leg `json:"legs,omitempty"`
 	// Example: COMPLETED
 	SubStatus string `json:"sub_status,omitempty"`
