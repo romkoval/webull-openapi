@@ -16,7 +16,7 @@ type GetSecurityAccountsResponseData struct {
 	BrokerAccountId string `json:"brokerAccountId,omitempty"`
 	BrokerId int32 `json:"brokerId,omitempty"`
 	BrokerName string `json:"brokerName,omitempty"`
-	ComboTypes []ComboType `json:"comboTypes,omitempty"`
+	ComboTypes []string `json:"comboTypes,omitempty"`
 	CustomerType string `json:"customerType,omitempty"`
 	Deposit bool `json:"deposit,omitempty"`
 	DepositStatus string `json:"depositStatus,omitempty"`

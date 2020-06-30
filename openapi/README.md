@@ -83,7 +83,6 @@ Class | Method | HTTP request | Description
  - [AlertTickerWarning](docs/AlertTickerWarning.md)
  - [Attach](docs/Attach.md)
  - [Auth](docs/Auth.md)
- - [ComboType](docs/ComboType.md)
  - [Direction](docs/Direction.md)
  - [ErrorBody](docs/ErrorBody.md)
  - [Execution](docs/Execution.md)
