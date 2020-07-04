@@ -2716,6 +2716,11 @@ components:
         uuid:
           type: string
       type: object
+    OptionType:
+      type: string
+      enum:
+        - put
+        - call
     OptionDirection:
       type: string
       enum:
@@ -3481,7 +3486,11 @@ components:
           type: integer
     GetOrdersItem:
       properties:
+        comboId:
+          type: string
         comboTickerType:
+          type: string
+        comboType:
           type: string
         orders:
           items:
@@ -3510,20 +3519,29 @@ components:
               filledTime:
                 type: string
               filledTime0:
-                format: int32
-                type: integer
+                # format: uint64
+                type: number
               filledValue:
                 type: string
               optionContractMultiplier:
                 type: string
               optionExercisePrice:
                 type: string
+              optionCycle:
+                type: integer
+                format: int64
               orderId:
                 format: int32
                 type: integer
               orderType:
                 $ref: '#/components/schemas/OrderType'
+              optionType:
+                $ref: '#/components/schemas/OptionType'
+              optionExpirationDate:
+                type: string
               relation:
+                type: string
+              optionCategory:
                 type: string
               remainQuantity:
                 type: string
@@ -4572,7 +4590,7 @@ components:
             tradeToken:
               type: string
             tradeTokenExpireIn:
-              format: int3
+              format: int32
               type: integer
           type: object
         success:

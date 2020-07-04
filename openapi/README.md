@@ -147,6 +147,7 @@ Class | Method | HTTP request | Description
  - [LookupTickerResponseList](docs/LookupTickerResponseList.md)
  - [OptionDirection](docs/OptionDirection.md)
  - [OptionOrder](docs/OptionOrder.md)
+ - [OptionType](docs/OptionType.md)
  - [Order](docs/Order.md)
  - [OrderAction](docs/OrderAction.md)
  - [OrderSide](docs/OrderSide.md)
