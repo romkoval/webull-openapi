@@ -2117,6 +2117,61 @@ paths:
       summary: placeOtocoOrder
       tags:
         - order
+  '/v5/home/':
+    get:
+      deprecated: false
+      description: Query for account information. This includes positions, portfolio, etc.
+      operationId: getAccountInfoV5
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+        - description: Account ID of the user to get
+          in: path
+          name: account_id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetAccountsResponseV5"
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://tradeapi.webulltrade.com/api/trade'
+      summary: getAccountInfo
+      tags:
+        - accounts
   '/v2/home/{account_id}':
     get:
       deprecated: false
@@ -4659,6 +4714,242 @@ components:
         lastRecordId:
           type: string
           default: 0
+    GetAccountsResponseV5:
+      properties: 
+        netLiquidation: 
+          type: string
+          example: 287.08
+        unrealizedProfitLoss: 
+          type: string
+          example: 38.95
+        unrealizedProfitLossRate: 
+          type: string
+          example: 0.1570
+        currency: 
+          type: string
+          example: USD
+        currencyId: 
+          type: number
+          example: 247
+        accounts: 
+          type: array
+          items: 
+            type: object
+            properties: 
+              secAccountId: 
+                type: number
+                example: 10779010
+              brokerId: 
+                type: number
+                example: 8
+              accountType: 
+                type: string
+                example: CASH
+              brokerAccountId: 
+                type: string
+                example: 5KU45018
+              currency: 
+                type: string
+                example: USD
+              currencyId: 
+                type: number
+                example: 247
+              pdt: 
+                type: boolean
+              professional: 
+                type: boolean
+              showUpgrade: 
+                type: boolean
+              totalCost: 
+                type: string
+                example: 152.18
+              netLiquidation: 
+                type: string
+                example: 287.08
+              unrealizedProfitLoss: 
+                type: string
+                example: 38.95
+              unrealizedProfitLossRate: 
+                type: string
+                example: 0.1569
+              unrealizedProfitLossBase: 
+                type: string
+                example: 248.17
+              warning: 
+                type: boolean
+              remindModifyPwd: 
+                type: boolean
+              accountMembers: 
+                type: array
+                items: 
+                  type: object
+                  properties: 
+                    key: 
+                      type: string
+                      example: totalMarketValue
+                    value: 
+                      type: string
+                      example: 191.13
+              openOrderSize: 
+                type: number
+                example: 0
+        positions: 
+          type: array
+          items: 
+            type: object
+        openOrders: 
+          type: array
+          items:
+            type: object
+        openOrderSize: 
+          type: number
+          example: 0
+        positions2: 
+          type: array
+          items: 
+            type: object
+            properties: 
+              comboId: 
+                type: string
+                example: QVHSMRETO2M3EQTSA742RNBA4B
+              comboTickerType: 
+                type: string
+                example: stock
+              positions: 
+                type: array
+                items: 
+                  type: object
+                  properties: 
+                    positionId: 
+                      type: number
+                      example: 104938277
+                    brokerPosId: 
+                      type: string
+                      example: U8GOL38MPKGJ6NIDKPBJ3IHHMA
+                    brokerId: 
+                      type: number
+                      example: 8
+                    assetType: 
+                      type: string
+                      example: stock
+                    tickerType: 
+                      type: string
+                      example: EQUITY
+                    ticker: 
+                      type: object
+                      properties: 
+                        tickerId: 
+                          type: number
+                          example: 913255073
+                        symbol: 
+                          type: string
+                          example: VIAC
+                        name: 
+                          type: string
+                          example: ViacomCBS Inc
+                        tinyName: 
+                          type: string
+                          example: ViacomCBS Inc
+                        listStatus: 
+                          type: number
+                          example: 1
+                        exchangeCode: 
+                          type: string
+                          example: NSQ
+                        exchangeId: 
+                          type: number
+                          example: 96
+                        extType: 
+                          type: array
+                          items:
+                            type: object
+                        type: 
+                          type: number
+                          example: 2
+                        regionId: 
+                          type: number
+                          example: 6
+                        regionName: 
+                          type: string
+                          example: 美国
+                        regionIsoCode: 
+                          type: string
+                          example: US
+                        currencyId: 
+                          type: number
+                          example: 247
+                        currencyCode: 
+                          type: string
+                          example: USD
+                        secType: 
+                          type: array
+                          items: 
+                            type: number
+                            example: 61
+                        disExchangeCode: 
+                          type: string
+                          example: NASDAQ
+                        disSymbol: 
+                          type: string
+                          example: VIAC
+                    action: 
+                      type: string
+                      example: BUY
+                    position: 
+                      type: string
+                      example: 1
+                    tickerId: 
+                      type: number
+                      example: 913255073
+                    symbol: 
+                      type: string
+                      example: VIAC
+                    costPrice: 
+                      type: string
+                      example: 11.280
+                    cost: 
+                      type: string
+                      example: 11.28
+                    currency: 
+                      type: string
+                      example: USD
+                    marketValue: 
+                      type: string
+                      example: 23.33
+                    lastPrice: 
+                      type: string
+                      example: 23.33
+                    unrealizedProfitLoss: 
+                      type: string
+                      example: 12.05
+                    unrealizedProfitLossRate: 
+                      type: string
+                      example: 1.068
+                    positionProportion: 
+                      type: string
+                      example: 0.1221
+                    updatePositionTime: 
+                      type: number
+                      example: 1593838246000
+                    optionCanExercise: 
+                      type: number
+                      example: 1
+                    recentlyExpireFlag: 
+                      type: boolean
+                    remainDay: 
+                      type: number
+                      example: 0
+                    isLending: 
+                      type: string
+                      example: N
+        openOrders2: 
+          type: array
+          items:
+            type: object
+        openIpoOrders: 
+          type: array
+          items:
+            type: object
     Transfer:
       type: object
       properties: 

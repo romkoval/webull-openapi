@@ -34,6 +34,7 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AccountsApi* | [**GetAccount**](docs/AccountsApi.md#getaccount) | **Get** /account/getSecAccountList/v4 | getAccount
 *AccountsApi* | [**GetAccountInfo**](docs/AccountsApi.md#getaccountinfo) | **Get** /v2/home/{account_id} | getAccountInfo
+*AccountsApi* | [**GetAccountInfoV5**](docs/AccountsApi.md#getaccountinfov5) | **Get** /v5/home/ | getAccountInfo
 *AccountsApi* | [**GetTransferHistory**](docs/AccountsApi.md#gettransferhistory) | **Post** /asset/{account_id}/getWebullTransferList | getTransferHistory
 *AlertsApi* | [**GetAlerts**](docs/AlertsApi.md#getalerts) | **Get** /user/warning/v2/query/tickers | getAlerts
 *AuthenticationApi* | [**GetMultiFactorAuth**](docs/AuthenticationApi.md#getmultifactorauth) | **Post** /passport/verificationCode/sendCode | getMultiFactorAuth
@@ -95,6 +96,12 @@ Class | Method | HTTP request | Description
  - [GetAcccountRequestTicker](docs/GetAcccountRequestTicker.md)
  - [GetAccountResponse](docs/GetAccountResponse.md)
  - [GetAccountResponsePositions](docs/GetAccountResponsePositions.md)
+ - [GetAccountsResponseV5](docs/GetAccountsResponseV5.md)
+ - [GetAccountsResponseV5AccountMembers](docs/GetAccountsResponseV5AccountMembers.md)
+ - [GetAccountsResponseV5Accounts](docs/GetAccountsResponseV5Accounts.md)
+ - [GetAccountsResponseV5Positions](docs/GetAccountsResponseV5Positions.md)
+ - [GetAccountsResponseV5Positions2](docs/GetAccountsResponseV5Positions2.md)
+ - [GetAccountsResponseV5Ticker](docs/GetAccountsResponseV5Ticker.md)
  - [GetAlertsResponse](docs/GetAlertsResponse.md)
  - [GetAlertsResponseData](docs/GetAlertsResponseData.md)
  - [GetAlertsResponseEventWarning](docs/GetAlertsResponseEventWarning.md)
