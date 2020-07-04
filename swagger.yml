@@ -92,82 +92,66 @@ paths:
       summary: getAccount
       tags:
         - accounts
-  # '/asset/{account_id}/getWebullTransferList':
-  #   post:
-  #     deprecated: false
-  #     description: (TODO) Get transfer history
-  #     operationId: getTransferHistory
-  #     parameters:
-  #       - in: header
-  #         name: did
-  #         description: "Device ID"
-  #         required: true
-  #         schema:
-  #           type: string
-  #           default: "your_device"
-  #       - in: header
-  #         name: access_token
-  #         description: "Access token"
-  #         required: true
-  #         schema:
-  #           type: string
-  #       - in: path
-  #         name: account_id
-  #         required: true
-  #         schema:
-  #           type: string
-  #       - description: pageSize
-  #         in: query
-  #         name: pageSize
-  #         schema:
-  #           default: 256
-  #           type: string
-  #       - description: lastRecordId
-  #         in: query
-  #         name: lastRecordId
-  #         schema:
-  #           type: string
-  #       - description: time
-  #         in: header
-  #         name: t_time
-  #         schema:
-  #           type: string
-  #       - description: t_token
-  #         in: header
-  #         name: t_token
-  #         schema:
-  #           type: string
-  #     responses:
-  #       '200':
-  #         content:
-  #           application/json:
-  #             schema:
-  #               items:
-  #                 $ref: '#/components/schemas/Anything'
-  #         description: OK
-  #       '401':
-  #         content:
-  #           application/json:
-  #             schema:
-  #               $ref: '#/components/schemas/ErrorBody'
-  #         description: Unauthorized
-  #       '403':
-  #         content:
-  #           application/json:
-  #             schema:
-  #               $ref: '#/components/schemas/ErrorBody'
-  #         description: Forbidden
-  #       '404':
-  #         content:
-  #           application/json:
-  #             schema:
-  #               $ref: '#/components/schemas/ErrorBody'
-  #         description: Not Found
-  #     servers:
-  #       - url: 'https://tradeapi.webullbroker.com/api/trade'
-  #     summary: getTransferHistory
-  #     tags:
-  #       - accounts
+  '/asset/{account_id}/getWebullTransferList':
+    post:
+      deprecated: false
+      description: Get transfer history
+      operationId: getTransferHistory
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: account_id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GetTransfersRequest"
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Anything'
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://tradeapi.webullbroker.com/api/trade'
+      summary: getTransferHistory
+      tags:
+        - accounts
   '/information/news/v5/tickerNews/{stock}':
     get:
       deprecated: false
@@ -3642,11 +3626,11 @@ components:
           type: array
     GetPaperAccountsResponse:
       items:
-        $ref: components/schemas/PaperAccount
+        $ref: '#/components/schemas/PaperAccount'
       type: array
     GetPaperOrdersResponse:
       items:
-        $ref: components/schemas/PaperOrder
+        $ref: '#/components/schemas/PaperOrder'
       type: array
     GetSecurityAccountsResponse:
       properties:
@@ -4658,26 +4642,119 @@ components:
       enum:
         - IN
         - OUT
-    Transfer:
-      properties:
-        amount:
-          type: number
-        date:
-          type: string
-        direction:
-          $ref: '#/components/schemas/TransferDirection'
-        legs:
-          items:
-            $ref: '#/components/schemas/Leg'
-        sub_status:
-          description: 'Example: COMPLETED'
-          title: subStatus
-          type: string
-        transfer_type:
-          default: transfer
-          title: type
-          type: string
-        update_time:
-          title: updateTime
-          type: string
+    Transfers:
       type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/Transfer"
+    GetTransfersRequest:
+      properties:
+        pageSize:
+          type: number
+          default: 256
+        lastRecordId:
+          type: string
+          default: 0
+    Transfer:
+      type: object
+      properties: 
+        id: 
+          type: number
+          example: 123456
+        secAccountId: 
+          type: number
+          example: 12345678
+        brokerAccountId: 
+          type: string
+          example: 5KU45019
+        type: 
+          type: string
+          example: ACH
+        direction: 
+          type: string
+          example: IN
+        amount: 
+          type: number
+          example: 25000
+        amountStr: 
+          type: string
+          example: 25000
+        currency: 
+          type: string
+          example: USD
+        transferId: 
+          type: string
+          example: KKG4FAUUISL30LNOJML27I2499
+        externalTransferId: 
+          type: string
+          example: 10779010_1583778964699
+        status: 
+          type: string
+          example: AVAILABLE
+        subStatus: 
+          type: string
+          example: COMPLETED
+        achId: 
+          type: string
+          example: IIGCE9DOIN6H9JHGETA2A6E469
+        bankId: 
+          type: string
+          example: 123456789
+        bankType: 
+          type: string
+          example: ABA
+        bankAccount: 
+          type: string
+          example: 123456789
+        bankAccountName: 
+          type: string
+          example: First Last Name
+        customerType: 
+          type: string
+          example: INDIVIDUAL
+        createTime: 
+          type: string
+          example: 2020-03-09T18:36:04.000+0000
+        updateTime: 
+          type: string
+          example: 2020-03-13T12:13:18.000+0000
+        createTimeStr: 
+          type: string
+          format: date
+          example: 2020-03-09
+        finishTime: 
+          type: string
+          example: 2020-03-09T20:15:43.000+0000
+        availableTime: 
+          type: string
+          example: 2020-03-13T04:00:00.000+0000
+        availableLampSendStatus: 
+          type: string
+          example: send
+        availableTimeStr: 
+          type: string
+          format: date
+          example: 2020-03-13
+        returnSendStatus: 
+          type: string
+          example: notsend
+        recordSendStatus: 
+          type: string
+          example: send
+        serialId: 
+          type: string
+          example: 7.785146716076454
+        arriveTime: 
+          type: string
+          example: 2020-03-13T12:13:18.263+0000
+        firstGift: 
+          type: boolean
+        waitCardBinding: 
+          type: boolean
+        tipsInfo: 
+          type: string
+          example: Your deposit request has been submitted. It will be completed within 5 business days. You will get provisional credit as instant buying power later today during business hours then you can start trading.

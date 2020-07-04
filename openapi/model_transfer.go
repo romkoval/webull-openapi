@@ -11,12 +11,36 @@
 package openapi
 // Transfer struct for Transfer
 type Transfer struct {
+	Id float32 `json:"id,omitempty"`
+	SecAccountId float32 `json:"secAccountId,omitempty"`
+	BrokerAccountId string `json:"brokerAccountId,omitempty"`
+	Type string `json:"type,omitempty"`
+	Direction string `json:"direction,omitempty"`
 	Amount float32 `json:"amount,omitempty"`
-	Date string `json:"date,omitempty"`
-	Direction TransferDirection `json:"direction,omitempty"`
-	Legs []Leg `json:"legs,omitempty"`
-	// Example: COMPLETED
-	SubStatus string `json:"sub_status,omitempty"`
-	TransferType string `json:"transfer_type,omitempty"`
-	UpdateTime string `json:"update_time,omitempty"`
+	AmountStr string `json:"amountStr,omitempty"`
+	Currency string `json:"currency,omitempty"`
+	TransferId string `json:"transferId,omitempty"`
+	ExternalTransferId string `json:"externalTransferId,omitempty"`
+	Status string `json:"status,omitempty"`
+	SubStatus string `json:"subStatus,omitempty"`
+	AchId string `json:"achId,omitempty"`
+	BankId string `json:"bankId,omitempty"`
+	BankType string `json:"bankType,omitempty"`
+	BankAccount string `json:"bankAccount,omitempty"`
+	BankAccountName string `json:"bankAccountName,omitempty"`
+	CustomerType string `json:"customerType,omitempty"`
+	CreateTime string `json:"createTime,omitempty"`
+	UpdateTime string `json:"updateTime,omitempty"`
+	CreateTimeStr string `json:"createTimeStr,omitempty"`
+	FinishTime string `json:"finishTime,omitempty"`
+	AvailableTime string `json:"availableTime,omitempty"`
+	AvailableLampSendStatus string `json:"availableLampSendStatus,omitempty"`
+	AvailableTimeStr string `json:"availableTimeStr,omitempty"`
+	ReturnSendStatus string `json:"returnSendStatus,omitempty"`
+	RecordSendStatus string `json:"recordSendStatus,omitempty"`
+	SerialId string `json:"serialId,omitempty"`
+	ArriveTime string `json:"arriveTime,omitempty"`
+	FirstGift bool `json:"firstGift,omitempty"`
+	WaitCardBinding bool `json:"waitCardBinding,omitempty"`
+	TipsInfo string `json:"tipsInfo,omitempty"`
 }

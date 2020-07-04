@@ -34,6 +34,7 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AccountsApi* | [**GetAccount**](docs/AccountsApi.md#getaccount) | **Get** /account/getSecAccountList/v4 | getAccount
 *AccountsApi* | [**GetAccountInfo**](docs/AccountsApi.md#getaccountinfo) | **Get** /v2/home/{account_id} | getAccountInfo
+*AccountsApi* | [**GetTransferHistory**](docs/AccountsApi.md#gettransferhistory) | **Post** /asset/{account_id}/getWebullTransferList | getTransferHistory
 *AlertsApi* | [**GetAlerts**](docs/AlertsApi.md#getalerts) | **Get** /user/warning/v2/query/tickers | getAlerts
 *AuthenticationApi* | [**GetMultiFactorAuth**](docs/AuthenticationApi.md#getmultifactorauth) | **Post** /passport/verificationCode/sendCode | getMultiFactorAuth
 *AuthenticationApi* | [**GetTradeToken**](docs/AuthenticationApi.md#gettradetoken) | **Post** /login | getTradeToken
@@ -140,6 +141,7 @@ Class | Method | HTTP request | Description
  - [GetTickerChartRequest](docs/GetTickerChartRequest.md)
  - [GetTickerChartResponse](docs/GetTickerChartResponse.md)
  - [GetTickerChartResponseDates](docs/GetTickerChartResponseDates.md)
+ - [GetTransfersRequest](docs/GetTransfersRequest.md)
  - [GetUserDetailsResponse](docs/GetUserDetailsResponse.md)
  - [InlineObject](docs/InlineObject.md)
  - [Leg](docs/Leg.md)
@@ -175,6 +177,7 @@ Class | Method | HTTP request | Description
  - [TradeToken](docs/TradeToken.md)
  - [Transfer](docs/Transfer.md)
  - [TransferDirection](docs/TransferDirection.md)
+ - [Transfers](docs/Transfers.md)
 
 
 ## Documentation For Authorization
