@@ -3510,7 +3510,7 @@ components:
               filledTime:
                 type: string
               filledTime0:
-                format: int32
+                format: uint64
                 type: integer
               filledValue:
                 type: string
@@ -3650,7 +3650,14 @@ components:
                 type: string
               comboTypes:
                 items:
-                  $ref: '#/components/schemas/ComboType'
+                  type: string
+                  enum:
+                    - NORMAL
+                    - MASTER
+                    - STOP_LOSS
+                    - STOP_PROFIT
+                    - LMT
+                    - MKT
                 type: array
               customerType:
                 type: string
@@ -4514,22 +4521,21 @@ components:
           type: string
         tokenExpireTime:
           type: string
-    ComboType:
-      type: string
-      enum:
-        - NORMAL
-        - MASTER
-        - STOP_LOSS
-        - STOP_PROFIT
-        - LMT
-        - MKT
+
     PostStockOrderRequest:
       properties:
         action:
           $ref: '#/components/schemas/OrderSide'
           description: Order side
         comboType:
-          $ref: '#/components/schemas/ComboType'
+          type: string
+          enum:
+            - NORMAL
+            - MASTER
+            - STOP_LOSS
+            - STOP_PROFIT
+            - LMT
+            - MKT
         lmtPrice:
           description: limit price
           type: number
@@ -4566,7 +4572,7 @@ components:
             tradeToken:
               type: string
             tradeTokenExpireIn:
-              format: int3
+              format: int32
               type: integer
           type: object
         success:

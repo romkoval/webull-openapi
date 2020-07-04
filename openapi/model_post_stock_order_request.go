@@ -12,7 +12,7 @@ package openapi
 // PostStockOrderRequest struct for PostStockOrderRequest
 type PostStockOrderRequest struct {
 	Action OrderSide `json:"action,omitempty"`
-	ComboType ComboType `json:"comboType,omitempty"`
+	ComboType string `json:"comboType,omitempty"`
 	// limit price
 	LmtPrice float32 `json:"lmtPrice,omitempty"`
 	OrderType OrderType `json:"orderType,omitempty"`
