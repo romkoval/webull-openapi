@@ -4,7 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ComboId** | **string** |  | [optional] 
 **ComboTickerType** | **string** |  | [optional] 
+**ComboType** | **string** |  | [optional] 
 **Orders** | [**[]GetOrdersItemOrders**](GetOrdersItem_orders.md) |  | [optional] 
 **OutsideRegularTradingHour** | **bool** |  | [optional] 
 

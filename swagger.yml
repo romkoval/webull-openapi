@@ -2716,6 +2716,11 @@ components:
         uuid:
           type: string
       type: object
+    OptionType:
+      type: string
+      enum:
+        - put
+        - call
     OptionDirection:
       type: string
       enum:
@@ -3481,7 +3486,11 @@ components:
           type: integer
     GetOrdersItem:
       properties:
+        comboId:
+          type: string
         comboTickerType:
+          type: string
+        comboType:
           type: string
         orders:
           items:
@@ -3518,12 +3527,21 @@ components:
                 type: string
               optionExercisePrice:
                 type: string
+              optionCycle:
+                type: integer
+                format: int64
               orderId:
                 format: int32
                 type: integer
               orderType:
                 $ref: '#/components/schemas/OrderType'
+              optionType:
+                $ref: '#/components/schemas/OptionType'
+              optionExpirationDate:
+                type: string
               relation:
+                type: string
+              optionCategory:
                 type: string
               remainQuantity:
                 type: string
