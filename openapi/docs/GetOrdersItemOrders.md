@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **CreateTime0** | **int64** |  | [optional] 
 **FilledQuantity** | **string** |  | [optional] 
 **FilledTime** | **string** |  | [optional] 
-**FilledTime0** | **int32** |  | [optional] 
+**FilledTime0** | **float32** |  | [optional] 
 **FilledValue** | **string** |  | [optional] 
 **OptionContractMultiplier** | **string** |  | [optional] 
 **OptionExercisePrice** | **string** |  | [optional] 

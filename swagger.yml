@@ -3510,8 +3510,8 @@ components:
               filledTime:
                 type: string
               filledTime0:
-                format: uint64
-                type: integer
+                # format: uint64
+                type: number
               filledValue:
                 type: string
               optionContractMultiplier:

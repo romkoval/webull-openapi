@@ -21,7 +21,7 @@ type GetOrdersItemOrders struct {
 	CreateTime0 int64 `json:"createTime0,omitempty"`
 	FilledQuantity string `json:"filledQuantity,omitempty"`
 	FilledTime string `json:"filledTime,omitempty"`
-	FilledTime0 int32 `json:"filledTime0,omitempty"`
+	FilledTime0 float32 `json:"filledTime0,omitempty"`
 	FilledValue string `json:"filledValue,omitempty"`
 	OptionContractMultiplier string `json:"optionContractMultiplier,omitempty"`
 	OptionExercisePrice string `json:"optionExercisePrice,omitempty"`
