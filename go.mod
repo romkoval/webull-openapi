@@ -1,2 +1,2 @@
 module gitlab.com/brokerage-api/webull-openapi
-go 1.13
+go 1.15

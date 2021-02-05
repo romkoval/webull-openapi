@@ -23,4 +23,4 @@ rm openapi/api_*.go \
     openapi/docs/*Api.md
 
 echo "module gitlab.com/brokerage-api/webull-openapi
-go 1.13" > go.mod
+go 1.15" > go.mod

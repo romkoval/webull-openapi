@@ -22,6 +22,8 @@ servers:
     description: Paper Trade API
   - url: https://tradeapi.webulltrade.com/api/trade
     description: Trade API
+  - url: https://act.webullfintech.com/webull-paper-center/api
+    description: Paper Trade API
 externalDocs:
   description: Find out more about Swagger
   url: http://swagger.io
@@ -560,6 +562,7 @@ paths:
       summary: placeOrder
       tags:
         - order
+  
   '/paper/1/acc/{paper_account_id}/order':
     get:
       deprecated: false
@@ -755,6 +758,66 @@ paths:
       servers:
         - url: 'https://act.webullbroker.com/webull-paper-center/api'
       summary: modifyPaperTradeOrder
+      tags:
+        - paper
+  '/paper/1/acc/{paper_account_id}/acc/reset/{amount}':
+    get:
+      deprecated: false
+      description: resetPaperTradingAccount
+      operationId: getNewPaperAccount
+      parameters:
+        - in: header
+          name: did
+          description: "Device ID"
+          required: true
+          schema:
+            type: string
+            default: "your_device"
+        - in: header
+          name: access_token
+          description: "Access token"
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: paper_account_id
+          required: true
+          schema:
+            type: integer
+        - in: path
+          name: amount
+          required: true
+          schema:
+            type: integer
+            default: 25000
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResetPaperAccountResponse"
+          description: OK
+        '401':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorBody'
+          description: Not Found
+      servers:
+        - url: 'https://act.webullfintech.com/webull-paper-center/api'
+      summary: getNewPaperAccount
       tags:
         - paper
   '/paper/1/acc/{paper_account_id}/orderop/place/{stock}':
@@ -4950,6 +5013,39 @@ components:
           type: array
           items:
             type: object
+    ResetPaperAccountResponse:
+      type: object
+      properties:
+        id:
+          type: number
+          example: 123456
+        paperId:
+          type: number
+          example: 1
+        userId:
+          type: number
+          example: 123456
+        status:
+          type: number
+          example: 0
+        tradeCount:
+          type: number
+          example: 0
+        tradeTickerCount:
+          type: number
+          example: 0
+        createTime:
+          type: string
+          example: 2021-02-05T04:11:49.633+0000
+        updateTime:
+          type: string 
+          example: 2021-02-05T04:11:49.633+0000
+        extHours: 
+          type: boolean
+          example: false
+        reseted:
+          type: boolean
+          example: false
     Transfer:
       type: object
       properties: 
