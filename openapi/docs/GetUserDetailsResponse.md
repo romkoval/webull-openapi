@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **RegionId** | **int32** |  | [optional] 
 **RegionName** | **string** |  | [optional] 
 **Sex** | **int32** |  | [optional] 
-**ThirdAccounts** | **[]map[string]interface{}** |  | [optional] 
+**ThirdAccounts** | [**[]map[string]interface{}**](map[string]interface{}.md) |  | [optional] 
 **TradeLockemail** | **string** |  | [optional] 
 **Uuid** | **string** |  | [optional] 
 

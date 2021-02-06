@@ -159,6 +159,7 @@ Class | Method | HTTP request | Description
  - [OptionType](docs/OptionType.md)
  - [Order](docs/Order.md)
  - [OrderAction](docs/OrderAction.md)
+ - [OrderResponse](docs/OrderResponse.md)
  - [OrderSide](docs/OrderSide.md)
  - [OrderStatus](docs/OrderStatus.md)
  - [OrderType](docs/OrderType.md)
@@ -179,6 +180,7 @@ Class | Method | HTTP request | Description
  - [PostTradeTokenResponse](docs/PostTradeTokenResponse.md)
  - [PostTradeTokenResponseData](docs/PostTradeTokenResponseData.md)
  - [ReplaceOptionOrderRequest](docs/ReplaceOptionOrderRequest.md)
+ - [Rule](docs/Rule.md)
  - [SmartRule](docs/SmartRule.md)
  - [TimeInForce](docs/TimeInForce.md)
  - [TradeToken](docs/TradeToken.md)
@@ -190,7 +192,6 @@ Class | Method | HTTP request | Description
 ## Documentation For Authorization
 
  Endpoints do not require authorization.
-
 
 
 ## Author

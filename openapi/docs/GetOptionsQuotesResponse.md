@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Data** | **[]map[string]interface{}** |  | [optional] 
+**Data** | [**[]map[string]interface{}**](map[string]interface{}.md) |  | [optional] 
 **DisExchangeCode** | **string** |  | [optional] 
 **DisSymbol** | **string** |  | [optional] 
 **Name** | **string** |  | [optional] 
