@@ -13,7 +13,7 @@ package openapi
 type GetAccountsResponseV5Accounts struct {
 	SecAccountId float32 `json:"secAccountId,omitempty"`
 	BrokerId float32 `json:"brokerId,omitempty"`
-	AccountType string `json:"accountType,omitempty"`
+	AccountType int64 `json:"accountType,omitempty"`
 	BrokerAccountId string `json:"brokerAccountId,omitempty"`
 	Currency string `json:"currency,omitempty"`
 	CurrencyId float32 `json:"currencyId,omitempty"`

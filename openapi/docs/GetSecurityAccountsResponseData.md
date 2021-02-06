@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccountTypes** | **[]string** |  | [optional] 
+**AccountTypes** | **[]int64** |  | [optional] 
 **AllowDeposit** | **bool** |  | [optional] 
 **BrokerAccountId** | **string** |  | [optional] 
 **BrokerId** | **int32** |  | [optional] 

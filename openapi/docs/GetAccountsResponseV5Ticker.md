@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **ListStatus** | **float32** |  | [optional] 
 **ExchangeCode** | **string** |  | [optional] 
 **ExchangeId** | **float32** |  | [optional] 
-**ExtType** | [**[]map[string]interface{}**](map[string]interface{}.md) |  | [optional] 
+**ExtType** | **[]map[string]interface{}** |  | [optional] 
 **Type** | **float32** |  | [optional] 
 **RegionId** | **float32** |  | [optional] 
 **RegionName** | **string** |  | [optional] 

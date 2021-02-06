@@ -14,6 +14,6 @@ type AccountType int32
 
 // List of AccountType
 const (
-	_1 AccountType = "1"
-	_2 AccountType = "2"
+	_1 AccountType = 1
+	_2 AccountType = 2
 )

@@ -12,7 +12,7 @@ package openapi
 // GetAcccountRequest struct for GetAcccountRequest
 type GetAcccountRequest struct {
 	AccountMembers []GetAcccountRequestAccountMembers `json:"accountMembers,omitempty"`
-	AccountType string `json:"accountType,omitempty"`
+	AccountType int64 `json:"accountType,omitempty"`
 	Banners []GetAcccountRequestBanners `json:"banners,omitempty"`
 	BrokerAccountId string `json:"brokerAccountId,omitempty"`
 	BrokerId int32 `json:"brokerId,omitempty"`

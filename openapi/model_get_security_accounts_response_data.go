@@ -11,7 +11,7 @@
 package openapi
 // GetSecurityAccountsResponseData struct for GetSecurityAccountsResponseData
 type GetSecurityAccountsResponseData struct {
-	AccountTypes []string `json:"accountTypes,omitempty"`
+	AccountTypes []int64 `json:"accountTypes,omitempty"`
 	AllowDeposit bool `json:"allowDeposit,omitempty"`
 	BrokerAccountId string `json:"brokerAccountId,omitempty"`
 	BrokerId int32 `json:"brokerId,omitempty"`

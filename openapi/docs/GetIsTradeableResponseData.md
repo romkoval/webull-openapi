@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **ExchangeCode** | **string** |  | [optional] 
 **ExchangeId** | **int32** |  | [optional] 
 **ExchangeTrade** | **bool** |  | [optional] 
-**ExtType** | [**[]map[string]interface{}**](map[string]interface{}.md) |  | [optional] 
+**ExtType** | **[]map[string]interface{}** |  | [optional] 
 **ListStatus** | **int32** |  | [optional] 
 **Name** | **string** |  | [optional] 
 **RegionId** | **int32** |  | [optional] 

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **SecAccountId** | **float32** |  | [optional] 
 **BrokerId** | **float32** |  | [optional] 
-**AccountType** | **string** |  | [optional] 
+**AccountType** | **int64** |  | [optional] 
 **BrokerAccountId** | **string** |  | [optional] 
 **Currency** | **string** |  | [optional] 
 **CurrencyId** | **float32** |  | [optional] 

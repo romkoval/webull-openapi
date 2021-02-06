@@ -1012,10 +1012,14 @@ paths:
           required: true
           schema:
             $ref: '#/components/schemas/AccountType'
-            default: 2
+            format: int64
+            type: integer
             enum:
               - 1
               - 2
+            x-go-const-names:
+              - PHONE
+              - EMAIL
         - description: deviceId
           in: query
           name: deviceId
@@ -2594,6 +2598,19 @@ components:
         - 2
       format: int32
       type: integer
+      # # default: 2
+      # # default: 2
+      # description: 'number: 1, email: 2'
+      # type: integer
+      # format: int32
+      # enum:
+      #   - 1
+      #   - 2
+      #   - 3
+      # x-enum-varnames:
+      #   - Sunny
+      #   - Cloudy
+      #   - Rainy
     ActiveGainersLosers:
       properties:
         change:
@@ -2817,7 +2834,10 @@ components:
             type: object
           type: array
         accountType:
-          type: string
+          format: int64
+          type: integer
+          # default: 2
+          example: 2
         banners:
           items:
             properties:
@@ -2978,7 +2998,10 @@ components:
             type: object
           type: array
         accountType:
-          type: string
+          format: int64
+          type: integer
+          # default: 2
+          example: 2
         banners:
           items:
             properties:
@@ -3694,7 +3717,10 @@ components:
             properties:
               accountTypes:
                 items:
-                  type: string
+                  format: int64
+                  type: integer
+                  # default: 2
+                  # example: 2
                 type: array
               allowDeposit:
                 type: boolean
@@ -4376,7 +4402,9 @@ components:
           type: string
         accountType:
           $ref: '#/components/schemas/AccountType'
-          default: 2
+          # default: 2
+          format: int64
+          type: integer
           description: '2 is email, 1 is phone'
         deviceId:
           type: string
@@ -4743,8 +4771,9 @@ components:
                 type: number
                 example: 8
               accountType: 
-                type: string
-                example: CASH
+                format: int64
+                type: integer
+                example: 1
               brokerAccountId: 
                 type: string
                 example: 5KU45018
